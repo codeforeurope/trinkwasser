@@ -16,7 +16,7 @@ msgstr ""
 
 #: src/index.html:1 src/index.html:4
 msgid "Was steckt in meinem Leitungswasser?"
-msgstr "Wat zit er in mijn leidingwater?"
+msgstr "Wat zit er in het water?"
 
 #: src/index.html:2
 msgid ""
