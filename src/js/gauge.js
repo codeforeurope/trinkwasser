@@ -11,7 +11,7 @@ var tw = tw || { data: {}};
     for (var i = 0; i < tw.data.averages.length; i++) {
       if(tw.data.averages[i].code === nutrient){
         if(asLabel){
-          return tw.data.averages[i].value.toFixed(2) + " mg/L"; // TODO, fix uom in the API!
+          return tw.data.averages[i].average.toFixed(2) + " " + tw.data.averages[i].uom; // TODO, fix uom in the API!
         }
         return tw.data.averages[i].value;
       }
@@ -269,7 +269,7 @@ var tw = tw || { data: {}};
 
     instanceToHide.hide();
     instanceToShow.show().applyAttribute(attribute);
-    toggleDescription(attribute);
+    toggleDescription(attribute.replace(/[^0-9a-z]/gi, ''));
   };
 
   var updateValue = function (attribute, value, zoneData) {

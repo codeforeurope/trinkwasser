@@ -70,11 +70,20 @@ var tw = tw || { data: {}};
       if(tw.data.limits[i].code === nutrient){
         switch(type){
           case 'label':
-            return tw.data.limits[i].value.toFixed(2) + " " + tw.data.limits[i].uom;
+            if(tw.data.limits[i].value){
+              return tw.data.limits[i].value.toFixed(2) + " " + tw.data.limits[i].uom;
+            } else if(tw.data.limits[i].min){
+              return "min. " + tw.data.limits[i].min.toFixed(2) + " " + tw.data.limits[i].uom;
+            } else if(tw.data.limits[i].max){
+              return "max. " + tw.data.limits[i].max.toFixed(2) + " " + tw.data.limits[i].uom;
+            } else {
+              return;
+            }
+            break;
           case 'object':
             return tw.data.limits[i];
           default:
-            return tw.data.limits[i].value;
+            return tw.data.limits[i].average || tw.data.limits[i].max;
         }
       }
     }
@@ -148,6 +157,7 @@ var tw = tw || { data: {}};
         $('.zone-about').toggle(!!((data.year || data.description)));
         $('.zone-year-container').toggle(!!data.year);
         $('.nav-li-main').removeClass('disabled');
+        var data_attribute = 0;
         data.observations.forEach(function (attribute) {
           //create a tab for each observation
           $('#observations').append('<li class="nav-li-main"><a data-toggle="tab" data-attribute="' + attribute.code + '">' + attribute.code + '</a></li>');
