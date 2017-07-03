@@ -67,7 +67,7 @@ var tw = tw || { data: {}};
 
 
     this.applyAttribute = function (nutrient) {
-      var temp = tw.utils.getLimit(nutrient, 'object');
+      var temp = tw.utils.evaluateLimit(nutrient, 'object');
       limit = temp.value;
       if (limit) {
         updateLabelsToDisplay();

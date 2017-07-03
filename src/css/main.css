@@ -61,7 +61,6 @@ h4 {
 .choose-location-well {
 	background: #3591c0;
 	border: none;
-	margin-top: 100px;
 }
 .nav {
 	margin: 2em 0 3em 0;
@@ -229,9 +228,7 @@ svg text {
 	.form-choose-location-quick {
 		margin: 10px 0 30px 0;
 	}
-	.choose-location-well {
-		margin-top: 1em;
-	}
+
 	.gauge-glass-img {
 		height: 350px;
 		width: 80px;

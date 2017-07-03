@@ -54,8 +54,20 @@ var tw = tw || { data: {}};
    * @param {string} code the code to retrieve the values from
    * @param {function} callback function to pass the result to
    */
-  var getLimits = function (code, callback) {
+  var getLimit = function (code, callback) {
     $.getJSON(tw.config.api_endpoint + '/limit',{code: code, lang: getLang()}, function(data){
+      if (data) {
+        callback(data);
+      }
+    });
+  };
+
+  /**
+   * Get the legal limits for the given location, let us default to EU for now.
+   * @param {function} callback function to pass the result to
+   */
+  var getLimits = function (callback) {
+    $.getJSON(tw.config.api_endpoint + '/limits',{lang: getLang()}, function(data){
       if (data) {
         callback(data);
       }
@@ -65,29 +77,48 @@ var tw = tw || { data: {}};
   /**
    * Get the value for a limit from tw.data.limits
    */
-  var getLimit = function(nutrient, type) {
+  var evaluateLimit = function(observation) {
+    var table = $('<table class="table"><thead><tr><th>Standard</th><th>' + tw.i18n.min + '</th><th>' + tw.i18n.max + '</th><th>' + tw.i18n.score + '</th></tr></thead></table>');
+    var tbody = $('<tbody></tbody>');
     for (var i = 0; i < tw.data.limits.length; i++) {
-      if(tw.data.limits[i].code === nutrient){
-        switch(type){
-          case 'label':
-            if(tw.data.limits[i].value){
-              return tw.data.limits[i].value.toFixed(2) + " " + tw.data.limits[i].uom;
-            } else if(tw.data.limits[i].min){
-              return "min. " + tw.data.limits[i].min.toFixed(2) + " " + tw.data.limits[i].uom;
-            } else if(tw.data.limits[i].max){
-              return "max. " + tw.data.limits[i].max.toFixed(2) + " " + tw.data.limits[i].uom;
+      //Each limit
+      var name = tw.data.limits[i].name;
+      var limitvalues = tw.data.limits[i].limits;
+      var standard = $('<tr><td>' + name + '</td></tr>');
+      var val = "-";
+      var min = '-';
+      var max = '-';
+      for (var j = 0; j < limitvalues.length; j++) {
+        if(limitvalues[j].code === observation.code) {
+          min = limitvalues[j].min || '-';
+          max = limitvalues[j].max || '-';
+          if (limitvalues[j].min) {
+            // At least. If actual value is higher, thumbs up
+            if(observation.value > limitvalues[j].min){
+              val = '<span class="icon is-small"><i class="fa fa-thumbs-up green" title="' + tw.i18n.morethan + ' ' + limitvalues[j].min + ' ' + limitvalues[j].uom + '"></i></span>';
             } else {
-              return;
+              val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="'+  tw.i18n.lessthan + ' ' + limitvalues[j].min + ' ' + limitvalues[j].uom + '"></i></span>';
             }
-            break;
-          case 'object':
-            return tw.data.limits[i];
-          default:
-            return tw.data.limits[i].average || tw.data.limits[i].max;
+          } else if(limitvalues[j].max){
+            // At most. If actual value is lower, thumbs up
+            if(observation.value < limitvalues[j].max){
+              val = '<span class="icon is-small"><i class="fa fa-thumbs-up green" title="' + tw.i18n.lessthan + ' ' + limitvalues[j].max + ' ' + limitvalues[j].uom + '"></i></span>';
+            } else {
+              val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="' + tw.i18n.morethan + ' ' + limitvalues[j].max + ' ' + limitvalues[j].uom + '"></i></span>';
+            }
+          }
         }
       }
+      //append
+      standard.append('<td>' + min + '</td>');
+      standard.append('<td>' + max + '</td>');
+      standard.append('<td>' + val + '</td>');
+      tbody.append(standard);
     }
-    return; //Not found
+    table.append(tbody);
+    var paragraph = $('<p></p>');
+    paragraph.append(table);
+    return paragraph; //Not found
   };
 
   /**
@@ -107,6 +138,9 @@ var tw = tw || { data: {}};
     return; //Not found
   };
 
+  var getObservationValue = function(observation) {
+    return observation.value;
+  };
   /**
    * Get the value for a observation from tw.data.report
    */
@@ -149,23 +183,9 @@ var tw = tw || { data: {}};
   var getReport = function (lat, lon, callback) {
     lat = lat || 49.1925;
     lon = lon || 9.2254;
+    $('#result-observations').html('');
     $.getJSON(tw.config.api_endpoint + '/report',{lat: lat, lon: lon, lang: getLang()}, function(data){
-      if (data.zone) {
-        $('.zone-id').text(data.zone.name);
-        $('.zone-data-year').text(data.year);
-        $('.zone-description').html(data.description);
-        $('.zone-about').toggle(!!((data.year || data.description)));
-        $('.zone-year-container').toggle(!!data.year);
-        $('.nav-li-main').removeClass('disabled');
-        var data_attribute = 0;
-        data.observations.forEach(function (attribute) {
-          //create a tab for each observation
-          $('#observations').append('<li class="nav-li-main"><a data-toggle="tab" data-attribute="' + attribute.code + '">' + attribute.code + '</a></li>');
-        });
-        callback(data);
-      } else {
-        callback();
-      }
+      callback(data);
     });
   };
 
@@ -226,7 +246,9 @@ var tw = tw || { data: {}};
    */
   tw.utils = {
     'getLimits': getLimits,
+    'getObservationValue': getObservationValue,
     'getLimit': getLimit,
+    'evaluateLimit': evaluateLimit,
     'getLang': getLang,
     'getValue': getValue,
     'getProductValue': getProductValue,

@@ -20,6 +20,7 @@ var tw = tw || { data: {}};
   };
 
   var GaugeGlass = function (svg) {
+    console.log(svg);
     var limit = 0;
     var yValueStop = 220;
     var yValueMaxHeight = 602;
@@ -76,7 +77,7 @@ var tw = tw || { data: {}};
     };
 
     this.applyAttribute = function (nutrient) {
-      limit = tw.utils.getLimit(nutrient);
+      limit = tw.utils.evaluateLimit(nutrient);
       if (limit) {
         updateLabelsToDisplay();
         updateLabels();
@@ -252,7 +253,7 @@ var tw = tw || { data: {}};
     d3.selectAll('.attribute-description').attr('style', 'display:none;');
     d3.selectAll('.attribute-description-' + attribute).attr('style', '');
 
-    d3.selectAll('.gauge-legal-limit').text(tw.utils.getLimit(attribute, 'label'));
+    d3.selectAll('.gauge-legal-limit').text(tw.utils.evaluateLimit(attribute, 'label'));
     d3.selectAll('.gauge-average-value').text(getAverage(attribute, true));
     d3.selectAll('.gauge-value').text(tw.utils.getValue(attribute, true));
     d3.selectAll('.gauge-daily-dosis').text(tw.data.nutrientDailyDosis[attribute]);
@@ -294,9 +295,16 @@ var tw = tw || { data: {}};
   };
 
   var init = function () {
-    glassInstance = new GaugeGlass(d3.select('.gauge-glass-img'));
-    barInstance = new GaugeBar(d3.select('.gauge-bar-img'));
-    return this;
+    d3.xml("../img/gauge.svg").mimeType("image/svg+xml").get(function(error, gauge) {
+      if (error) throw error;
+      $('#svg-container').html(gauge.documentElement);
+      var myGaugeGlass = d3.select('.gauge-glass-img');
+      myGaugeGlass.append("g").attr("class", "gauge-bar-img");
+      glassInstance = new GaugeGlass(myGaugeGlass);
+      barInstance = new GaugeBar(d3.select('.gauge-bar-img'));
+      console.log(myGaugeGlass);
+      return this;
+    });
   };
 
   // Initialize the gauge module
