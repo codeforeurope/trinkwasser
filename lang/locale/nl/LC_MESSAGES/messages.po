@@ -1662,7 +1662,7 @@ msgid ""
 "versuchen wir zu zeigen, welche Auswirkungen sie auf die Sie haben und ob "
 "die gemessene Wasserqualität ist gut oder schlecht für Sie."
 msgstr ""
-"Voer een adres in en ontdek welke waterkwaliteit je kunt verwachten. Voor alle stoffen en organismen die in het water voorkomen proberen wij aan te geven welk effect deze op jou hebben en of de gemeten waterkwaliteit goed of slecht voor je is.""
+"Voer een adres in en ontdek welke waterkwaliteit je kunt verwachten. Voor alle stoffen en organismen die in het water voorkomen proberen wij aan te geven welk effect deze op jou hebben en of de gemeten waterkwaliteit goed of slecht voor je is."
 
 #: src/index.html:11
 msgid "Sicheres Trinkwasser und angemessene sanitäre Einrichtungen"
