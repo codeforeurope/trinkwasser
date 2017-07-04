@@ -7,8 +7,8 @@ var tw = tw || { data: {}};
   /**
    * Get the language from the path
    */
-  var getLang = function(){
-    var pathArray = window.location.pathname.split( '/' );
+  var getLang = function () {
+    var pathArray = window.location.pathname.split('/');
     //get the two letter code from the array
     for (var i = 0; i < pathArray.length; i++) {
       if(pathArray[i].length === 2){
@@ -74,6 +74,46 @@ var tw = tw || { data: {}};
     });
   };
 
+
+  var transformLimit = function(limit, transformto){
+    if(limit.uom !== transformto){
+      //min, max, value, average
+      switch(true){
+        case (limit.uom = 'mg/L' && transformto === 'μg/L'):
+          if(limit.min){
+            limit.min = limit.min*1000;
+          }
+          if(limit.value){
+            limit.value = limit.value*1000;
+          }
+          if(limit.average){
+            limit.average = limit.average*1000;
+          }
+          if(limit.max){
+            limit.max = limit.max*1000;
+          }
+          limit.uom = transformto;
+          break;
+        case (limit.uom = 'μg/L' && transformto === 'mg/L'):
+          if(limit.min){
+            limit.min = limit.min/1000;
+          }
+          if(limit.value){
+            limit.value = limit.value/1000;
+          }
+          if(limit.average){
+            limit.average = limit.average/1000;
+          }
+          if(limit.max){
+            limit.max = limit.max/1000;
+          }
+          limit.uom = transformto;
+          break;
+      }
+    }
+    return limit;
+  };
+
   /**
    * Get the value for a limit from tw.data.limits
    */
@@ -90,21 +130,22 @@ var tw = tw || { data: {}};
       var max = '-';
       for (var j = 0; j < limitvalues.length; j++) {
         if(limitvalues[j].code === observation.code) {
-          min = limitvalues[j].min || '-';
-          max = limitvalues[j].max || '-';
-          if (limitvalues[j].min) {
+          var limit = transformLimit(limitvalues[j], observation.uom);
+          min = limit.min || '-';
+          max = limit.max || '-';
+          if (limit.min) {
             // At least. If actual value is higher, thumbs up
-            if(observation.value > limitvalues[j].min){
-              val = '<span class="icon is-small"><i class="fa fa-thumbs-up green" title="' + tw.i18n.morethan + ' ' + limitvalues[j].min + ' ' + limitvalues[j].uom + '"></i></span>';
+            if(observation.value > limit.min){
+              val = '<span class="icon is-small"><i class="fa fa-thumbs-up green" title="' + tw.i18n.morethan + ' ' + limit.min + ' ' + limit.uom + '"></i></span>';
             } else {
-              val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="'+  tw.i18n.lessthan + ' ' + limitvalues[j].min + ' ' + limitvalues[j].uom + '"></i></span>';
+              val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="'+  tw.i18n.lessthan + ' ' + limit.min + ' ' + limit.uom + '"></i></span>';
             }
-          } else if(limitvalues[j].max){
+          } else if(limit.max){
             // At most. If actual value is lower, thumbs up
-            if(observation.value < limitvalues[j].max){
-              val = '<span class="icon is-small"><i class="fa fa-thumbs-up green" title="' + tw.i18n.lessthan + ' ' + limitvalues[j].max + ' ' + limitvalues[j].uom + '"></i></span>';
+            if(observation.value < limit.max){
+              val = '<span class="icon is-small"><i class="fa fa-thumbs-up green" title="' + tw.i18n.lessthan + ' ' + limit.max + ' ' + limitvalues[j].uom + '"></i></span>';
             } else {
-              val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="' + tw.i18n.morethan + ' ' + limitvalues[j].max + ' ' + limitvalues[j].uom + '"></i></span>';
+              val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="' + tw.i18n.morethan + ' ' + limit.max + ' ' + limitvalues[j].uom + '"></i></span>';
             }
           }
         }
