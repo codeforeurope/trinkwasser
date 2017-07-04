@@ -63,7 +63,7 @@
           <div class="field">
               <p class="control has-icons-right">
                 <input id="search" type="text" class="input search-input" placeholder="_('Bitte auswählen')">
-                <span class="icon is-small is-right">
+                <span class="icon is-small is-right search-icon">
                   <i class="fa fa-search"></i>
                 </span>
               </p>
@@ -91,7 +91,7 @@
             <div class="field is-fullwidth">
               <p class="control is-expanded has-icons-right">
                 <input id="city" type="text" class="input is-large is-fullwidth search-input" placeholder="_('Bitte auswählen')">
-                <span class="icon is-normal is-right">
+                <span class="icon is-normal is-right search-icon">
                   <i class="fa fa-search"></i>
                 </span>
               </p>
@@ -124,10 +124,16 @@
       <div class="columns">
         <div class="column">
             <div class="content">
-              <p>_('Information zu') <em id="current-location"></em></p>
-              <p>_('Rapport') <em class="zone-id"></em> <em>-</em> <em class="zone-data-year"></em></p>
-              <p><span class="zone-data-count"></span> _('Beobachtungen')</p>
-              <div id="table-observations"></div>
+              <div>_('Information zu') <em id="current-location"></em></div>
+              <div id="result-loading">Loading data...</div>
+              <div id="result-success" style="display:none;">
+                <p>_('Rapport') <em class="zone-id"></em> <em>-</em> <em class="zone-data-year"></em></p>
+                <p><span class="zone-data-count"></span> _('Beobachtungen')</p>
+                <div id="table-observations"></div>
+              </div>
+              <div id="result-failed" class="notification is-warning" style="display:none;">
+                _('Keine Information für den angegebenen Standort gefunden. Kontaktieren Sie uns, wenn Sie das Gefühl haben, dass dies ein Fehler ist oder erneut suchen')
+              </div>
             </div>
           </div>
       </div>
@@ -137,15 +143,15 @@
     <div class="container">
       <div class="content has-text-centered ">
         <p class="field">
-          <a class="button button-footer is-outlined" data-toggle="modal" data-target="#aboutDialog">
+          <a class="button button-footer is-outlined" data-target="#modal-about">
             <span class="icon"><i class="fa fa-question"></i></span>
             <span>_('Über das Projekt')</span>
           </a>
-          <a class="button button-footer is-outlined" data-toggle="modal" data-target="#contactDialog">
+          <a class="button button-footer is-outlined" data-target="#modal-contact">
             <span class="icon"><i class="fa fa-envelope"></i></span>
             <span>_('Kontakt')</span>
           </a>
-          <a class="button button-footer is-outlined" data-toggle="modal" data-target="#attributionDialog">
+          <a class="button button-footer is-outlined" data-target="#modal-team">
             <span class="icon"><i class="fa fa-user"></i></span>
             <span>_('Mitwirkende')</span>
           </a>
@@ -161,20 +167,108 @@
       </div>
     </div>
   </footer>
+  <div id="modal-about" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="box">
+        <div class="content">
+          <h4 style="margin-top:0;">_('Wie das Trinkwasser-Tool entstanden ist')</h4>
+						<p>_('Trinkwasser gilt als das am besten kontrollierte Lebensmittel in Deutschland. Und trotzdem wissen wir sehr wenig über das Wasser, das bei uns aus dem Hahn kommt. Viele Kommunen veröffentlichen die Untersuchungsergebnisse auf ihren Webseiten. Für den Bürger sind diese Daten abrufbar - aber nicht greifbar. Was bedeutet ein Härtegrad von 9? Sind 200 Milligramm Calcium pro Liter viel oder wenig? Wie mineralreich unser Leitungswasser ist, zeigt sich erst, wenn wir es mit Wasser aus dem Handel vergleichen.')</p>
+        </div>
+      </div>
+    </div>
+    <button class="modal-close is-large"></button>
+  </div>
+  <div id="modal-contact" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="box">
+        <div class="content">
+          <h4 class="modal-title">_('Kontakt')</h4>
+          <p>_('Wir freuen uns über Feedback:')</p>
+					<p>_('E-Mail:') _('wasser')<!--nospam@blockscanners123987.de-->&#64;_('opendatalab.de')</p>
+					<p>_('Aufgrund der zahlreichen Daten kann es vereinzelt zu fehlerhaften Angaben kommen. Haben Sie einen Fehler entdeckt? Schreiben Sie uns!')</p>
+					<p>_('Oder sind Sie Mitarbeiter einer Kommune und möchten Ihre Daten eintragen? Schicken Sie uns einfach Ihre Daten per E-Mail.')</p>
 
+        </div>
+      </div>
+    </div>
+    <button class="modal-close is-large"></button>
+  </div>
+  <div id="modal-team" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="box">
+        <div class="content">
+  				<table class="table">
+            <tbody>
+              <tr><td colspan="3" class="has-text-centered"><strong>_('Redaktionelle Umsetzung')</strong></td></tr>
+              <tr>
+                <td>Vanessa Wormer</td>
+                <td><a target="_blank" href="https://twitter.com/remrow"><i class="fa fa-twitter"></i></a></td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>Isabelle Müller</td>
+                <td><a target="_blank" href="https://twitter.com/isa_mue"><i class="fa fa-twitter"></i></a></td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr><td colspan="3" class="has-text-centered"><strong>_('Gestaltung')</strong></td></tr>
+              <tr>
+                <td>Heiko Nicht</td>
+                <td><a target="_blank" href="https://twitter.com/HeikoNicht"><i class="fa fa-twitter"></i></a></td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr><td colspan="3" class="has-text-centered"><strong>_('Programmierung')</strong></td></tr>
+              <tr>
+                <td>Felix Ebert</td>
+                <td><a target="_blank" href="https://twitter.com/femeb"><i class="fa fa-twitter"></i></a></td>
+                <td><a target="_blank" href="https://github.com/felixebert"><i class="fa fa-github"></i></a></td>
+              </tr>
+              <tr>
+                <td>Ulrich Stech</td>
+                <td><a target="_blank" href="https://twitter.com/masterX244"><i class="fa fa-twitter"></i></a></td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>Duncan Healy</td>
+                <td>&nbsp;</td>
+                <td><a target="_blank" href="https://github.com/duncanhealy"><i class="fa fa-github"</i></a></td>
+              </tr>
+              <tr>
+                <td>Milo van der Linden</td>
+                <td><a target="_blank" href="https://twitter.com/miblon"><i class="fa fa-twitter"></i></a></td>
+                <td><a target="_blank" href="https://github.com/milovanderlinden"><i class="fa fa-github"</i></a></td>
+              </tr>
+              <tr><td colspan="3" class="has-text-centered"><strong>_('Mitarbeit')</strong></td></tr>
+              <tr>
+                <td>Alexander Walther</td>
+                <td><a target="_blank" href="https://twitter.com/alexplus_de"><i class="fa fa-twitter"></i></a></td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>Tom Görner</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>Gerd Hoffman</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <button class="modal-close is-large"></button>
+  </div>
   <script src="../lib/jquery-3.2.1.min.js"></script>
   <script src="../lib/jquery.autocomplete.min.js"></script>
-  <script src="../lib/bootstrap.min.js"></script>
-  <script src="../lib/d3.js"></script>
-  <script src="../lib/colorbrewer.js"></script>
   <script src="../js/config.js"></script>
   <script src="../js/transparentwater.js"></script>
   <script src="../js/utils.js"></script>
-  <script src="../js/gauge.js"></script>
-  <script src="../js/comparison.js"></script>
-  <script src="../js/map.js"></script>
   <script type="text/javascript">
-
     $(document).ready(function() {
     	tw.init({
         "lessthan": "_('weniger als')",

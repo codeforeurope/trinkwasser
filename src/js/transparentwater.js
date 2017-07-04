@@ -136,26 +136,57 @@ var tw = tw || { data: {}};
         addressdetails:"1",
         limit: 3
       },
+      preventBadQueries: false,
+      onSearchStart: function (params) {
+        $('.search-icon').html('<i class="fa fa-circle-o-notch fa-spin"></i>');
+      },
+      onSearchError: function (query, jqXHR, textStatus, errorThrown) {
+        $('.search-icon').html('<i class="fa fa-warning"></i>');
+      },
       transformResult: function(response) {
-        response = JSON.parse(response);
-        return {
+        if(response.length > 0){
+          $('.search-icon').html('<i class="fa fa-search"></i>');
+          response = JSON.parse(response);
+          return {
             suggestions: $.map(response, function(result) {
               var address = result.address;
-              address.lat = result.lat;
-              address.lon = result.lon;
+              var name;
+
               //return { value: result.display_name, data: result };
               var street = address.road;
               var housenr = address.house_number;
-              var city = address.city || address.town || address.village;
-              var country = address.country_code.toUpperCase();
-              address.constructed_output = [street, housenr, city, country].join(' ');
+              var postcode = address.postcode;
+              var suburb;
+              var city = address.hamlet || address.city || address.town || address.village;
 
+              if(city !== address.suburb) {
+                suburb = address.suburb;
+              }
+              var country = address.country_code.toUpperCase();
+              if(result.class === "amenity" || result.class === "tourism"){
+                name = address[result.type];
+              }
+              address.lat = result.lat;
+              address.lon = result.lon;
+              var arr = [name, street, housenr, postcode, suburb, city];
+              arr = arr.filter(function(n){
+                if(!n) {
+                  return false;
+                } else {
+                  return true;
+                }
+              });
+              address.constructed_output = arr.join(' ');
               return { value: address.constructed_output, data: address};
             })
-        };
+          };
+        } else {
+          $('.search-icon').html('<i class="fa fa-warning"></i>');
+          return {};
+        }
       },
       onSelect: function (suggestion) {
-        $('#table-observations').html('');
+        $('.search-icon').html('<i class="fa fa-search"></i>');
         $('#current-location').text(suggestion.data.constructed_output);
         var lat = suggestion.data.lat;
         var lon = suggestion.data.lon;
@@ -167,8 +198,17 @@ var tw = tw || { data: {}};
           $('#info-section').toggle();
           $('#results-section').toggle();
         }
+        // Set spinner while we wait for results.
+        $('#result-loading').show();
+        $('#result-success').hide();
+        $('#result-failed').hide();
         tw.utils.getReport(lat, lon, function(data){
-          if (data) {
+          // Turn of spinner.
+          $('#result-loading').hide();
+          $('#table-observations').html('');
+          $('#zone-id').html('');
+          if (Object.keys(data).length > 0) {
+            $('#result-success').show();
             tw.data.report = data;
             $('.zone-id').text(data.name);
             $('.zone-data-year').text(data.year);
@@ -176,43 +216,44 @@ var tw = tw || { data: {}};
             $('.zone-description').html(data.description);
             $('.zone-about').toggle(!!((data.year || data.description)));
             $('.zone-year-container').toggle(!!data.year);
-          }
-          tw.utils.getLimits(function(data) {
-            tw.data.limits = data;
-            tw.data.report.observations.forEach(function (attribute, index, observations) {
-              if(attribute.value){
-                var card = $('<div class="card"></div>');
-                var header = $('<header class="card-header"><p class="card-header-title">' + attribute.code + ' ' + tw.utils.getObservationValue(attribute) + ' ' + attribute.uom +'</p><a class="card-header-icon"><span class="icon"><i class="fa caret fa-angle-down"></i></span></a><header>');
-                var cardcontent = $('<div class="card-content" style="display:none;"></div>');
-                //Get the limits for this observation:
-                var description = $('<div class="content"><p>' + tw.i18n.nodescription + '</p></div>');
-                if(attribute.description){
-                  description = $('<div class="content"><p>' + attribute.description + '</p></div>');
+            tw.utils.getLimits(function(data) {
+              tw.data.limits = data;
+              tw.data.report.observations.forEach(function (attribute, index, observations) {
+                if(attribute.value){
+                  var card = $('<div class="card"></div>');
+                  var header = $('<header class="card-header"><p class="card-header-title">' + attribute.code + ' ' + tw.utils.getObservationValue(attribute) + ' ' + attribute.uom +'</p><a class="card-header-icon"><span class="icon"><i class="fa caret fa-angle-down"></i></span></a><header>');
+                  var cardcontent = $('<div class="card-content" style="display:none;"></div>');
+                  //Get the limits for this observation:
+                  var description = $('<div class="content"><p>' + tw.i18n.nodescription + '</p></div>');
+                  if(attribute.description){
+                    description = $('<div class="content"><p>' + attribute.description + '</p></div>');
+                  }
+                  description.prepend(tw.utils.evaluateLimit(attribute));
+                  card.append(header);
+                  cardcontent.append(description);
+                  card.append(cardcontent);
+                  header.on('click', function(e){
+                    card.find('.caret').toggleClass('fa-angle-down fa-angle-up');
+                    cardcontent.toggle();
+                  });
+                  $('#table-observations').append(card);
                 }
-                description.prepend(tw.utils.evaluateLimit(attribute));
-                card.append(header);
-                cardcontent.append(description);
-                card.append(cardcontent);
-                header.on('click', function(e){
-                  card.find('.caret').toggleClass('fa-angle-down fa-angle-up');
-                  cardcontent.toggle();
-                });
-                $('#table-observations').append(card);
-              }
-              if(index === observations.length -1){
-                // finished, do whatever needed here.
-              }
-            });
-
-            tw.utils.getAverages(function(data){
-              tw.data.averages = data;
-              tw.utils.getProducts(function(data){
-                tw.data.products = data;
-                tw.comparison.init();
+                if(index === observations.length -1){
+                  // finished, do whatever needed here.
+                }
               });
+
+              tw.utils.getAverages(function(data){
+                tw.data.averages = data;
+                tw.utils.getProducts(function(data){
+                  tw.data.products = data;
+                });
+              });
+              $('.results').toggle(true);
             });
-            $('.results').toggle(true);
-          });
+          } else {
+            $('#result-failed').show();
+          }
         });
       }
     });
@@ -242,16 +283,31 @@ var tw = tw || { data: {}};
     });
   };
 
+
   /**
    * Initialize the application
    */
   tw.init = function (i18n) {
     tw.i18n = i18n;
+    $('.modal-background').on('click', function(e){
+      $('.modal').removeClass('is-active');
+    });
+    $('.modal-close').on('click', function(e){
+      $('.modal').removeClass('is-active');
+    });
+
+    $('.button-footer').on('click', function(){
+      var attr = $(this).data('target');
+      console.log(attr);
+      if (typeof attr !== typeof undefined && attr !== false) {
+        $(attr).addClass('is-active');
+      }
+    });
+
     startGeocoder();
     setupSectionSwitch();
     //Set the API docs link to the right location
     $('#api-docs').attr('href', tw.config.api_doc);
-    tw.map.init();
     $('.home-button').on('click', function(){
       $('.top-menu').toggle();
       $('#hero-section').toggle();

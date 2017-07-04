@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-03 16:28+0000\n"
+"POT-Creation-Date: 2017-07-04 11:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1032,6 +1032,9 @@ msgstr "Webseiten der Gemeinden im Landkreis Heilbronn"
 #: src/index.html:16
 #: src/index.html:19
 #: src/index.html:20
+#: src/index.html:21
+#: src/index.html:35
+#: src/index.html:26
 msgid "Kontakt"
 msgstr "Kontakt"
 
@@ -1050,6 +1053,7 @@ msgstr "Kontakt"
 #: src/index.html:15
 #: src/index.html:18
 #: src/index.html:19
+#: src/index.html:20
 msgid "Über das Projekt"
 msgstr "Über das Projekt"
 
@@ -1071,6 +1075,7 @@ msgstr "Über das Projekt"
 #: src/index.html:17
 #: src/index.html:20
 #: src/index.html:21
+#: src/index.html:22
 msgid "Mitwirkende"
 msgstr "Mitwirkende"
 
@@ -1096,6 +1101,7 @@ msgstr "Über &amp; Impressum"
 #: src/index.html:121
 #: src/index.html:123
 #: src/index.html:12
+#: src/index.html:24
 msgid "Wie das Trinkwasser-Tool entstanden ist"
 msgstr "Wie das Trinkwasser-Tool entstanden ist"
 
@@ -1104,6 +1110,7 @@ msgstr "Wie das Trinkwasser-Tool entstanden ist"
 #: src/index.html:122
 #: src/index.html:124
 #: src/index.html:13
+#: src/index.html:25
 msgid ""
 "Trinkwasser gilt als das am besten kontrollierte Lebensmittel in "
 "Deutschland. Und trotzdem wissen wir sehr wenig über das Wasser, das bei "
@@ -1128,6 +1135,7 @@ msgstr ""
 #: src/index.html:123
 #: src/index.html:125
 #: src/index.html:14
+#: src/index.html:26
 msgid ""
 "Das ist für die Region Heilbronn jetzt möglich. Die Idee dazu entstand Ende "
 "Februar beim Open Data Day in Heilbronn. Obwohl viele Daten online "
@@ -1158,6 +1166,7 @@ msgstr ""
 #: src/index.html:124
 #: src/index.html:126
 #: src/index.html:15
+#: src/index.html:27
 msgid ""
 "Überraschend war für uns, wie unterschiedlich das Trinkwasser in der Region "
 "zusammengesetzt ist. Teilweise differiert der Mineraliengehalt innerhalb "
@@ -1188,6 +1197,7 @@ msgstr ""
 #: src/index.html:125
 #: src/index.html:127
 #: src/index.html:16
+#: src/index.html:28
 msgid ""
 "Der dieser Anwendung zugrundliegende Datensatz war deshalb ein aufwändiges "
 "Rechercheprojekt. Nicht weniger aufwändig waren für die Entwickler Felix "
@@ -1210,6 +1220,7 @@ msgstr ""
 #: src/index.html:126
 #: src/index.html:128
 #: src/index.html:17
+#: src/index.html:29
 msgid ""
 "Die Trinkwasser-Anwendung ist eine Beta-Version. Vor allem die "
 "Datenerhebung kann nie abgeschlossen werden. Viele Kommunen veröffentlichen "
@@ -1234,6 +1245,7 @@ msgstr ""
 #: src/index.html:127
 #: src/index.html:129
 #: src/index.html:18
+#: src/index.html:30
 msgid ""
 "Datensatz und Code der Anwendung sind öffentlich zugänglich und stehen "
 "unter einer Open Source-Lizenz."
@@ -1246,6 +1258,7 @@ msgstr ""
 #: src/index.html:128
 #: src/index.html:130
 #: src/index.html:19
+#: src/index.html:31
 msgid ""
 "Du bist an weiteren Open Data Anwendungen interessiert oder möchtest selbst "
 "mitwirken? In Heilbronn treffen wir uns regelmäßig im Rahmen von"
@@ -1261,6 +1274,7 @@ msgstr ""
 #: src/index.html:131
 #: src/index.html:140
 #: src/index.html:20
+#: src/index.html:32
 msgid "http://codefor.de"
 msgstr "http://codefor.de"
 
@@ -1272,6 +1286,8 @@ msgstr "http://codefor.de"
 #: src/index.html:132
 #: src/index.html:141
 #: src/index.html:21
+#: src/index.html:30
+#: src/index.html:33
 msgid "Code for Germany"
 msgstr "Code for Germany"
 
@@ -1283,6 +1299,8 @@ msgstr "Code for Germany"
 #: src/index.html:133
 #: src/index.html:142
 #: src/index.html:22
+#: src/index.html:31
+#: src/index.html:34
 msgid ""
 "um gemeinsam Open Data Projekten umzusetzen - wir würden uns über deinen "
 "Besuch freuen!"
@@ -1294,6 +1312,10 @@ msgstr ""
 #: src/index.html:134
 #: src/index.html:133
 #: src/index.html:135
+#: src/index.html:24
+#: src/index.html:35
+#: src/index.html:42
+#: src/index.html:33
 msgid "Redaktionelle Umsetzung"
 msgstr "Redaktionelle Umsetzung"
 
@@ -1301,6 +1323,10 @@ msgstr "Redaktionelle Umsetzung"
 #: src/index.html:135
 #: src/index.html:134
 #: src/index.html:136
+#: src/index.html:25
+#: src/index.html:36
+#: src/index.html:43
+#: src/index.html:34
 msgid "Gestaltung"
 msgstr "Gestaltung"
 
@@ -1308,6 +1334,10 @@ msgstr "Gestaltung"
 #: src/index.html:136
 #: src/index.html:135
 #: src/index.html:137
+#: src/index.html:26
+#: src/index.html:37
+#: src/index.html:44
+#: src/index.html:35
 msgid "Programmierung"
 msgstr "Programmierung"
 
@@ -1315,6 +1345,10 @@ msgstr "Programmierung"
 #: src/index.html:137
 #: src/index.html:136
 #: src/index.html:138
+#: src/index.html:27
+#: src/index.html:38
+#: src/index.html:45
+#: src/index.html:36
 msgid "Mitarbeit"
 msgstr "Mitarbeit"
 
@@ -1322,6 +1356,7 @@ msgstr "Mitarbeit"
 #: src/index.html:138
 #: src/index.html:137
 #: src/index.html:139
+#: src/index.html:28
 msgid "In Heilbronn treffen wir uns regelmäßig im Rahmen von"
 msgstr "In Heilbronn treffen wir uns regelmäßig im Rahmen von"
 
@@ -1367,6 +1402,8 @@ msgstr "F. 07136 / 830 26 27"
 #: src/index.html:155
 #: src/index.html:149
 #: src/index.html:157
+#: src/index.html:37
+#: src/index.html:28
 msgid "E-Mail:"
 msgstr "E-Mail:"
 
@@ -1409,6 +1446,8 @@ msgstr "Geschäftsführer: Felix Ebert"
 #: src/index.html:155
 #: src/index.html:154
 #: src/index.html:156
+#: src/index.html:36
+#: src/index.html:27
 msgid "Wir freuen uns über Feedback:"
 msgstr "Wir freuen uns über Feedback:"
 
@@ -1416,6 +1455,8 @@ msgstr "Wir freuen uns über Feedback:"
 #: src/index.html:157
 #: src/index.html:156
 #: src/index.html:158
+#: src/index.html:38
+#: src/index.html:29
 msgid "wasser"
 msgstr "wasser"
 
@@ -1423,6 +1464,8 @@ msgstr "wasser"
 #: src/index.html:158
 #: src/index.html:157
 #: src/index.html:159
+#: src/index.html:39
+#: src/index.html:30
 msgid "opendatalab.de"
 msgstr "opendatalab.de"
 
@@ -1430,6 +1473,8 @@ msgstr "opendatalab.de"
 #: src/index.html:159
 #: src/index.html:158
 #: src/index.html:160
+#: src/index.html:40
+#: src/index.html:31
 msgid ""
 "Aufgrund der zahlreichen Daten kann es vereinzelt zu fehlerhaften Angaben "
 "kommen. Haben Sie einen Fehler entdeckt? Schreiben Sie uns!"
@@ -1441,6 +1486,8 @@ msgstr ""
 #: src/index.html:160
 #: src/index.html:159
 #: src/index.html:161
+#: src/index.html:41
+#: src/index.html:32
 msgid ""
 "Oder sind Sie Mitarbeiter einer Kommune und möchten Ihre Daten eintragen? "
 "Schicken Sie uns einfach Ihre Daten per E-Mail."
@@ -1463,11 +1510,13 @@ msgstr ""
 #: src/index.html:18
 #: src/index.html:21
 #: src/index.html:22
+#: src/index.html:23
 msgid "API"
 msgstr ""
 
 #: src/index.html:139
 #: src/index.html:138
+#: src/index.html:29
 msgid "http://codefor.eu"
 msgstr ""
 
@@ -2109,6 +2158,12 @@ msgstr ""
 #: src/index.html:16
 #: src/index.html:22
 #: src/index.html:23
+#: src/index.html:24
+#: src/index.html:32
+#: src/index.html:28
+#: src/index.html:39
+#: src/index.html:46
+#: src/index.html:37
 msgid "weniger als"
 msgstr ""
 
@@ -2118,6 +2173,12 @@ msgstr ""
 #: src/index.html:17
 #: src/index.html:23
 #: src/index.html:24
+#: src/index.html:25
+#: src/index.html:33
+#: src/index.html:29
+#: src/index.html:40
+#: src/index.html:47
+#: src/index.html:38
 msgid "mehr als"
 msgstr ""
 
@@ -2127,6 +2188,12 @@ msgstr ""
 #: src/index.html:18
 #: src/index.html:24
 #: src/index.html:25
+#: src/index.html:26
+#: src/index.html:34
+#: src/index.html:30
+#: src/index.html:41
+#: src/index.html:48
+#: src/index.html:39
 msgid "(sehr) hart"
 msgstr ""
 
@@ -2134,6 +2201,12 @@ msgstr ""
 #: src/index.html:19
 #: src/index.html:25
 #: src/index.html:26
+#: src/index.html:27
+#: src/index.html:35
+#: src/index.html:31
+#: src/index.html:42
+#: src/index.html:49
+#: src/index.html:40
 msgid "Keine Information verfügbar"
 msgstr ""
 
@@ -2141,6 +2214,12 @@ msgstr ""
 #: src/index.html:20
 #: src/index.html:26
 #: src/index.html:27
+#: src/index.html:28
+#: src/index.html:36
+#: src/index.html:32
+#: src/index.html:43
+#: src/index.html:50
+#: src/index.html:41
 msgid "Min"
 msgstr ""
 
@@ -2148,6 +2227,12 @@ msgstr ""
 #: src/index.html:21
 #: src/index.html:27
 #: src/index.html:28
+#: src/index.html:29
+#: src/index.html:37
+#: src/index.html:33
+#: src/index.html:44
+#: src/index.html:51
+#: src/index.html:42
 msgid "Max"
 msgstr ""
 
@@ -2155,6 +2240,12 @@ msgstr ""
 #: src/index.html:22
 #: src/index.html:28
 #: src/index.html:29
+#: src/index.html:30
+#: src/index.html:38
+#: src/index.html:34
+#: src/index.html:45
+#: src/index.html:52
+#: src/index.html:43
 msgid "Score"
 msgstr ""
 
@@ -2260,4 +2351,10 @@ msgid ""
 "gestartet, das bald Sie Ihr eigenes Wasser messen kann. Es ist wichtig, "
 "eine Menge Daten zu sammeln. Dies würde dazu beitragen, das Wissen über "
 "Wasser zu erhöhen überhaupt ."
+msgstr ""
+
+#: src/index.html:19
+msgid ""
+"Keine Information für den angegebenen Standort gefunden. Kontaktieren Sie "
+"uns, wenn Sie das Gefühl haben, dass dies ein Fehler ist oder erneut suchen"
 msgstr ""
