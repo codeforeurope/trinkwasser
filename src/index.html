@@ -83,8 +83,8 @@
       <div class="container">
       <div class="columns is-vcentered">
         <div class="column is-one-third is-left">
-          <p class="title">_('Was steckt in meinem Leitungswasser?')</p>
-          <p class="subtitle">_('Informieren Sie sich über Ihr Trinkwasser')</p>
+          <p class="title is-1">_('Was steckt in meinem Leitungswasser?')</p>
+          <p class="subtitle is-3">_('Informieren Sie sich über Ihr Trinkwasser')</p>
         </div>
         <div class="column">
           <form role="form">
@@ -124,10 +124,10 @@
       <div class="columns">
         <div class="column">
             <div class="content">
-              <div>_('Information zu') <em id="current-location"></em></div>
+              <div class="title is-3">_('Information zu') <em id="current-location"></em></div>
               <div id="result-loading">Loading data...</div>
               <div id="result-success" style="display:none;">
-                <p>_('Rapport') <em class="zone-id"></em> <em>-</em> <em class="zone-data-year"></em></p>
+                <p class="subtitle is-6">_('Rapport') <em class="zone-id"></em> <em>-</em> <em class="zone-data-year"></em></p>
                 <p><span class="zone-data-count"></span> _('Beobachtungen')</p>
                 <div id="table-observations"></div>
               </div>
@@ -264,12 +264,19 @@
     <button class="modal-close is-large"></button>
   </div>
   <script src="../lib/jquery-3.2.1.min.js"></script>
+  <script src="../lib/math.min.js"></script>
   <script src="../lib/jquery.autocomplete.min.js"></script>
   <script src="../js/config.js"></script>
   <script src="../js/transparentwater.js"></script>
   <script src="../js/utils.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
+      math.createUnit('dH', '0.179 mmol/L'); //Deutsche Härte
+      math.createUnit('cfu'); //Colony forming units
+      math.createUnit('ftu'); //Formazine turbidity units
+      math.createUnit('pH'); //Potential of Hydrogen (Acidity)
+      math.createUnit('Eq'); //equivalent
+      math.createUnit('Bq'); //Becquerel per liter, might be convertable, need to investigate
     	tw.init({
         "lessthan": "_('weniger als')",
         "morethan": "_('mehr als')",

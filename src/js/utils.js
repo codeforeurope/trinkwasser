@@ -75,27 +75,44 @@ var tw = tw || { data: {}};
   };
 
 
-  var transformLimit = function(limit, transformto){
-    return limit;
+  var transformLimit = function(observation, transformto){
+    if(observation.max){
+        var converted = math.eval(observation.max + ' ' + observation.uom.code + ' to ' + transformto.code);
+        observation.max = parseFloat(converted.to(transformto.code).toString().split(' ')[0]).toFixed(2);
+    }
+    if(observation.min){
+        var converted = math.eval(observation.min + ' ' + observation.uom.code + ' to ' + transformto.code);
+        observation.min = parseFloat(converted.to(transformto.code).toString().split(' ')[0]).toFixed(2);
+    }
+    if(observation.average){
+        var converted = math.eval(observation.average + ' ' + observation.uom.code + ' to ' + transformto.code);
+        observation.average = parseFloat(converted.to(transformto.code).toString().split(' ')[0]).toFixed(2);
+    }
+    if(observation.value){
+        var converted = math.eval(observation.value + ' ' + observation.uom.code + ' to ' + transformto.code);
+        observation.value = parseFloat(converted.to(transformto.code).toString().split(' ')[0]).toFixed(2);
+    }
+    observation.uom = transformto;
+    return observation;
   };
 
   /**
    * Get the value for a limit from tw.data.limits
    */
   var evaluateLimit = function(observation) {
-    var table = $('<table class="table"><thead><tr><th>Standard</th><th>' + tw.i18n.min + '</th><th>' + tw.i18n.max + '</th><th>' + tw.i18n.score + '</th></tr></thead></table>');
+    var table = $('<table class="table"><thead><tr><th>Standard</th><th>' + tw.i18n.min  + '</th><th>' + tw.i18n.max + '</th><th>' + tw.i18n.score + '</th></tr></thead></table>');
     var tbody = $('<tbody></tbody>');
     for (var i = 0; i < tw.data.limits.length; i++) {
       //Each limit
       var name = tw.data.limits[i].name;
-      var limitvalues = tw.data.limits[i].limits;
+      var limitvalues = tw.data.limits[i].observations;
       var standard = $('<tr><td>' + name + '</td></tr>');
       var val = "-";
       var min = '-';
       var max = '-';
       for (var j = 0; j < limitvalues.length; j++) {
         if(limitvalues[j].code === observation.code) {
-          var limit = transformLimit(limitvalues[j], observation.uom.code);
+          var limit = transformLimit(limitvalues[j], observation.uom);
           min = limit.min || '-';
           max = limit.max || '-';
           if (limit.min) {
@@ -108,21 +125,22 @@ var tw = tw || { data: {}};
           } else if(limit.max){
             // At most. If actual value is lower, thumbs up
             if(observation.value < limit.max){
-              val = '<span class="icon is-small"><i class="fa fa-thumbs-up green" title="' + tw.i18n.lessthan + ' ' + limit.max + ' ' + limitvalues[j].uom.label + '"></i></span>';
+              val = '<span class="icon is-small"><i class="fa fa-thumbs-up green" title="' + tw.i18n.lessthan + ' ' + limit.max + ' ' + limit.uom.label + '"></i></span>';
             } else {
-              val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="' + tw.i18n.morethan + ' ' + limit.max + ' ' + limitvalues[j].uom.label + '"></i></span>';
+              val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="' + tw.i18n.morethan + ' ' + limit.max + ' ' + limit.uom.label + '"></i></span>';
             }
           }
         }
       }
       //append
-      standard.append('<td>' + min + '</td>');
-      standard.append('<td>' + max + '</td>');
-      standard.append('<td>' + val + '</td>');
+      standard.append('<td>' + min  + '</td>');
+      standard.append('<td>' + max  + '</td>');
+      standard.append('<td>' + val  + '</td>');
       tbody.append(standard);
     }
     table.append(tbody);
-    var paragraph = $('<p></p>');
+    var paragraph = $('<div></div>');
+    paragraph.append('<em>' + ' ' + observation.uom.label + '</em>');
     paragraph.append(table);
     return paragraph; //Not found
   };
