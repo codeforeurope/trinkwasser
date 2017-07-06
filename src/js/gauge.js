@@ -11,7 +11,7 @@ var tw = tw || { data: {}};
     for (var i = 0; i < tw.data.averages.length; i++) {
       if(tw.data.averages[i].code === nutrient){
         if(asLabel){
-          return tw.data.averages[i].average.toFixed(2) + " " + tw.data.averages[i].uom; // TODO, fix uom in the API!
+          return tw.data.averages[i].average.toFixed(2) + " " + tw.data.averages[i].uom.label; // TODO, fix uom in the API!
         }
         return tw.data.averages[i].value;
       }

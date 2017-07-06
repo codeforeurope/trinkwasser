@@ -72,7 +72,7 @@ var tw = tw || { data: {}};
       if (limit) {
         updateLabelsToDisplay();
         updateLabels();
-        svg.select('.gauge-unit').text(temp.uom);
+        svg.select('.gauge-unit').text(temp.uom.label);
       }
       return this;
     };

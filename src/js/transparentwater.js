@@ -221,7 +221,7 @@ var tw = tw || { data: {}};
               tw.data.report.observations.forEach(function (attribute, index, observations) {
                 if(attribute.value){
                   var card = $('<div class="card"></div>');
-                  var header = $('<header class="card-header"><p class="card-header-title">' + attribute.code + ' ' + tw.utils.getObservationValue(attribute) + ' ' + attribute.uom +'</p><a class="card-header-icon"><span class="icon"><i class="fa caret fa-angle-down"></i></span></a><header>');
+                  var header = $('<header class="card-header"><p class="card-header-title">' + attribute.code + ' ' + tw.utils.getObservationValue(attribute) + ' ' + attribute.uom.label +'</p><a class="card-header-icon"><span class="icon"><i class="fa caret fa-angle-down"></i></span></a><header>');
                   var cardcontent = $('<div class="card-content" style="display:none;"></div>');
                   //Get the limits for this observation:
                   var description = $('<div class="content"><p>' + tw.i18n.nodescription + '</p></div>');

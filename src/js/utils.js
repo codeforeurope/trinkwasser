@@ -55,7 +55,7 @@ var tw = tw || { data: {}};
    * @param {function} callback function to pass the result to
    */
   var getLimit = function (code, callback) {
-    $.getJSON(tw.config.api_endpoint + '/limit',{code: code, lang: getLang()}, function(data){
+    $.getJSON(tw.config.api_endpoint + '/norm',{code: code, lang: getLang()}, function(data){
       if (data) {
         callback(data);
       }
@@ -67,7 +67,7 @@ var tw = tw || { data: {}};
    * @param {function} callback function to pass the result to
    */
   var getLimits = function (callback) {
-    $.getJSON(tw.config.api_endpoint + '/limits',{lang: getLang()}, function(data){
+    $.getJSON(tw.config.api_endpoint + '/norms',{lang: getLang()}, function(data){
       if (data) {
         callback(data);
       }
@@ -76,41 +76,6 @@ var tw = tw || { data: {}};
 
 
   var transformLimit = function(limit, transformto){
-    if(limit.uom !== transformto){
-      //min, max, value, average
-      switch(true){
-        case (limit.uom = 'mg/L' && transformto === 'μg/L'):
-          if(limit.min){
-            limit.min = limit.min*1000;
-          }
-          if(limit.value){
-            limit.value = limit.value*1000;
-          }
-          if(limit.average){
-            limit.average = limit.average*1000;
-          }
-          if(limit.max){
-            limit.max = limit.max*1000;
-          }
-          limit.uom = transformto;
-          break;
-        case (limit.uom = 'μg/L' && transformto === 'mg/L'):
-          if(limit.min){
-            limit.min = limit.min/1000;
-          }
-          if(limit.value){
-            limit.value = limit.value/1000;
-          }
-          if(limit.average){
-            limit.average = limit.average/1000;
-          }
-          if(limit.max){
-            limit.max = limit.max/1000;
-          }
-          limit.uom = transformto;
-          break;
-      }
-    }
     return limit;
   };
 
@@ -130,22 +95,22 @@ var tw = tw || { data: {}};
       var max = '-';
       for (var j = 0; j < limitvalues.length; j++) {
         if(limitvalues[j].code === observation.code) {
-          var limit = transformLimit(limitvalues[j], observation.uom);
+          var limit = transformLimit(limitvalues[j], observation.uom.code);
           min = limit.min || '-';
           max = limit.max || '-';
           if (limit.min) {
             // At least. If actual value is higher, thumbs up
             if(observation.value > limit.min){
-              val = '<span class="icon is-small"><i class="fa fa-thumbs-up green" title="' + tw.i18n.morethan + ' ' + limit.min + ' ' + limit.uom + '"></i></span>';
+              val = '<span class="icon is-small"><i class="fa fa-thumbs-up green" title="' + tw.i18n.morethan + ' ' + limit.min + ' ' + limit.uom.label + '"></i></span>';
             } else {
-              val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="'+  tw.i18n.lessthan + ' ' + limit.min + ' ' + limit.uom + '"></i></span>';
+              val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="'+  tw.i18n.lessthan + ' ' + limit.min + ' ' + limit.uom.label + '"></i></span>';
             }
           } else if(limit.max){
             // At most. If actual value is lower, thumbs up
             if(observation.value < limit.max){
-              val = '<span class="icon is-small"><i class="fa fa-thumbs-up green" title="' + tw.i18n.lessthan + ' ' + limit.max + ' ' + limitvalues[j].uom + '"></i></span>';
+              val = '<span class="icon is-small"><i class="fa fa-thumbs-up green" title="' + tw.i18n.lessthan + ' ' + limit.max + ' ' + limitvalues[j].uom.label + '"></i></span>';
             } else {
-              val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="' + tw.i18n.morethan + ' ' + limit.max + ' ' + limitvalues[j].uom + '"></i></span>';
+              val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="' + tw.i18n.morethan + ' ' + limit.max + ' ' + limitvalues[j].uom.label + '"></i></span>';
             }
           }
         }
@@ -171,7 +136,7 @@ var tw = tw || { data: {}};
         if(asLabel){
           return tw.data.report.observations[i].value.toFixed(2) +
             " " +
-            tw.data.report.observations[i].uom;
+            tw.data.report.observations[i].uom.label;
         }
         return tw.data.report.observations[i].value;
       }
@@ -192,7 +157,7 @@ var tw = tw || { data: {}};
           case 'label':
             return product.observations[i].value.toFixed(2) +
               " " +
-              product.observations[i].uom;
+              product.observations[i].uom.label;
           case 'object':
             return product.observations[i];
           default:
