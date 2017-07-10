@@ -8,6 +8,7 @@
     <meta name="description" content="_('Weißt du eigentlich, wie gut das Trinkwasser an deinem Wohnort ist? Hier kannst du es herausfinden - für den Stadt- und Landkreis Heilbronn')" />
     <title>_('Was steckt in meinem Leitungswasser?')</title>
     <link href="../css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin=""/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css" rel="stylesheet" />
     <style>
       .autocomplete-suggestions { border: 1px solid #ccc; background: #FFF; overflow: auto; border-radius: 0 0 3px 3px;}
@@ -20,7 +21,7 @@
           background-color: #3591c0;
           color: #fff;
       }
-
+      .map { height: 250px; width: 100%; }
       .nav,
       .footer {
         background-color: #3591c0;
@@ -123,19 +124,28 @@
     <div class="container">
       <div class="columns">
         <div class="column">
-            <div class="content">
-              <div class="title is-3">_('Information zu') <em id="current-location"></em></div>
-              <div id="result-loading">Loading data...</div>
-              <div id="result-success" style="display:none;">
-                <p class="subtitle is-6">_('Rapport') <em class="zone-id"></em> <em>-</em> <em class="zone-data-year"></em></p>
-                <p><span class="zone-data-count"></span> _('Beobachtungen')</p>
-                <div id="table-observations"></div>
-              </div>
-              <div id="result-failed" class="notification is-warning" style="display:none;">
-                _('Keine Information für den angegebenen Standort gefunden. Kontaktieren Sie uns, wenn Sie das Gefühl haben, dass dies ein Fehler ist oder erneut suchen')
-              </div>
+          <div class="content">
+            <div class="title is-3">_('Information zu') <em id="current-location"></em></div>
+            <div id="result-details" style="display:none;">
+              <p class="subtitle is-6">_('Rapport') <em class="zone-id"></em> <em>-</em> <em class="zone-data-year"></em></p>
+              <p><span class="zone-data-count"></span> _('Beobachtungen')</p>
             </div>
           </div>
+        </div>
+        <div class="column">
+          <div id="result-map" class="map"></div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div id="result-loading">Loading data...</div>
+          <div id="result-success" style="display:none;">
+            <div id="table-observations"></div>
+          </div>
+          <div id="result-failed" class="notification is-warning" style="display:none;">
+            _('Keine Information für den angegebenen Standort gefunden. Kontaktieren Sie uns, wenn Sie das Gefühl haben, dass dies ein Fehler ist oder erneut suchen')
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -269,6 +279,8 @@
   <script src="../js/config.js"></script>
   <script src="../js/transparentwater.js"></script>
   <script src="../js/utils.js"></script>
+  <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+  <script src="../js/map.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
       math.createUnit('dH', '0.179 mmol/L'); //Deutsche Härte

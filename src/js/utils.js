@@ -76,19 +76,19 @@ var tw = tw || { data: {}};
 
 
   var transformLimit = function(observation, transformto){
-    if(observation.max){
+    if(observation.max || observation.max == 0){
         var converted = math.eval(observation.max + ' ' + observation.uom.code + ' to ' + transformto.code);
         observation.max = parseFloat(converted.to(transformto.code).toString().split(' ')[0]).toFixed(2);
     }
-    if(observation.min){
+    if(observation.min || observation.min == 0){
         var converted = math.eval(observation.min + ' ' + observation.uom.code + ' to ' + transformto.code);
         observation.min = parseFloat(converted.to(transformto.code).toString().split(' ')[0]).toFixed(2);
     }
-    if(observation.average){
+    if(observation.average || observation.average == 0){
         var converted = math.eval(observation.average + ' ' + observation.uom.code + ' to ' + transformto.code);
         observation.average = parseFloat(converted.to(transformto.code).toString().split(' ')[0]).toFixed(2);
     }
-    if(observation.value){
+    if(observation.value || observation.value == 0){
         var converted = math.eval(observation.value + ' ' + observation.uom.code + ' to ' + transformto.code);
         observation.value = parseFloat(converted.to(transformto.code).toString().split(' ')[0]).toFixed(2);
     }
@@ -115,16 +115,16 @@ var tw = tw || { data: {}};
           var limit = transformLimit(limitvalues[j], observation.uom);
           min = limit.min || '-';
           max = limit.max || '-';
-          if (limit.min) {
+          if (limit.min || limit.min == 0) {
             // At least. If actual value is higher, thumbs up
-            if(observation.value > limit.min){
+            if(observation.value >= limit.min){
               val = '<span class="icon is-small"><i class="fa fa-thumbs-up green" title="' + tw.i18n.morethan + ' ' + limit.min + ' ' + limit.uom.label + '"></i></span>';
             } else {
               val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="'+  tw.i18n.lessthan + ' ' + limit.min + ' ' + limit.uom.label + '"></i></span>';
             }
-          } else if(limit.max){
+          } else if(limit.max || limit.max == 0){
             // At most. If actual value is lower, thumbs up
-            if(observation.value < limit.max){
+            if(observation.value <= limit.max){
               val = '<span class="icon is-small"><i class="fa fa-thumbs-up green" title="' + tw.i18n.lessthan + ' ' + limit.max + ' ' + limit.uom.label + '"></i></span>';
             } else {
               val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="' + tw.i18n.morethan + ' ' + limit.max + ' ' + limit.uom.label + '"></i></span>';
@@ -208,7 +208,7 @@ var tw = tw || { data: {}};
     lat = lat || 49.1925;
     lon = lon || 9.2254;
     $('#result-observations').html('');
-    $.getJSON(tw.config.api_endpoint + '/report',{lat: lat, lon: lon, lang: getLang()}, function(data){
+    $.getJSON(tw.config.api_endpoint + '/report',{lat: lat, lon: lon, geometry: true, lang: getLang()}, function(data){
       callback(data);
     });
   };

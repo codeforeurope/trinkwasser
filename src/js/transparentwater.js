@@ -126,6 +126,9 @@ var tw = tw || { data: {}};
    * for the next screen in the display.
    */
   var startGeocoder = function () {
+    $('.search-input').focusin(function() {
+      $(this).val( '' );
+    });
     $('.search-input').autocomplete({
       paramName: 'q',
       serviceUrl: 'http://open.mapquestapi.com/nominatim/v1/search.php',
@@ -141,7 +144,10 @@ var tw = tw || { data: {}};
         $('.search-icon').html('<i class="fa fa-circle-o-notch fa-spin"></i>');
       },
       onSearchError: function (query, jqXHR, textStatus, errorThrown) {
-        $('.search-icon').html('<i class="fa fa-warning"></i>');
+        if(!errorThrown === 'abort'){
+          $('.search-icon').html('<i class="fa fa-warning"></i>');
+          console.log(errorThrown);
+        }
       },
       transformResult: function(response) {
         if(response.length > 0){
@@ -187,6 +193,7 @@ var tw = tw || { data: {}};
       },
       onSelect: function (suggestion) {
         $('.search-icon').html('<i class="fa fa-search"></i>');
+        $('.search-input').val(suggestion.data.constructed_output);
         $('#current-location').text(suggestion.data.constructed_output);
         var lat = suggestion.data.lat;
         var lon = suggestion.data.lon;
@@ -201,14 +208,22 @@ var tw = tw || { data: {}};
         // Set spinner while we wait for results.
         $('#result-loading').show();
         $('#result-success').hide();
+        $('#result-details').hide();
         $('#result-failed').hide();
+        tw.map.update(lat,lon);
         tw.utils.getReport(lat, lon, function(data){
+          if(data.zone.geometry){
+            //Add the geometry as layer and zoom the map to the layer extend.
+            tw.map.setZone(data.zone);
+          }
           // Turn of spinner.
           $('#result-loading').hide();
           $('#table-observations').html('');
           $('#zone-id').html('');
           if (Object.keys(data).length > 0) {
-            $('#result-success').show();
+            $('#result-success').show('fast', function(){
+              $('#result-details').show();
+            });
             tw.data.report = data;
             $('.zone-id').text(data.name);
             $('.zone-data-year').text(data.year);
@@ -219,7 +234,7 @@ var tw = tw || { data: {}};
             tw.utils.getLimits(function(data) {
               tw.data.limits = data;
               tw.data.report.observations.forEach(function (attribute, index, observations) {
-                if(attribute.value){
+                if(attribute.value || attribute.value == 0){
                   var card = $('<div class="card"></div>');
                   var header = $('<header class="card-header"><p class="card-header-title">' + attribute.code + ' ' + tw.utils.getObservationValue(attribute) + ' ' + attribute.uom.label +'</p><a class="card-header-icon"><span class="icon"><i class="fa caret fa-angle-down"></i></span></a><header>');
                   var cardcontent = $('<div class="card-content" style="display:none;"></div>');
@@ -303,7 +318,7 @@ var tw = tw || { data: {}};
         $(attr).addClass('is-active');
       }
     });
-
+    tw.map.init();
     startGeocoder();
     setupSectionSwitch();
     //Set the API docs link to the right location
