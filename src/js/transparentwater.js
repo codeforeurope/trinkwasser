@@ -210,11 +210,15 @@ var tw = tw || { data: {}};
         $('#result-success').hide();
         $('#result-details').hide();
         $('#result-failed').hide();
+        tw.map.clear();
         tw.map.update(lat,lon);
         tw.utils.getReport(lat, lon, function(data){
-          if(data.zone.geometry){
+          if(data.zone && data.zone.geometry){
             //Add the geometry as layer and zoom the map to the layer extend.
             tw.map.setZone(data.zone);
+            if(data.plants && data.plants.length > 0){
+              tw.map.setPlants(data.plants);
+            }
           }
           // Turn of spinner.
           $('#result-loading').hide();
@@ -226,6 +230,32 @@ var tw = tw || { data: {}};
             });
             tw.data.report = data;
             $('.zone-id').text(data.name);
+            if(data.operator){
+              $('#report-operator').html('<a href="' +data.operator.url + '">'+ data.operator.name + '</a>');
+              $('.report-operator').show();
+            } else {
+              $('#report-operator').html('');
+              $('.report-operator').hide();
+            }
+            if(data.plants && data.plants.length > 0){
+              var plantArr = [];
+              for (var i = 0; i < data.plants.length; i++) {
+                plantArr.push(data.plants[i].properties.name);
+              }
+              console.log(plantArr.join[', ']);
+              $('#report-plant').html('<em>' + plantArr.join('</em>, <em>') + '</em>');
+              $('.report-plant').show();
+            } else {
+              $('#report-plant').html('');
+              $('.report-plant').hide();
+            }
+            if(data.authority){
+              $('#report-authority').html('<a href="' +data.authority.url + '">'+ data.authority.name + '</a>');
+              $('.report-authority').show();
+            } else {
+              $('#report-authority').html('');
+              $('.report-authority').hide();
+            }
             $('.zone-data-year').text(data.year);
             $('.zone-data-count').text(data.observations.length);
             $('.zone-description').html(data.description);

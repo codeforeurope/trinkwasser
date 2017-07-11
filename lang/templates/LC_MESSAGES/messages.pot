@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-10 10:54+0000\n"
+"POT-Creation-Date: 2017-07-11 09:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1035,6 +1035,10 @@ msgstr "Webseiten der Gemeinden im Landkreis Heilbronn"
 #: src/index.html:21
 #: src/index.html:35
 #: src/index.html:26
+#: src/index.html:23
+#: src/index.html:28
+#: src/index.html:24
+#: src/index.html:29
 msgid "Kontakt"
 msgstr "Kontakt"
 
@@ -1054,6 +1058,8 @@ msgstr "Kontakt"
 #: src/index.html:18
 #: src/index.html:19
 #: src/index.html:20
+#: src/index.html:22
+#: src/index.html:23
 msgid "Über das Projekt"
 msgstr "Über das Projekt"
 
@@ -1076,6 +1082,8 @@ msgstr "Über das Projekt"
 #: src/index.html:20
 #: src/index.html:21
 #: src/index.html:22
+#: src/index.html:24
+#: src/index.html:25
 msgid "Mitwirkende"
 msgstr "Mitwirkende"
 
@@ -1102,6 +1110,8 @@ msgstr "Über &amp; Impressum"
 #: src/index.html:123
 #: src/index.html:12
 #: src/index.html:24
+#: src/index.html:26
+#: src/index.html:27
 msgid "Wie das Trinkwasser-Tool entstanden ist"
 msgstr "Wie das Trinkwasser-Tool entstanden ist"
 
@@ -1111,6 +1121,8 @@ msgstr "Wie das Trinkwasser-Tool entstanden ist"
 #: src/index.html:124
 #: src/index.html:13
 #: src/index.html:25
+#: src/index.html:27
+#: src/index.html:28
 msgid ""
 "Trinkwasser gilt als das am besten kontrollierte Lebensmittel in "
 "Deutschland. Und trotzdem wissen wir sehr wenig über das Wasser, das bei "
@@ -1316,6 +1328,7 @@ msgstr ""
 #: src/index.html:35
 #: src/index.html:42
 #: src/index.html:33
+#: src/index.html:36
 msgid "Redaktionelle Umsetzung"
 msgstr "Redaktionelle Umsetzung"
 
@@ -1327,6 +1340,7 @@ msgstr "Redaktionelle Umsetzung"
 #: src/index.html:36
 #: src/index.html:43
 #: src/index.html:34
+#: src/index.html:37
 msgid "Gestaltung"
 msgstr "Gestaltung"
 
@@ -1338,6 +1352,7 @@ msgstr "Gestaltung"
 #: src/index.html:37
 #: src/index.html:44
 #: src/index.html:35
+#: src/index.html:38
 msgid "Programmierung"
 msgstr "Programmierung"
 
@@ -1349,6 +1364,7 @@ msgstr "Programmierung"
 #: src/index.html:38
 #: src/index.html:45
 #: src/index.html:36
+#: src/index.html:39
 msgid "Mitarbeit"
 msgstr "Mitarbeit"
 
@@ -1404,6 +1420,8 @@ msgstr "F. 07136 / 830 26 27"
 #: src/index.html:157
 #: src/index.html:37
 #: src/index.html:28
+#: src/index.html:30
+#: src/index.html:31
 msgid "E-Mail:"
 msgstr "E-Mail:"
 
@@ -1448,6 +1466,8 @@ msgstr "Geschäftsführer: Felix Ebert"
 #: src/index.html:156
 #: src/index.html:36
 #: src/index.html:27
+#: src/index.html:29
+#: src/index.html:30
 msgid "Wir freuen uns über Feedback:"
 msgstr "Wir freuen uns über Feedback:"
 
@@ -1457,6 +1477,8 @@ msgstr "Wir freuen uns über Feedback:"
 #: src/index.html:158
 #: src/index.html:38
 #: src/index.html:29
+#: src/index.html:31
+#: src/index.html:32
 msgid "wasser"
 msgstr "wasser"
 
@@ -1466,6 +1488,8 @@ msgstr "wasser"
 #: src/index.html:159
 #: src/index.html:39
 #: src/index.html:30
+#: src/index.html:32
+#: src/index.html:33
 msgid "opendatalab.de"
 msgstr "opendatalab.de"
 
@@ -1475,6 +1499,8 @@ msgstr "opendatalab.de"
 #: src/index.html:160
 #: src/index.html:40
 #: src/index.html:31
+#: src/index.html:33
+#: src/index.html:34
 msgid ""
 "Aufgrund der zahlreichen Daten kann es vereinzelt zu fehlerhaften Angaben "
 "kommen. Haben Sie einen Fehler entdeckt? Schreiben Sie uns!"
@@ -1488,6 +1514,8 @@ msgstr ""
 #: src/index.html:161
 #: src/index.html:41
 #: src/index.html:32
+#: src/index.html:34
+#: src/index.html:35
 msgid ""
 "Oder sind Sie Mitarbeiter einer Kommune und möchten Ihre Daten eintragen? "
 "Schicken Sie uns einfach Ihre Daten per E-Mail."
@@ -1511,6 +1539,8 @@ msgstr ""
 #: src/index.html:21
 #: src/index.html:22
 #: src/index.html:23
+#: src/index.html:25
+#: src/index.html:26
 msgid "API"
 msgstr ""
 
@@ -2141,6 +2171,8 @@ msgstr ""
 #: src/index.html:11
 #: src/index.html:17
 #: src/index.html:18
+#: src/index.html:20
+#: src/index.html:21
 msgid "Beobachtungen"
 msgstr ""
 
@@ -2164,6 +2196,7 @@ msgstr ""
 #: src/index.html:39
 #: src/index.html:46
 #: src/index.html:37
+#: src/index.html:40
 msgid "weniger als"
 msgstr ""
 
@@ -2179,6 +2212,7 @@ msgstr ""
 #: src/index.html:40
 #: src/index.html:47
 #: src/index.html:38
+#: src/index.html:41
 msgid "mehr als"
 msgstr ""
 
@@ -2194,6 +2228,7 @@ msgstr ""
 #: src/index.html:41
 #: src/index.html:48
 #: src/index.html:39
+#: src/index.html:42
 msgid "(sehr) hart"
 msgstr ""
 
@@ -2207,6 +2242,7 @@ msgstr ""
 #: src/index.html:42
 #: src/index.html:49
 #: src/index.html:40
+#: src/index.html:43
 msgid "Keine Information verfügbar"
 msgstr ""
 
@@ -2220,6 +2256,7 @@ msgstr ""
 #: src/index.html:43
 #: src/index.html:50
 #: src/index.html:41
+#: src/index.html:44
 msgid "Min"
 msgstr ""
 
@@ -2233,6 +2270,7 @@ msgstr ""
 #: src/index.html:44
 #: src/index.html:51
 #: src/index.html:42
+#: src/index.html:45
 msgid "Max"
 msgstr ""
 
@@ -2246,6 +2284,7 @@ msgstr ""
 #: src/index.html:45
 #: src/index.html:52
 #: src/index.html:43
+#: src/index.html:46
 msgid "Score"
 msgstr ""
 
@@ -2354,7 +2393,25 @@ msgid ""
 msgstr ""
 
 #: src/index.html:19
+#: src/index.html:21
+#: src/index.html:22
 msgid ""
 "Keine Information für den angegebenen Standort gefunden. Kontaktieren Sie "
 "uns, wenn Sie das Gefühl haben, dass dies ein Fehler ist oder erneut suchen"
+msgstr ""
+
+#: src/index.html:18
+msgid "Autorität"
+msgstr ""
+
+#: src/index.html:19
+msgid "Betreiber"
+msgstr ""
+
+#: src/index.html:20
+msgid "Produktstandort"
+msgstr ""
+
+#: src/index.html:20
+msgid "Produktstandorte"
 msgstr ""

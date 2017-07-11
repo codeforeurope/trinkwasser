@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-03 16:06+0000\n"
+"POT-Creation-Date: 2017-07-10 16:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Milo van der Linden <milo@dogodigi.net>, 2017\n"
 "Language-Team: English (https://www.transifex.com/codeforeurope/teams/72739/"
@@ -648,14 +648,17 @@ msgstr ""
 #: src/index.html:116 src/index.html:153 src/index.html:155 src/index.html:6
 #: src/index.html:7 src/index.html:8 src/index.html:10 src/index.html:11
 #: src/index.html:12 src/index.html:13 src/index.html:15 src/index.html:14
-#: src/index.html:16 src/index.html:19 src/index.html:20
+#: src/index.html:16 src/index.html:19 src/index.html:20 src/index.html:21
+#: src/index.html:35 src/index.html:26 src/index.html:23 src/index.html:28
+#: src/index.html:24 src/index.html:29
 msgid "Kontakt"
 msgstr "Contact"
 
 #: src/index.html:137 src/index.html:118 src/index.html:117 src/index.html:7
 #: src/index.html:6 src/index.html:5 src/index.html:9 src/index.html:10
 #: src/index.html:11 src/index.html:12 src/index.html:14 src/index.html:13
-#: src/index.html:15 src/index.html:18 src/index.html:19
+#: src/index.html:15 src/index.html:18 src/index.html:19 src/index.html:20
+#: src/index.html:22 src/index.html:23
 msgid "Über das Projekt"
 msgstr "About the project"
 
@@ -663,7 +666,8 @@ msgstr "About the project"
 #: src/index.html:118 src/index.html:132 src/index.html:134 src/index.html:8
 #: src/index.html:7 src/index.html:9 src/index.html:11 src/index.html:12
 #: src/index.html:13 src/index.html:14 src/index.html:16 src/index.html:15
-#: src/index.html:17 src/index.html:20 src/index.html:21
+#: src/index.html:17 src/index.html:20 src/index.html:21 src/index.html:22
+#: src/index.html:24 src/index.html:25
 msgid "Mitwirkende"
 msgstr "Team"
 
@@ -678,12 +682,12 @@ msgid "Über &amp; Impressum"
 msgstr "About the project"
 
 #: src/index.html:141 src/index.html:122 src/index.html:121 src/index.html:123
-#: src/index.html:12
+#: src/index.html:12 src/index.html:24 src/index.html:26 src/index.html:27
 msgid "Wie das Trinkwasser-Tool entstanden ist"
 msgstr "Why Transparentwater?"
 
 #: src/index.html:142 src/index.html:123 src/index.html:122 src/index.html:124
-#: src/index.html:13
+#: src/index.html:13 src/index.html:25 src/index.html:27 src/index.html:28
 msgid ""
 "Trinkwasser gilt als das am besten kontrollierte Lebensmittel in "
 "Deutschland. Und trotzdem wissen wir sehr wenig über das Wasser, das bei uns "
@@ -699,7 +703,7 @@ msgstr ""
 "to provide a single source for information, usable and understandable by all."
 
 #: src/index.html:143 src/index.html:124 src/index.html:123 src/index.html:125
-#: src/index.html:14
+#: src/index.html:14 src/index.html:26
 msgid ""
 "Das ist für die Region Heilbronn jetzt möglich. Die Idee dazu entstand Ende "
 "Februar beim Open Data Day in Heilbronn. Obwohl viele Daten online verfügbar "
@@ -715,7 +719,7 @@ msgid ""
 msgstr ""
 
 #: src/index.html:144 src/index.html:125 src/index.html:124 src/index.html:126
-#: src/index.html:15
+#: src/index.html:15 src/index.html:27
 msgid ""
 "Überraschend war für uns, wie unterschiedlich das Trinkwasser in der Region "
 "zusammengesetzt ist. Teilweise differiert der Mineraliengehalt innerhalb "
@@ -731,7 +735,7 @@ msgid ""
 msgstr ""
 
 #: src/index.html:145 src/index.html:126 src/index.html:125 src/index.html:127
-#: src/index.html:16
+#: src/index.html:16 src/index.html:28
 msgid ""
 "Der dieser Anwendung zugrundliegende Datensatz war deshalb ein aufwändiges "
 "Rechercheprojekt. Nicht weniger aufwändig waren für die Entwickler Felix "
@@ -743,7 +747,7 @@ msgid ""
 msgstr ""
 
 #: src/index.html:146 src/index.html:127 src/index.html:126 src/index.html:128
-#: src/index.html:17
+#: src/index.html:17 src/index.html:29
 msgid ""
 "Die Trinkwasser-Anwendung ist eine Beta-Version. Vor allem die Datenerhebung "
 "kann nie abgeschlossen werden. Viele Kommunen veröffentlichen bald wieder "
@@ -755,14 +759,14 @@ msgid ""
 msgstr ""
 
 #: src/index.html:147 src/index.html:128 src/index.html:127 src/index.html:129
-#: src/index.html:18
+#: src/index.html:18 src/index.html:30
 msgid ""
 "Datensatz und Code der Anwendung sind öffentlich zugänglich und stehen unter "
 "einer Open Source-Lizenz."
 msgstr ""
 
 #: src/index.html:148 src/index.html:129 src/index.html:128 src/index.html:130
-#: src/index.html:19
+#: src/index.html:19 src/index.html:31
 msgid ""
 "Du bist an weiteren Open Data Anwendungen interessiert oder möchtest selbst "
 "mitwirken? In Heilbronn treffen wir uns regelmäßig im Rahmen von"
@@ -770,41 +774,50 @@ msgstr ""
 
 #: src/index.html:149 src/index.html:158 src/index.html:130 src/index.html:139
 #: src/index.html:129 src/index.html:138 src/index.html:131 src/index.html:140
-#: src/index.html:20
+#: src/index.html:20 src/index.html:32
 msgid "http://codefor.de"
 msgstr ""
 
 #: src/index.html:150 src/index.html:159 src/index.html:131 src/index.html:140
 #: src/index.html:130 src/index.html:139 src/index.html:132 src/index.html:141
-#: src/index.html:21
+#: src/index.html:21 src/index.html:30 src/index.html:33
 msgid "Code for Germany"
 msgstr "Code For Europe"
 
 #: src/index.html:151 src/index.html:160 src/index.html:132 src/index.html:141
 #: src/index.html:131 src/index.html:140 src/index.html:133 src/index.html:142
-#: src/index.html:22
+#: src/index.html:22 src/index.html:31 src/index.html:34
 msgid ""
 "um gemeinsam Open Data Projekten umzusetzen - wir würden uns über deinen "
 "Besuch freuen!"
 msgstr "the european developer network."
 
 #: src/index.html:153 src/index.html:134 src/index.html:133 src/index.html:135
+#: src/index.html:24 src/index.html:35 src/index.html:42 src/index.html:33
+#: src/index.html:36
 msgid "Redaktionelle Umsetzung"
 msgstr "Communication"
 
 #: src/index.html:154 src/index.html:135 src/index.html:134 src/index.html:136
+#: src/index.html:25 src/index.html:36 src/index.html:43 src/index.html:34
+#: src/index.html:37
 msgid "Gestaltung"
 msgstr "Realisation"
 
 #: src/index.html:155 src/index.html:136 src/index.html:135 src/index.html:137
+#: src/index.html:26 src/index.html:37 src/index.html:44 src/index.html:35
+#: src/index.html:38
 msgid "Programmierung"
 msgstr "Development"
 
 #: src/index.html:156 src/index.html:137 src/index.html:136 src/index.html:138
+#: src/index.html:27 src/index.html:38 src/index.html:45 src/index.html:36
+#: src/index.html:39
 msgid "Mitarbeit"
 msgstr "Support"
 
 #: src/index.html:157 src/index.html:138 src/index.html:137 src/index.html:139
+#: src/index.html:28
 msgid "In Heilbronn treffen wir uns regelmäßig im Rahmen von"
 msgstr "This project is made by"
 
@@ -830,6 +843,7 @@ msgstr ""
 
 #: src/index.html:167 src/index.html:175 src/index.html:148 src/index.html:156
 #: src/index.html:147 src/index.html:155 src/index.html:149 src/index.html:157
+#: src/index.html:37 src/index.html:28 src/index.html:30 src/index.html:31
 msgid "E-Mail:"
 msgstr "Email:"
 
@@ -854,24 +868,29 @@ msgid "Geschäftsführer: Felix Ebert"
 msgstr ""
 
 #: src/index.html:174 src/index.html:155 src/index.html:154 src/index.html:156
+#: src/index.html:36 src/index.html:27 src/index.html:29 src/index.html:30
 msgid "Wir freuen uns über Feedback:"
 msgstr ""
 
 #: src/index.html:176 src/index.html:157 src/index.html:156 src/index.html:158
+#: src/index.html:38 src/index.html:29 src/index.html:31 src/index.html:32
 msgid "wasser"
 msgstr ""
 
 #: src/index.html:177 src/index.html:158 src/index.html:157 src/index.html:159
+#: src/index.html:39 src/index.html:30 src/index.html:32 src/index.html:33
 msgid "opendatalab.de"
 msgstr ""
 
 #: src/index.html:178 src/index.html:159 src/index.html:158 src/index.html:160
+#: src/index.html:40 src/index.html:31 src/index.html:33 src/index.html:34
 msgid ""
 "Aufgrund der zahlreichen Daten kann es vereinzelt zu fehlerhaften Angaben "
 "kommen. Haben Sie einen Fehler entdeckt? Schreiben Sie uns!"
 msgstr ""
 
 #: src/index.html:179 src/index.html:160 src/index.html:159 src/index.html:161
+#: src/index.html:41 src/index.html:32 src/index.html:34 src/index.html:35
 msgid ""
 "Oder sind Sie Mitarbeiter einer Kommune und möchten Ihre Daten eintragen? "
 "Schicken Sie uns einfach Ihre Daten per E-Mail."
@@ -880,11 +899,12 @@ msgstr ""
 #: src/index.html:121 src/index.html:120 src/index.html:119 src/index.html:9
 #: src/index.html:8 src/index.html:10 src/index.html:12 src/index.html:13
 #: src/index.html:14 src/index.html:15 src/index.html:17 src/index.html:16
-#: src/index.html:18 src/index.html:21 src/index.html:22
+#: src/index.html:18 src/index.html:21 src/index.html:22 src/index.html:23
+#: src/index.html:25 src/index.html:26
 msgid "API"
 msgstr ""
 
-#: src/index.html:139 src/index.html:138
+#: src/index.html:139 src/index.html:138 src/index.html:29
 msgid "http://codefor.eu"
 msgstr ""
 
@@ -1508,6 +1528,7 @@ msgid "Rapport"
 msgstr "Source:"
 
 #: src/index.html:10 src/index.html:11 src/index.html:17 src/index.html:18
+#: src/index.html:20 src/index.html:21
 msgid "Beobachtungen"
 msgstr "Observations"
 
@@ -1520,33 +1541,47 @@ msgid "Einheit"
 msgstr "Unit"
 
 #: src/index.html:18 src/index.html:17 src/index.html:15 src/index.html:16
-#: src/index.html:22 src/index.html:23
+#: src/index.html:22 src/index.html:23 src/index.html:24 src/index.html:32
+#: src/index.html:28 src/index.html:39 src/index.html:46 src/index.html:37
+#: src/index.html:40
 msgid "weniger als"
 msgstr "less than"
 
 #: src/index.html:19 src/index.html:18 src/index.html:16 src/index.html:17
-#: src/index.html:23 src/index.html:24
+#: src/index.html:23 src/index.html:24 src/index.html:25 src/index.html:33
+#: src/index.html:29 src/index.html:40 src/index.html:47 src/index.html:38
+#: src/index.html:41
 msgid "mehr als"
 msgstr "more than"
 
 #: src/index.html:20 src/index.html:19 src/index.html:17 src/index.html:18
-#: src/index.html:24 src/index.html:25
+#: src/index.html:24 src/index.html:25 src/index.html:26 src/index.html:34
+#: src/index.html:30 src/index.html:41 src/index.html:48 src/index.html:39
+#: src/index.html:42
 msgid "(sehr) hart"
 msgstr "hard"
 
 #: src/index.html:18 src/index.html:19 src/index.html:25 src/index.html:26
+#: src/index.html:27 src/index.html:35 src/index.html:31 src/index.html:42
+#: src/index.html:49 src/index.html:40 src/index.html:43
 msgid "Keine Information verfügbar"
 msgstr "No information available"
 
 #: src/index.html:19 src/index.html:20 src/index.html:26 src/index.html:27
+#: src/index.html:28 src/index.html:36 src/index.html:32 src/index.html:43
+#: src/index.html:50 src/index.html:41 src/index.html:44
 msgid "Min"
 msgstr ""
 
 #: src/index.html:20 src/index.html:21 src/index.html:27 src/index.html:28
+#: src/index.html:29 src/index.html:37 src/index.html:33 src/index.html:44
+#: src/index.html:51 src/index.html:42 src/index.html:45
 msgid "Max"
 msgstr ""
 
 #: src/index.html:21 src/index.html:22 src/index.html:28 src/index.html:29
+#: src/index.html:30 src/index.html:38 src/index.html:34 src/index.html:45
+#: src/index.html:52 src/index.html:43 src/index.html:46
 msgid "Score"
 msgstr ""
 
@@ -1615,7 +1650,11 @@ msgid ""
 "erwarten können. Für alle Stoffe und Organismen im Wasser vorhanden ist, "
 "versuchen wir zu zeigen, welche Auswirkungen sie auf die Sie haben und ob "
 "die gemessene Wasserqualität ist gut oder schlecht für Sie."
-msgstr "Enter an address and discover what water quality you can expect. For all substances and organisms that occur in the water we try to indicate what effect this has on you and whether the measured water quality is good or bad for you."
+msgstr ""
+"Enter an address and discover what water quality you can expect. For all "
+"substances and organisms that occur in the water we try to indicate what "
+"effect this has on you and whether the measured water quality is good or bad "
+"for you."
 
 #: src/index.html:11
 msgid "Sicheres Trinkwasser und angemessene sanitäre Einrichtungen"
@@ -1627,13 +1666,19 @@ msgid ""
 "ist eines der politischen Ziele der Vereinten Nationen. Aber was ist "
 "sauberes Trinkwasser? Wo sollten Sie suchen? Und Wasser kaufen Sie im Laden "
 "gesund? Wir versuchen, diese Fragen zu beantworten."
-msgstr "Access to safe drinking water and adequate sanitation is one of the policy goals of the united nations. But what is safe drinking water? What should you watch? And is water that you buy in the store healthy? We try to answer these questions."
+msgstr ""
+"Access to safe drinking water and adequate sanitation is one of the policy "
+"goals of the united nations. But what is safe drinking water? What should "
+"you watch? And is water that you buy in the store healthy? We try to answer "
+"these questions."
 
 #: src/index.html:13
 msgid ""
 "Durch das Sammeln von Informationen über die Wasserqualität , klar und "
 "vergleichen zu können, versuchen wir ein besseres Verständnis zu bekommen"
-msgstr "By collecting, clarifying and comparing information on water quality, we try to get a better insight"
+msgstr ""
+"By collecting, clarifying and comparing information on water quality, we try "
+"to get a better insight"
 
 #: src/index.html:14
 msgid "Wollen Sie helfen Wasserqualität Informationen zu verbessern?"
@@ -1646,4 +1691,28 @@ msgid ""
 "gestartet, das bald Sie Ihr eigenes Wasser messen kann. Es ist wichtig, eine "
 "Menge Daten zu sammeln. Dies würde dazu beitragen, das Wissen über Wasser zu "
 "erhöhen überhaupt ."
-msgstr "This website is only part of our project. We can always help with data collection and have started an open-hardware project that lets you measure your own water quality. It is important to gather a lot of data. With this we can help increase the knowledge about water at all."
+msgstr ""
+"This website is only part of our project. We can always help with data "
+"collection and have started an open-hardware project that lets you measure "
+"your own water quality. It is important to gather a lot of data. With this "
+"we can help increase the knowledge about water at all."
+
+#: src/index.html:19 src/index.html:21 src/index.html:22
+msgid ""
+"Keine Information für den angegebenen Standort gefunden. Kontaktieren Sie "
+"uns, wenn Sie das Gefühl haben, dass dies ein Fehler ist oder erneut suchen"
+msgstr ""
+"No information found for the search. Contact us when you believe this is an "
+"error or try again"
+
+#: src/index.html:18
+msgid "Autorität"
+msgstr "Authority"
+
+#: src/index.html:19
+msgid "Betreiber"
+msgstr "Operator"
+
+#: src/index.html:20
+msgid "Produktstandorte"
+msgstr "Product location"
