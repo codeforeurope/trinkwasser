@@ -1,5 +1,139 @@
 // Initialize our namespace
 var tw = tw || { data: {}};
+(function(tw, $) {
+  tw.app = $.sammy(function() {
+    // Main page route
+    this.get('/', function(context) {
+      $('.top-menu').hide();
+      $('#hero-section').show();
+      $('#info-section').show();
+      $('#results-section').hide();
+      $('.footer').show();
+    });
+    this.get('#/', function(context) {
+      $('.top-menu').hide();
+      $('#hero-section').show();
+      $('#info-section').show();
+      $('#results-section').hide();
+      $('.footer').show();
+    });
+
+    //Sub page route, quality report for location
+    this.get('#/quality/:location', function() {
+      $('#current-location-lat').val(lat);
+      $('#current-location-lon').val(lon);
+      $('.top-menu').show();
+      $('#hero-section').hide();
+      $('#info-section').hide();
+      $('#results-section').show();
+
+      // Set spinner while we wait for results.
+      $('#result-loading').show();
+      $('#result-success').hide();
+      $('#result-details').hide();
+      $('#result-failed').hide();
+
+      var lat = this.params.location.split(',')[0];
+      var lon = this.params.location.split(',')[1];
+      tw.map.clear();
+      tw.utils.getReport(lat, lon, function(data){
+        if(data.zone && data.zone.geometry){
+          //Add the geometry as layer and zoom the map to the layer extend.
+          tw.map.setZone(data.zone);
+          if(data.plants && data.plants.length > 0){
+            tw.map.setPlants(data.plants);
+          }
+        } else {
+          tw.map.update(lat,lon);
+        }
+        // Turn of spinner.
+        $('#result-loading').hide();
+        $('#table-observations').html('');
+        $('#zone-id').html('');
+        if (Object.keys(data).length > 0) {
+          $('#result-success').show('fast', function(){
+            $('#result-details').show();
+          });
+          tw.data.report = data;
+          $('.zone-id').text(data.name);
+          if(data.operator){
+            $('#report-operator').html('<a href="' +data.operator.url + '">'+ data.operator.name + '</a>');
+            $('.report-operator').show();
+          } else {
+            $('#report-operator').html('');
+            $('.report-operator').hide();
+          }
+          if(data.plants && data.plants.length > 0){
+            var plantArr = [];
+            for (var i = 0; i < data.plants.length; i++) {
+              plantArr.push(data.plants[i].properties.name);
+            }
+            $('#report-plant').html('<em>' + plantArr.join('</em>, <em>') + '</em>');
+            $('.report-plant').show();
+          } else {
+            $('#report-plant').html('');
+            $('.report-plant').hide();
+          }
+          if(data.authority){
+            $('#report-authority').html('<a href="' +data.authority.url + '">'+ data.authority.name + '</a>');
+            $('.report-authority').show();
+          } else {
+            $('#report-authority').html('');
+            $('.report-authority').hide();
+          }
+          $('.zone-data-year').text(data.year);
+          $('.zone-data-count').text(data.observations.length);
+          $('.zone-description').html(data.description);
+          $('.zone-about').toggle(!!((data.year || data.description)));
+          $('.zone-year-container').toggle(!!data.year);
+          tw.utils.getLimits(function(data) {
+            tw.data.limits = data;
+            tw.data.report.observations.forEach(function (attribute, index, observations) {
+              if(attribute.value || attribute.value == 0){
+                var card = $('<div class="card"></div>');
+                var header = $('<header class="card-header"><p class="card-header-title">' + attribute.code + ' ' + tw.utils.getObservationValue(attribute) + ' ' + attribute.uom.label +'</p><a class="card-header-icon"><span class="icon"><i class="fa caret fa-angle-down"></i></span></a><header>');
+                var cardcontent = $('<div class="card-content" style="display:none;"></div>');
+                //Get the limits for this observation:
+                var description = $('<div class="content"><p>' + tw.i18n.nodescription + '</p></div>');
+                if(attribute.description){
+                  description = $('<div class="content"><p>' + attribute.description + '</p></div>');
+                }
+                description.prepend(tw.utils.evaluateLimit(attribute));
+                card.append(header);
+                cardcontent.append(description);
+                card.append(cardcontent);
+                header.on('click', function(e){
+                  card.find('.caret').toggleClass('fa-angle-down fa-angle-up');
+                  cardcontent.toggle();
+                });
+                $('#table-observations').append(card);
+              }
+              if(index === observations.length -1){
+                // finished, do whatever needed here.
+              }
+            });
+
+            tw.utils.getAverages(function(data){
+              tw.data.averages = data;
+              tw.utils.getProducts(function(data){
+                tw.data.products = data;
+              });
+            });
+            $('.results').toggle(true);
+            $('.footer').show();
+          });
+        } else {
+          $('#result-failed').show();
+            $('.footer').show();
+        }
+
+      });
+    });
+  });
+  $(function() {
+    tw.app.run()
+  });
+})(tw, jQuery);
 
 (function (tw, $) {
   'use strict';
@@ -197,109 +331,7 @@ var tw = tw || { data: {}};
         $('#current-location').text(suggestion.data.constructed_output);
         var lat = suggestion.data.lat;
         var lon = suggestion.data.lon;
-        $('#current-location-lat').val(lat);
-        $('#current-location-lon').val(lon);
-        if(this.id === 'city'){
-          $('.top-menu').toggle();
-          $('#hero-section').toggle();
-          $('#info-section').toggle();
-          $('#results-section').toggle();
-        }
-        // Set spinner while we wait for results.
-        $('#result-loading').show();
-        $('#result-success').hide();
-        $('#result-details').hide();
-        $('#result-failed').hide();
-        tw.map.clear();
-        tw.map.update(lat,lon);
-        tw.utils.getReport(lat, lon, function(data){
-          if(data.zone && data.zone.geometry){
-            //Add the geometry as layer and zoom the map to the layer extend.
-            tw.map.setZone(data.zone);
-            if(data.plants && data.plants.length > 0){
-              tw.map.setPlants(data.plants);
-            }
-          }
-          // Turn of spinner.
-          $('#result-loading').hide();
-          $('#table-observations').html('');
-          $('#zone-id').html('');
-          if (Object.keys(data).length > 0) {
-            $('#result-success').show('fast', function(){
-              $('#result-details').show();
-            });
-            tw.data.report = data;
-            $('.zone-id').text(data.name);
-            if(data.operator){
-              $('#report-operator').html('<a href="' +data.operator.url + '">'+ data.operator.name + '</a>');
-              $('.report-operator').show();
-            } else {
-              $('#report-operator').html('');
-              $('.report-operator').hide();
-            }
-            if(data.plants && data.plants.length > 0){
-              var plantArr = [];
-              for (var i = 0; i < data.plants.length; i++) {
-                plantArr.push(data.plants[i].properties.name);
-              }
-              console.log(plantArr.join[', ']);
-              $('#report-plant').html('<em>' + plantArr.join('</em>, <em>') + '</em>');
-              $('.report-plant').show();
-            } else {
-              $('#report-plant').html('');
-              $('.report-plant').hide();
-            }
-            if(data.authority){
-              $('#report-authority').html('<a href="' +data.authority.url + '">'+ data.authority.name + '</a>');
-              $('.report-authority').show();
-            } else {
-              $('#report-authority').html('');
-              $('.report-authority').hide();
-            }
-            $('.zone-data-year').text(data.year);
-            $('.zone-data-count').text(data.observations.length);
-            $('.zone-description').html(data.description);
-            $('.zone-about').toggle(!!((data.year || data.description)));
-            $('.zone-year-container').toggle(!!data.year);
-            tw.utils.getLimits(function(data) {
-              tw.data.limits = data;
-              tw.data.report.observations.forEach(function (attribute, index, observations) {
-                if(attribute.value || attribute.value == 0){
-                  var card = $('<div class="card"></div>');
-                  var header = $('<header class="card-header"><p class="card-header-title">' + attribute.code + ' ' + tw.utils.getObservationValue(attribute) + ' ' + attribute.uom.label +'</p><a class="card-header-icon"><span class="icon"><i class="fa caret fa-angle-down"></i></span></a><header>');
-                  var cardcontent = $('<div class="card-content" style="display:none;"></div>');
-                  //Get the limits for this observation:
-                  var description = $('<div class="content"><p>' + tw.i18n.nodescription + '</p></div>');
-                  if(attribute.description){
-                    description = $('<div class="content"><p>' + attribute.description + '</p></div>');
-                  }
-                  description.prepend(tw.utils.evaluateLimit(attribute));
-                  card.append(header);
-                  cardcontent.append(description);
-                  card.append(cardcontent);
-                  header.on('click', function(e){
-                    card.find('.caret').toggleClass('fa-angle-down fa-angle-up');
-                    cardcontent.toggle();
-                  });
-                  $('#table-observations').append(card);
-                }
-                if(index === observations.length -1){
-                  // finished, do whatever needed here.
-                }
-              });
-
-              tw.utils.getAverages(function(data){
-                tw.data.averages = data;
-                tw.utils.getProducts(function(data){
-                  tw.data.products = data;
-                });
-              });
-              $('.results').toggle(true);
-            });
-          } else {
-            $('#result-failed').show();
-          }
-        });
+        tw.app.setLocation('#/quality/' + lat + ',' + lon);
       }
     });
   };
@@ -348,16 +380,11 @@ var tw = tw || { data: {}};
         $(attr).addClass('is-active');
       }
     });
-    tw.map.init();
     startGeocoder();
-    setupSectionSwitch();
     //Set the API docs link to the right location
     $('#api-docs').attr('href', tw.config.api_doc);
     $('.home-button').on('click', function(){
-      $('.top-menu').toggle();
-      $('#hero-section').toggle();
-      $('#info-section').toggle();
-      $('#results-section').toggle();
+      tw.app.setLocation('#/');
     })
     $('#city-btn').prop('disabled', true);
     if (window.location.href.indexOf('embed') < 0) {

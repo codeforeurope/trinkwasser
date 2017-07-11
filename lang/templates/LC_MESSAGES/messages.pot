@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-11 09:31+0000\n"
+"POT-Creation-Date: 2017-07-11 15:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,6 +19,8 @@ msgstr ""
 #: src/index.html:8
 #: src/index.html:6
 #: src/index.html:9
+#: src/js/main.hb:1
+#: src/templates/main.hb:1
 msgid "Was steckt in meinem Leitungswasser?"
 msgstr "Was steckt im wasser?"
 
@@ -49,6 +51,8 @@ msgstr "Adresse"
 #: src/index.html:4
 #: src/index.html:7
 #: src/index.html:8
+#: src/js/main.hb:3
+#: src/templates/main.hb:3
 msgid "Bitte auswählen"
 msgstr "Bitte auswählen"
 
@@ -618,6 +622,7 @@ msgstr ""
 #: src/index.html:9
 #: src/index.html:15
 #: src/index.html:16
+#: src/index.html:13
 msgid "Information zu"
 msgstr "Information zu"
 
@@ -2157,6 +2162,8 @@ msgstr ""
 
 #: src/index.html:6
 #: src/index.html:7
+#: src/js/main.hb:2
+#: src/templates/main.hb:2
 msgid "Informieren Sie sich über Ihr Trinkwasser"
 msgstr ""
 
@@ -2164,6 +2171,7 @@ msgstr ""
 #: src/index.html:10
 #: src/index.html:16
 #: src/index.html:17
+#: src/index.html:14
 msgid "Rapport"
 msgstr ""
 
@@ -2354,6 +2362,7 @@ msgid "Home"
 msgstr ""
 
 #: src/index.html:10
+#: src/index.html:7
 msgid ""
 "Geben Sie eine Adresse ein und finden Sie heraus, welche Wasserqualität Sie "
 "erwarten können. Für alle Stoffe und Organismen im Wasser vorhanden ist, "
@@ -2362,10 +2371,12 @@ msgid ""
 msgstr ""
 
 #: src/index.html:11
+#: src/index.html:8
 msgid "Sicheres Trinkwasser und angemessene sanitäre Einrichtungen"
 msgstr ""
 
 #: src/index.html:12
+#: src/index.html:9
 msgid ""
 "Der Zugang zu sauberem Trinkwasser und angemessenen sanitären Einrichtungen "
 "ist eines der politischen Ziele der Vereinten Nationen. Aber was ist "
@@ -2374,16 +2385,19 @@ msgid ""
 msgstr ""
 
 #: src/index.html:13
+#: src/index.html:10
 msgid ""
 "Durch das Sammeln von Informationen über die Wasserqualität , klar und "
 "vergleichen zu können, versuchen wir ein besseres Verständnis zu bekommen"
 msgstr ""
 
 #: src/index.html:14
+#: src/index.html:11
 msgid "Wollen Sie helfen Wasserqualität Informationen zu verbessern?"
 msgstr ""
 
 #: src/index.html:15
+#: src/index.html:12
 msgid ""
 "Diese Website ist nur ein Teil unseres Projektes. Wir können immer Hilfe "
 "verwenden, um Daten zu sammeln und haben eine offene Hardware-Projekt "
@@ -2401,10 +2415,12 @@ msgid ""
 msgstr ""
 
 #: src/index.html:18
+#: src/index.html:15
 msgid "Autorität"
 msgstr ""
 
 #: src/index.html:19
+#: src/index.html:16
 msgid "Betreiber"
 msgstr ""
 
@@ -2413,5 +2429,6 @@ msgid "Produktstandort"
 msgstr ""
 
 #: src/index.html:20
+#: src/index.html:17
 msgid "Produktstandorte"
 msgstr ""

@@ -13,36 +13,44 @@ var tw = tw || { data: {}};
    *
    */
   var init = function () {
-    map = L.map('result-map').setView([51.505, -0.09], 13);
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+    if(!map){
+      map = L.map('result-map');
+      map.invalidateSize();
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+    }
   };
 
   var clear = function () {
-    if(plantlayer){
-      map.removeLayer(plantlayer);
-    }
-    if(zonelayer){
-      map.removeLayer(zonelayer);
+    if(map){
+      if(plantlayer){
+        map.removeLayer(plantlayer);
+      }
+      if(zonelayer){
+        map.removeLayer(zonelayer);
+      }
     }
   };
   var update = function (lon,lat) {
-    map.invalidateSize();
+    if(!map){
+      init();
+    }
     map.setView([lon, lat]);
   };
 
   var setPlants = function (plants) {
+    if(!map){
+      init();
+    }
     plantlayer = L.geoJSON(plants);
     plantlayer.addTo(map);
   };
 
-  var update = function (lon,lat) {
-    map.invalidateSize();
-    map.setView([lon, lat]);
-  };
-
   var setZone = function (zone) {
+    if(!map){
+      init();
+    }
     zonelayer = L.geoJSON(zone, {
     style: function (feature) {
         return {fill: false};
