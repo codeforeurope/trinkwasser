@@ -6,6 +6,10 @@ WORKDIR /app
 
 # Variables
 ENV API_ENDPOINT http://www.transparentwater.io/api
+ENV API_DOCS http://www.transparentwater.io/docs
+ENV GEOCODER_KEY BJlOjYiGd1RjyCk1VVDE3YLjDruBpngY
+ENV GEOCODER_SEARCH http://open.mapquestapi.com/nominatim/v1/search.php
+ENV MAP_URL http://{s}.tile.osm.org/{z}/{x}/{y}.png
 
 # Install
 COPY . /app

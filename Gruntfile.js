@@ -1,10 +1,27 @@
 module.exports = function(grunt) {
-  'use strict';
+  "use strict";
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
+    pkg: grunt.file.readJSON("package.json"),
     uglify: {
       options: {
+        mangle: false,
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+      },
+      target:{
+        files: {
+          'build/js/transparentwater.min.js': ['src/js/**/*.js']
+        }
+      }
+    },
+    cssmin: {
+      options: {
+        mergeIntoShorthands: false,
+        roundingPrecision: -1
+      },
+      target: {
+        files: {
+          'build/css/transparentwater.min.css': ['src/css/**/*.css', 'font-awesome.min.css']
+        }
       }
     },
     jshint: {
@@ -36,19 +53,6 @@ module.exports = function(grunt) {
       files: ['<%= jshint.files %>'],
       tasks: ['jshint']
     },
-    useminPrepare: {
-      html: ['build/**/index.html'],
-      options: {
-        dest: 'build/'
-      }
-    },
-    usemin: {
-      html: ['build/**/*.html'],
-      css: ['build/**/*.css'],
-      options: {
-        dirs: ['build/']
-      }
-    },
     copy: {
       dist: {
         files: [{
@@ -56,7 +60,7 @@ module.exports = function(grunt) {
           dot: true,
           cwd: 'src/',
           dest: 'build/',
-          src: ['*.{ico,txt}', 'img/{,*/}*.{jpg,png,svg,gif}', 'data/*.geojson', 'fonts/*', 'css/*', 'js/*', 'lib/*']
+          src: ['*.{ico,txt}', 'css/images/{,*/}*.{jpg,png,svg,gif}','img/{,*/}*.{jpg,png,svg,gif}', 'fonts/*', 'lib/*']
         }]
       },
       redirect: {
@@ -90,28 +94,6 @@ module.exports = function(grunt) {
         }]
       }
     },
-    jsonmin: {
-      dist: {
-        options: {
-          stripWhitespace: true,
-          stripComments: true
-        },
-        files: [{
-          expand: true,
-          cwd: 'src/data',
-          src: ['**/*.json'],
-          dest: 'data',
-          ext: '.json'
-        }]
-      }
-    },
-    'gh-pages': {
-      options: {
-        base: 'dist'
-      },
-      src: ['**']
-    },
-
     abideCreate: {
       default: { // Target name.
         options: {
@@ -137,6 +119,14 @@ module.exports = function(grunt) {
           language: 'JavaScript'
         }
       },
+      templates: {
+        src: 'src/templates/**/*.html',
+        dest: 'lang/templates/LC_MESSAGES/messages.pot',
+        options: {
+          keyword: '_',
+          language: 'swig'
+        }
+      },
       html: {
         src: 'src/index.html',
         dest: 'lang/templates/LC_MESSAGES/messages.pot',
@@ -156,6 +146,11 @@ module.exports = function(grunt) {
           cwd: 'src',
           src: 'index.html',
           dest: 'build'
+        },{
+          expand: true,
+          cwd: 'src',
+          src: 'templates/**/*.html',
+          dest: 'build'
         }]
       }
     }
@@ -168,15 +163,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-jsonmin');
   grunt.loadNpmTasks('grunt-rev');
-  grunt.loadNpmTasks('grunt-usemin');
-  grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-i18n-abide');
   grunt.loadNpmTasks('hernanex3-grunt-static-i18n');
-  grunt.registerTask('dataupdate', ['jsonmin:dist']);
-  grunt.registerTask('build', ['clean:dist', 'i18n', 'imagemin', 'uglify', 'copy:dist', 'copy:redirect']);
-  grunt.registerTask('deploy', ['build', 'gh-pages']);
+  grunt.registerTask('build', ['clean:dist', 'i18n', 'cssmin', 'imagemin', 'uglify', 'copy:dist', 'copy:redirect']);
   grunt.registerTask('default', ['build']);
   grunt.registerTask('i18n', ['abideCreate', 'abideExtract', 'statici18n']);
 };

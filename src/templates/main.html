@@ -1,0 +1,25 @@
+<div class="hero-body">
+  <div class="container">
+    <div class="columns is-vcentered">
+      <div class="column is-one-third is-left">
+        <p class="title is-1">_('Was steckt in meinem Leitungswasser?')</p>
+        <p class="subtitle is-3">_('Informieren Sie sich über Ihr Trinkwasser')</p>
+      </div>
+      <div class="column">
+        <form role="form">
+          <div class="field is-fullwidth">
+            <p class="control is-expanded has-icons-right">
+              <input id="city" type="text" class="input is-large is-fullwidth search-input" placeholder="_('Bitte auswählen')">
+              <span class="icon is-normal is-right search-icon">
+                <i class="fa fa-search"></i>
+              </span>
+            </p>
+          </div>
+          <!-- fields to keep the current location lat/lon available will be updated once a user selects an address from the autocomplete -->
+          <input type="hidden" id="current-location-lat"></input>
+          <input type="hidden" id="current-location-lon"></input>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

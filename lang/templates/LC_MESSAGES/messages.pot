@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-11 15:07+0000\n"
+"POT-Creation-Date: 2017-07-14 08:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,6 +21,10 @@ msgstr ""
 #: src/index.html:9
 #: src/js/main.hb:1
 #: src/templates/main.hb:1
+#: src/templates/test.html:1
+#: src/templates/main.html:1
+#: src/templates/info.html:1
+#: src/templates/navigation.html:1
 msgid "Was steckt in meinem Leitungswasser?"
 msgstr "Was steckt im wasser?"
 
@@ -53,6 +57,15 @@ msgstr "Adresse"
 #: src/index.html:8
 #: src/js/main.hb:3
 #: src/templates/main.hb:3
+#: src/templates/test.html:3
+#: src/templates/main.html:3
+#: src/templates/navigation.html:3
+#: src/templates/navigation.html:4
+#: src/templates/navigation.html:5
+#: src/templates/navigation.html:8
+#: src/templates/navigation.html:14
+#: src/templates/navigation.html:2
+#: src/templates/navigation.html:9
 msgid "Bitte auswählen"
 msgstr "Bitte auswählen"
 
@@ -623,6 +636,9 @@ msgstr ""
 #: src/index.html:15
 #: src/index.html:16
 #: src/index.html:13
+#: src/index.html:6
+#: src/index.html:3
+#: src/index.html:4
 msgid "Information zu"
 msgstr "Information zu"
 
@@ -1044,6 +1060,14 @@ msgstr "Webseiten der Gemeinden im Landkreis Heilbronn"
 #: src/index.html:28
 #: src/index.html:24
 #: src/index.html:29
+#: src/templates/contact.html:1
+#: src/templates/navigation.html:4
+#: src/templates/navigation.html:6
+#: src/templates/navigation.html:7
+#: src/templates/navigation.html:8
+#: src/templates/navigation.html:5
+#: src/templates/navigation.html:14
+#: src/templates/navigation.html:15
 msgid "Kontakt"
 msgstr "Kontakt"
 
@@ -1065,6 +1089,13 @@ msgstr "Kontakt"
 #: src/index.html:20
 #: src/index.html:22
 #: src/index.html:23
+#: src/templates/navigation.html:2
+#: src/templates/navigation.html:3
+#: src/templates/navigation.html:4
+#: src/templates/navigation.html:5
+#: src/templates/navigation.html:6
+#: src/templates/navigation.html:12
+#: src/templates/navigation.html:13
 msgid "Über das Projekt"
 msgstr "Über das Projekt"
 
@@ -1089,6 +1120,14 @@ msgstr "Über das Projekt"
 #: src/index.html:22
 #: src/index.html:24
 #: src/index.html:25
+#: src/templates/navigation.html:5
+#: src/templates/navigation.html:8
+#: src/templates/navigation.html:9
+#: src/templates/navigation.html:10
+#: src/templates/navigation.html:6
+#: src/templates/navigation.html:16
+#: src/templates/navigation.html:17
+#: src/templates/team.html:1
 msgid "Mitwirkende"
 msgstr "Mitwirkende"
 
@@ -1117,6 +1156,9 @@ msgstr "Über &amp; Impressum"
 #: src/index.html:24
 #: src/index.html:26
 #: src/index.html:27
+#: src/index.html:17
+#: src/index.html:14
+#: src/templates/about.html:1
 msgid "Wie das Trinkwasser-Tool entstanden ist"
 msgstr "Wie das Trinkwasser-Tool entstanden ist"
 
@@ -1128,6 +1170,9 @@ msgstr "Wie das Trinkwasser-Tool entstanden ist"
 #: src/index.html:25
 #: src/index.html:27
 #: src/index.html:28
+#: src/index.html:18
+#: src/index.html:15
+#: src/templates/about.html:2
 msgid ""
 "Trinkwasser gilt als das am besten kontrollierte Lebensmittel in "
 "Deutschland. Und trotzdem wissen wir sehr wenig über das Wasser, das bei "
@@ -1334,6 +1379,11 @@ msgstr ""
 #: src/index.html:42
 #: src/index.html:33
 #: src/index.html:36
+#: src/index.html:26
+#: src/index.html:23
+#: src/templates/contributors.html:1
+#: src/templates/team.html:1
+#: src/templates/team.html:2
 msgid "Redaktionelle Umsetzung"
 msgstr "Redaktionelle Umsetzung"
 
@@ -1346,6 +1396,11 @@ msgstr "Redaktionelle Umsetzung"
 #: src/index.html:43
 #: src/index.html:34
 #: src/index.html:37
+#: src/index.html:27
+#: src/index.html:24
+#: src/templates/contributors.html:2
+#: src/templates/team.html:2
+#: src/templates/team.html:3
 msgid "Gestaltung"
 msgstr "Gestaltung"
 
@@ -1358,6 +1413,11 @@ msgstr "Gestaltung"
 #: src/index.html:44
 #: src/index.html:35
 #: src/index.html:38
+#: src/index.html:28
+#: src/index.html:25
+#: src/templates/contributors.html:3
+#: src/templates/team.html:3
+#: src/templates/team.html:4
 msgid "Programmierung"
 msgstr "Programmierung"
 
@@ -1370,6 +1430,11 @@ msgstr "Programmierung"
 #: src/index.html:45
 #: src/index.html:36
 #: src/index.html:39
+#: src/index.html:29
+#: src/index.html:26
+#: src/templates/contributors.html:4
+#: src/templates/team.html:4
+#: src/templates/team.html:5
 msgid "Mitarbeit"
 msgstr "Mitarbeit"
 
@@ -1427,6 +1492,9 @@ msgstr "F. 07136 / 830 26 27"
 #: src/index.html:28
 #: src/index.html:30
 #: src/index.html:31
+#: src/index.html:21
+#: src/index.html:18
+#: src/templates/contact.html:3
 msgid "E-Mail:"
 msgstr "E-Mail:"
 
@@ -1473,6 +1541,9 @@ msgstr "Geschäftsführer: Felix Ebert"
 #: src/index.html:27
 #: src/index.html:29
 #: src/index.html:30
+#: src/index.html:20
+#: src/index.html:17
+#: src/templates/contact.html:2
 msgid "Wir freuen uns über Feedback:"
 msgstr "Wir freuen uns über Feedback:"
 
@@ -1484,6 +1555,9 @@ msgstr "Wir freuen uns über Feedback:"
 #: src/index.html:29
 #: src/index.html:31
 #: src/index.html:32
+#: src/index.html:22
+#: src/index.html:19
+#: src/templates/contact.html:4
 msgid "wasser"
 msgstr "wasser"
 
@@ -1495,6 +1569,9 @@ msgstr "wasser"
 #: src/index.html:30
 #: src/index.html:32
 #: src/index.html:33
+#: src/index.html:23
+#: src/index.html:20
+#: src/templates/contact.html:5
 msgid "opendatalab.de"
 msgstr "opendatalab.de"
 
@@ -1506,6 +1583,9 @@ msgstr "opendatalab.de"
 #: src/index.html:31
 #: src/index.html:33
 #: src/index.html:34
+#: src/index.html:24
+#: src/index.html:21
+#: src/templates/contact.html:6
 msgid ""
 "Aufgrund der zahlreichen Daten kann es vereinzelt zu fehlerhaften Angaben "
 "kommen. Haben Sie einen Fehler entdeckt? Schreiben Sie uns!"
@@ -1521,6 +1601,9 @@ msgstr ""
 #: src/index.html:32
 #: src/index.html:34
 #: src/index.html:35
+#: src/index.html:25
+#: src/index.html:22
+#: src/templates/contact.html:7
 msgid ""
 "Oder sind Sie Mitarbeiter einer Kommune und möchten Ihre Daten eintragen? "
 "Schicken Sie uns einfach Ihre Daten per E-Mail."
@@ -1546,6 +1629,13 @@ msgstr ""
 #: src/index.html:23
 #: src/index.html:25
 #: src/index.html:26
+#: src/templates/navigation.html:7
+#: src/templates/navigation.html:12
+#: src/templates/navigation.html:13
+#: src/templates/navigation.html:14
+#: src/templates/navigation.html:8
+#: src/templates/navigation.html:20
+#: src/templates/navigation.html:21
 msgid "API"
 msgstr ""
 
@@ -2164,6 +2254,8 @@ msgstr ""
 #: src/index.html:7
 #: src/js/main.hb:2
 #: src/templates/main.hb:2
+#: src/templates/test.html:2
+#: src/templates/main.html:2
 msgid "Informieren Sie sich über Ihr Trinkwasser"
 msgstr ""
 
@@ -2172,6 +2264,9 @@ msgstr ""
 #: src/index.html:16
 #: src/index.html:17
 #: src/index.html:14
+#: src/index.html:7
+#: src/index.html:4
+#: src/index.html:5
 msgid "Rapport"
 msgstr ""
 
@@ -2181,6 +2276,8 @@ msgstr ""
 #: src/index.html:18
 #: src/index.html:20
 #: src/index.html:21
+#: src/index.html:8
+#: src/index.html:9
 msgid "Beobachtungen"
 msgstr ""
 
@@ -2205,6 +2302,9 @@ msgstr ""
 #: src/index.html:46
 #: src/index.html:37
 #: src/index.html:40
+#: src/index.html:30
+#: src/index.html:27
+#: src/index.html:10
 msgid "weniger als"
 msgstr ""
 
@@ -2221,6 +2321,9 @@ msgstr ""
 #: src/index.html:47
 #: src/index.html:38
 #: src/index.html:41
+#: src/index.html:31
+#: src/index.html:28
+#: src/index.html:11
 msgid "mehr als"
 msgstr ""
 
@@ -2237,6 +2340,10 @@ msgstr ""
 #: src/index.html:48
 #: src/index.html:39
 #: src/index.html:42
+#: src/index.html:32
+#: src/index.html:29
+#: src/index.html:12
+#: src/index.html:13
 msgid "(sehr) hart"
 msgstr ""
 
@@ -2251,6 +2358,10 @@ msgstr ""
 #: src/index.html:49
 #: src/index.html:40
 #: src/index.html:43
+#: src/index.html:33
+#: src/index.html:30
+#: src/index.html:13
+#: src/index.html:14
 msgid "Keine Information verfügbar"
 msgstr ""
 
@@ -2265,6 +2376,10 @@ msgstr ""
 #: src/index.html:50
 #: src/index.html:41
 #: src/index.html:44
+#: src/index.html:34
+#: src/index.html:31
+#: src/index.html:14
+#: src/index.html:15
 msgid "Min"
 msgstr ""
 
@@ -2279,6 +2394,10 @@ msgstr ""
 #: src/index.html:51
 #: src/index.html:42
 #: src/index.html:45
+#: src/index.html:35
+#: src/index.html:32
+#: src/index.html:15
+#: src/index.html:16
 msgid "Max"
 msgstr ""
 
@@ -2293,6 +2412,10 @@ msgstr ""
 #: src/index.html:52
 #: src/index.html:43
 #: src/index.html:46
+#: src/index.html:36
+#: src/index.html:33
+#: src/index.html:16
+#: src/index.html:17
 msgid "Score"
 msgstr ""
 
@@ -2358,11 +2481,18 @@ msgid ""
 msgstr ""
 
 #: src/index.html:4
+#: src/templates/navigation.html:2
+#: src/templates/navigation.html:3
+#: src/templates/navigation.html:4
+#: src/templates/navigation.html:5
+#: src/templates/navigation.html:10
+#: src/templates/navigation.html:11
 msgid "Home"
 msgstr ""
 
 #: src/index.html:10
 #: src/index.html:7
+#: src/templates/info.html:2
 msgid ""
 "Geben Sie eine Adresse ein und finden Sie heraus, welche Wasserqualität Sie "
 "erwarten können. Für alle Stoffe und Organismen im Wasser vorhanden ist, "
@@ -2372,11 +2502,13 @@ msgstr ""
 
 #: src/index.html:11
 #: src/index.html:8
+#: src/templates/info.html:3
 msgid "Sicheres Trinkwasser und angemessene sanitäre Einrichtungen"
 msgstr ""
 
 #: src/index.html:12
 #: src/index.html:9
+#: src/templates/info.html:4
 msgid ""
 "Der Zugang zu sauberem Trinkwasser und angemessenen sanitären Einrichtungen "
 "ist eines der politischen Ziele der Vereinten Nationen. Aber was ist "
@@ -2386,6 +2518,7 @@ msgstr ""
 
 #: src/index.html:13
 #: src/index.html:10
+#: src/templates/info.html:5
 msgid ""
 "Durch das Sammeln von Informationen über die Wasserqualität , klar und "
 "vergleichen zu können, versuchen wir ein besseres Verständnis zu bekommen"
@@ -2393,11 +2526,13 @@ msgstr ""
 
 #: src/index.html:14
 #: src/index.html:11
+#: src/templates/info.html:6
 msgid "Wollen Sie helfen Wasserqualität Informationen zu verbessern?"
 msgstr ""
 
 #: src/index.html:15
 #: src/index.html:12
+#: src/templates/info.html:7
 msgid ""
 "Diese Website ist nur ein Teil unseres Projektes. Wir können immer Hilfe "
 "verwenden, um Daten zu sammeln und haben eine offene Hardware-Projekt "
@@ -2409,6 +2544,9 @@ msgstr ""
 #: src/index.html:19
 #: src/index.html:21
 #: src/index.html:22
+#: src/index.html:12
+#: src/index.html:9
+#: src/index.html:3
 msgid ""
 "Keine Information für den angegebenen Standort gefunden. Kontaktieren Sie "
 "uns, wenn Sie das Gefühl haben, dass dies ein Fehler ist oder erneut suchen"
@@ -2416,11 +2554,17 @@ msgstr ""
 
 #: src/index.html:18
 #: src/index.html:15
+#: src/index.html:8
+#: src/index.html:5
+#: src/index.html:6
 msgid "Autorität"
 msgstr ""
 
 #: src/index.html:19
 #: src/index.html:16
+#: src/index.html:9
+#: src/index.html:6
+#: src/index.html:7
 msgid "Betreiber"
 msgstr ""
 
@@ -2430,5 +2574,26 @@ msgstr ""
 
 #: src/index.html:20
 #: src/index.html:17
+#: src/index.html:10
+#: src/index.html:7
+#: src/index.html:8
 msgid "Produktstandorte"
+msgstr ""
+
+#: src/templates/navigation.html:6
+#: src/templates/navigation.html:10
+#: src/templates/navigation.html:11
+#: src/templates/navigation.html:12
+#: src/templates/navigation.html:7
+#: src/templates/navigation.html:18
+#: src/templates/navigation.html:19
+msgid "Github"
+msgstr ""
+
+#: src/templates/team.html:1
+msgid "Mitwerkende"
+msgstr ""
+
+#: src/index.html:12
+msgid "zwischen"
 msgstr ""

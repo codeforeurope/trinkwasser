@@ -115,19 +115,31 @@ var tw = tw || { data: {}};
           var limit = transformLimit(limitvalues[j], observation.uom);
           min = limit.min || '-';
           max = limit.max || '-';
-          if (limit.min || limit.min == 0) {
+          if ((limit.min || limit.min == 0) && !limit.max) {
             // At least. If actual value is higher, thumbs up
             if(observation.value >= limit.min){
               val = '<span class="icon is-small"><i class="fa fa-thumbs-up green" title="' + tw.i18n.morethan + ' ' + limit.min + ' ' + limit.uom.label + '"></i></span>';
             } else {
               val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="'+  tw.i18n.lessthan + ' ' + limit.min + ' ' + limit.uom.label + '"></i></span>';
             }
-          } else if(limit.max || limit.max == 0){
+          } else if((limit.max || limit.max == 0) && !limit.min){
             // At most. If actual value is lower, thumbs up
             if(observation.value <= limit.max){
               val = '<span class="icon is-small"><i class="fa fa-thumbs-up green" title="' + tw.i18n.lessthan + ' ' + limit.max + ' ' + limit.uom.label + '"></i></span>';
             } else {
               val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="' + tw.i18n.morethan + ' ' + limit.max + ' ' + limit.uom.label + '"></i></span>';
+            }
+          } else if((limit.max || limit.max == 0) && (limit.min || limit.min == 0)){
+            //Between
+            if(observation.value <= limit.max && observation.value >= limit.min){
+              val = '<span class="icon is-small"><i class="fa fa-thumbs-up green" title="' + tw.i18n.between + ' ' + limit.min + ' - ' + limit.max + ' ' + limit.uom.label + '"></i></span>';
+            } else {
+              if(observation.value > limit.max){
+                val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="' + tw.i18n.morethan + ' ' + limit.max + ' ' + limit.uom.label + '"></i></span>';
+              }
+              if(observation.value < limit.min){
+                val = '<span class="icon is-small"><i class="fa fa-thumbs-down red" title="' + tw.i18n.lessthan + ' ' + limit.max + ' ' + limit.uom.label + '"></i></span>';
+              }
             }
           }
         }

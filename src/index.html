@@ -2,307 +2,81 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48 64x64" type="image/vnd.microsoft.icon">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="_('Weißt du eigentlich, wie gut das Trinkwasser an deinem Wohnort ist? Hier kannst du es herausfinden - für den Stadt- und Landkreis Heilbronn')" />
     <title>_('Was steckt in meinem Leitungswasser?')</title>
-    <link href="../css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin=""/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css" rel="stylesheet" />
-    <style>
-      .autocomplete-suggestions { border: 1px solid #ccc; background: #FFF; overflow: auto; border-radius: 0 0 3px 3px;}
-      .autocomplete-suggestion { padding: calc(.625em - 1px); white-space: nowrap; overflow: hidden; color: #555; }
-      .autocomplete-selected { background: #F0F0F0; }
-      .autocomplete-suggestions strong { font-weight: bold; color: #555; }
-      .autocomplete-group { padding: 8px 12px; }
-      .autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
-      .hero.is-primary {
-          background-color: #3591c0;
-          color: #fff;
-      }
-      .map { height: 250px; width: 100%; }
-      .nav,
-      .footer {
-        background-color: #3591c0;
-        color: #fff;
-      }
-      .button-footer {
-        background-color: transparent;
-        color: #fff;
-      }
-      .card-header-title {
-        font-weight: normal;
-      }
-      .white {
-        color: #fff;
-      }
-      .green {
-        color: #00ff00;
-      }
-      .red {
-        color: #ff0000;
-      }
-    </style>
-</head>
-<body>
-  <nav class="nav has-shadow top-menu" style="display:none;">
-    <div class="nav-left">
-      <span class="nav-item">
-        <img src="../img/white-logo.png" alt="Code For Europe Logo">
-      </span>
-      <span class="nav-item">_('Was steckt in meinem Leitungswasser?')</span>
-    </div>
-    <div class="nav-right nav-menu">
-      <a class="nav-item is-hidden-mobile home-button">
-        <span class="icon white">
-          <i class="fa fa-home"></i>
-        </span>
-      </a>
-      <a class="nav-item is-hidden-desktop is-hidden-tablet home-button">_('Home')</a>
-      <div class="nav-item">
-          <div class="field">
-              <p class="control has-icons-right">
-                <input id="search" type="text" class="input search-input" placeholder="_('Bitte auswählen')">
-                <span class="icon is-small is-right search-icon">
-                  <i class="fa fa-search"></i>
-                </span>
-              </p>
-          </div>
-      </div>
-    </div>
-    <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
-    <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
-    <span class="nav-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </span>
-  </nav>
-  <section id="hero-section" style="display:none;" class="hero is-primary is-medium title-section">
-    <div class="hero-body">
+    <link href="../css/transparentwater.min.css" rel="stylesheet" />
+  </head>
+  <body id="transparentwater">
+    <nav id="navigation-section" class="navbar has-shadow top-menu" style="display:none;"></nav>
+    <section id="hero-section" style="display:none;" class="hero is-primary is-medium title-section"></section>
+    <section id="info-section" style="display:none;" class="section"></section>
+    <section id="results-section" style="display:none;" class="section">
       <div class="container">
-      <div class="columns is-vcentered">
-        <div class="column is-one-third is-left">
-          <p class="title is-1">_('Was steckt in meinem Leitungswasser?')</p>
-          <p class="subtitle is-3">_('Informieren Sie sich über Ihr Trinkwasser')</p>
-        </div>
-        <div class="column">
-          <form role="form">
-            <div class="field is-fullwidth">
-              <p class="control is-expanded has-icons-right">
-                <input id="city" type="text" class="input is-large is-fullwidth search-input" placeholder="_('Bitte auswählen')">
-                <span class="icon is-normal is-right search-icon">
-                  <i class="fa fa-search"></i>
-                </span>
-              </p>
-            </div>
-            <!-- fields to keep the current location lat/lon available will be updated once a user selects an address from the autocomplete -->
-            <input type="hidden" id="current-location-lat"></input>
-            <input type="hidden" id="current-location-lon"></input>
-          </form>
-        </div>
-      </div>
-    </div>
-    </div>
-  </section>
-  <section id="info-section" style="display:none;" class="section">
-    <div class="container">
-      <div class="content">
-        <!-- general info about website here -->
-        <h2>_('Was steckt in meinem Leitungswasser?')</h2>
-        <p>_('Geben Sie eine Adresse ein und finden Sie heraus, welche Wasserqualität Sie erwarten können. Für alle Stoffe und Organismen im Wasser vorhanden ist, versuchen wir zu zeigen, welche Auswirkungen sie auf die Sie haben und ob die gemessene Wasserqualität ist gut oder schlecht für Sie.')</p>
-        <h2>_('Sicheres Trinkwasser und angemessene sanitäre Einrichtungen')</h2>
-        <p>_('Der Zugang zu sauberem Trinkwasser und angemessenen sanitären Einrichtungen ist eines der politischen Ziele der Vereinten Nationen. Aber was ist sauberes Trinkwasser? Wo sollten Sie suchen? Und Wasser kaufen Sie im Laden gesund? Wir versuchen, diese Fragen zu beantworten.')</p>
-        <p>_('Durch das Sammeln von Informationen über die Wasserqualität , klar und vergleichen zu können, versuchen wir ein besseres Verständnis zu bekommen')</p>
-        <h2>_('Wollen Sie helfen Wasserqualität Informationen zu verbessern?')</h2>
-        <p>_('Diese Website ist nur ein Teil unseres Projektes. Wir können immer Hilfe verwenden, um Daten zu sammeln und haben eine offene Hardware-Projekt gestartet, das bald Sie Ihr eigenes Wasser messen kann. Es ist wichtig, eine Menge Daten zu sammeln. Dies würde dazu beitragen, das Wissen über Wasser zu erhöhen überhaupt .')</p>
-      </div>
-    </div>
-  </section>
-  <section id="results-section" style="display:none;" class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column">
-          <div class="content">
-            <div class="title is-3">_('Information zu') <em id="current-location"></em></div>
-            <div id="result-details" style="display:none;">
-              <p>_('Rapport'): <em class="zone-id"></em> - <em class="zone-data-year"></em></p>
-              <p class='report-authority'>_('Autorität'): <span id="report-authority"></span></p>
-              <p class='report-operator'>_('Betreiber'): <span id="report-operator"></span></p>
-              <p class='report-plant'>_('Produktstandorte'): <span id="report-plant"></span></p>
-              <p><span class="zone-data-count"></span> _('Beobachtungen')</p>
+        <div class="columns">
+          <div class="column">
+            <div id="result-loading" class="notification is-primary">Loading data...</div>
+            <div id="result-failed" class="notification is-warning" style="display:none;">
+              _('Keine Information für den angegebenen Standort gefunden. Kontaktieren Sie uns, wenn Sie das Gefühl haben, dass dies ein Fehler ist oder erneut suchen')
             </div>
           </div>
         </div>
-        <div class="column">
-          <div id="result-map" class="map"></div>
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column">
-          <div id="result-loading">Loading data...</div>
-          <div id="result-success" style="display:none;">
-            <div id="table-observations"></div>
+        <div class="columns">
+          <div class="column">
+            <div class="content box">
+              <div class="title is-3">_('Information zu') <em id="current-location"></em></div>
+              <div id="result-details" style="display:none;">
+                <p>_('Rapport'): <em class="zone-id"></em> - <em class="zone-data-year"></em></p>
+                <p class='report-authority'>_('Autorität'): <span id="report-authority"></span></p>
+                <p class='report-operator'>_('Betreiber'): <span id="report-operator"></span></p>
+                <p class='report-plant'>_('Produktstandorte'): <span id="report-plant"></span></p>
+                <p><span class="zone-data-count"></span> _('Beobachtungen')</p>
+              </div>
+            </div>
           </div>
-          <div id="result-failed" class="notification is-warning" style="display:none;">
-            _('Keine Information für den angegebenen Standort gefunden. Kontaktieren Sie uns, wenn Sie das Gefühl haben, dass dies ein Fehler ist oder erneut suchen')
+          <div class="column">
+            <div class="content box">
+              <div id="result-map" class="map"></div>
+            </div>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <div id="result-success" style="display:none;">
+              <div id="table-observations"></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <footer class="footer" style="display:none;" >
-    <div class="container">
-      <div class="content has-text-centered ">
-        <p class="field">
-          <a class="button button-footer is-outlined" data-target="#modal-about">
-            <span class="icon"><i class="fa fa-question"></i></span>
-            <span>_('Über das Projekt')</span>
-          </a>
-          <a class="button button-footer is-outlined" data-target="#modal-contact">
-            <span class="icon"><i class="fa fa-envelope"></i></span>
-            <span>_('Kontakt')</span>
-          </a>
-          <a class="button button-footer is-outlined" data-target="#modal-team">
-            <span class="icon"><i class="fa fa-user"></i></span>
-            <span>_('Mitwirkende')</span>
-          </a>
-          <a class="button button-footer is-outlined" title="github" href="https://github.com/codeforeurope/transparent-water">
-            <span class="icon"><i class="fa fa-github"></i></span>
-            <span>Github</span>
-          </a>
-          <a class="button button-footer is-outlined" id="api-docs" href="/docs">
-            <span class="icon"><i class="fa fa-wrench"></i></span>
-            <span>_('API')</span>
-          </a>
-        </p>
-      </div>
-    </div>
-  </footer>
-  <div id="modal-about" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-      <div class="box">
-        <div class="content">
-          <h4 style="margin-top:0;">_('Wie das Trinkwasser-Tool entstanden ist')</h4>
-						<p>_('Trinkwasser gilt als das am besten kontrollierte Lebensmittel in Deutschland. Und trotzdem wissen wir sehr wenig über das Wasser, das bei uns aus dem Hahn kommt. Viele Kommunen veröffentlichen die Untersuchungsergebnisse auf ihren Webseiten. Für den Bürger sind diese Daten abrufbar - aber nicht greifbar. Was bedeutet ein Härtegrad von 9? Sind 200 Milligramm Calcium pro Liter viel oder wenig? Wie mineralreich unser Leitungswasser ist, zeigt sich erst, wenn wir es mit Wasser aus dem Handel vergleichen.')</p>
-        </div>
-      </div>
-    </div>
-    <button class="modal-close is-large"></button>
-  </div>
-  <div id="modal-contact" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-      <div class="box">
-        <div class="content">
-          <h4 class="modal-title">_('Kontakt')</h4>
-          <p>_('Wir freuen uns über Feedback:')</p>
-					<p>_('E-Mail:') _('wasser')<!--nospam@blockscanners123987.de-->&#64;_('opendatalab.de')</p>
-					<p>_('Aufgrund der zahlreichen Daten kann es vereinzelt zu fehlerhaften Angaben kommen. Haben Sie einen Fehler entdeckt? Schreiben Sie uns!')</p>
-					<p>_('Oder sind Sie Mitarbeiter einer Kommune und möchten Ihre Daten eintragen? Schicken Sie uns einfach Ihre Daten per E-Mail.')</p>
-
-        </div>
-      </div>
-    </div>
-    <button class="modal-close is-large"></button>
-  </div>
-  <div id="modal-team" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-      <div class="box">
-        <div class="content">
-  				<table class="table">
-            <tbody>
-              <tr><td colspan="3" class="has-text-centered"><strong>_('Redaktionelle Umsetzung')</strong></td></tr>
-              <tr>
-                <td>Vanessa Wormer</td>
-                <td><a target="_blank" href="https://twitter.com/remrow"><i class="fa fa-twitter"></i></a></td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>Isabelle Müller</td>
-                <td><a target="_blank" href="https://twitter.com/isa_mue"><i class="fa fa-twitter"></i></a></td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr><td colspan="3" class="has-text-centered"><strong>_('Gestaltung')</strong></td></tr>
-              <tr>
-                <td>Heiko Nicht</td>
-                <td><a target="_blank" href="https://twitter.com/HeikoNicht"><i class="fa fa-twitter"></i></a></td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr><td colspan="3" class="has-text-centered"><strong>_('Programmierung')</strong></td></tr>
-              <tr>
-                <td>Felix Ebert</td>
-                <td><a target="_blank" href="https://twitter.com/femeb"><i class="fa fa-twitter"></i></a></td>
-                <td><a target="_blank" href="https://github.com/felixebert"><i class="fa fa-github"></i></a></td>
-              </tr>
-              <tr>
-                <td>Ulrich Stech</td>
-                <td><a target="_blank" href="https://twitter.com/masterX244"><i class="fa fa-twitter"></i></a></td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>Duncan Healy</td>
-                <td>&nbsp;</td>
-                <td><a target="_blank" href="https://github.com/duncanhealy"><i class="fa fa-github"</i></a></td>
-              </tr>
-              <tr>
-                <td>Milo van der Linden</td>
-                <td><a target="_blank" href="https://twitter.com/miblon"><i class="fa fa-twitter"></i></a></td>
-                <td><a target="_blank" href="https://github.com/milovanderlinden"><i class="fa fa-github"</i></a></td>
-              </tr>
-              <tr><td colspan="3" class="has-text-centered"><strong>_('Mitarbeit')</strong></td></tr>
-              <tr>
-                <td>Alexander Walther</td>
-                <td><a target="_blank" href="https://twitter.com/alexplus_de"><i class="fa fa-twitter"></i></a></td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>Tom Görner</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>Gerd Hoffman</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <button class="modal-close is-large"></button>
-  </div>
-  <script src="../lib/jquery-3.2.1.min.js"></script>
-  <script src="../lib/math.min.js"></script>
-  <script src="../lib/jquery.autocomplete.min.js"></script>
-  <script src="../lib/sammy-latest.min.js"></script>
-  <script src="../js/config.js"></script>
-  <script src="../js/transparentwater.js"></script>
-  <script src="../js/utils.js"></script>
-  <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
-  <script src="../js/map.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      math.createUnit('dH', '0.179 mmol/L'); //Deutsche Härte
-      math.createUnit('cfu'); //Colony forming units
-      math.createUnit('ftu'); //Formazine turbidity units
-      math.createUnit('pH'); //Potential of Hydrogen (Acidity)
-      math.createUnit('Eq'); //equivalent
-      math.createUnit('Bq'); //Becquerel per liter, might be convertable, need to investigate
-    	tw.init({
-        "lessthan": "_('weniger als')",
-        "morethan": "_('mehr als')",
-        "hard": "_('(sehr) hart')",
-        "nodescription": "_('Keine Information verfügbar')",
-        "min": "_('Min')",
-        "max": "_('Max')",
-        "score": "_('Score')"
+    </section>
+    <script src="../lib/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="../lib/jquery-3.2.1.min.js"></script>
+    <script src="../lib/math.min.js"></script>
+    <script src="../lib/jquery.autocomplete.min.js"></script>
+    <script src="../lib/sammy-latest.min.js"></script>
+    <script src="../js/transparentwater.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        math.createUnit('dH', '0.179 mmol/L'); //Deutsche Härte
+        math.createUnit('cfu'); //Colony forming units
+        math.createUnit('ftu'); //Formazine turbidity units
+        math.createUnit('pH'); //Potential of Hydrogen (Acidity)
+        math.createUnit('Eq'); //equivalent
+        math.createUnit('Bq'); //Becquerel per liter, might be convertable, need to investigate
+      	tw.i18n = {
+          "lessthan": "_('weniger als')",
+          "morethan": "_('mehr als')",
+          "between": "_('zwischen')",
+          "hard": "_('(sehr) hart')",
+          "nodescription": "_('Keine Information verfügbar')",
+          "min": "_('Min')",
+          "max": "_('Max')",
+          "score": "_('Score')"
+        };
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>

@@ -4,8 +4,6 @@ var tw = tw || { data: {}};
 (function (tw, L) {
   'use strict';
 
-
-
   var map;
   var zonelayer;
   var plantlayer;
@@ -13,13 +11,11 @@ var tw = tw || { data: {}};
    *
    */
   var init = function () {
-    if(!map){
-      map = L.map('result-map');
-      map.invalidateSize();
-      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-    }
+    map = L.map('result-map');
+    map.invalidateSize();
+    L.tileLayer(tw.config.map.url, {
+      attribution: tw.config.map.attribution
+    }).addTo(map);
   };
 
   var clear = function () {
@@ -34,9 +30,14 @@ var tw = tw || { data: {}};
   };
   var update = function (lon,lat) {
     if(!map){
-      init();
+      map = L.map('result-map').setView([lon,lat],10);
+      map.invalidateSize();
+      L.tileLayer(tw.config.map.url, {
+        attribution: tw.config.map.attribution
+      }).addTo(map);
+    } else {
+      map.setView([lon, lat]);
     }
-    map.setView([lon, lat]);
   };
 
   var setPlants = function (plants) {
@@ -63,7 +64,6 @@ var tw = tw || { data: {}};
    * Initialize the map module
    */
   tw.map = {
-    'init': init,
     'clear': clear,
     'update': update,
     'setZone': setZone,
