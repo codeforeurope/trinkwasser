@@ -1,3 +1,6 @@
+# Status
+[![David](https://david-dm.org/codeforeurope/trinkwasser.svg)](https://david-dm.org/codeforeurope/trinkwasser)
+
 # Drinking water visualization: Hardness, contents and cost
 
 * In the converter/ folder, you find raw data and small scripts that will process the rawdata into a model for the website
