@@ -19,9 +19,14 @@ module.exports = function(grunt) {
         roundingPrecision: -1
       },
       target: {
-        files: {
-          'build/css/transparentwater.min.css': ['src/css/**/*.css', 'font-awesome.min.css']
-        }
+        files: [
+          {
+            'build/css/print.min.css': ['src/css/print.css','src/css/leaflet.css']
+          },
+          {
+            'build/css/transparentwater.min.css': ['src/css/**/*.css']
+          }
+        ]
       }
     },
     jshint: {
