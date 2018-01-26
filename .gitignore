@@ -1,6 +1,7 @@
 target
 .project
 .settings
+package-lock.json
 .classpath
 .DS_Store
 _site
