@@ -1,104 +1,98 @@
-# Translators:
-# Milo van der Linden <milo@dogodigi.net>, 2017
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-13 10:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Milo van der Linden <milo@dogodigi.net>, 2017\n"
-"Language-Team: Dutch (https://www.transifex.com/codeforeurope/teams/72739/nl/)\n"
+"Language-Team: Romanian (https://www.transifex.com/codeforeurope/teams/72739/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: ro\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: src/index.html:1 src/index.html:4
 msgid "Was steckt in meinem Leitungswasser?"
-msgstr "Wat zit er in mijn leidingwater?"
+msgstr ""
 
 #: src/index.html:2
 msgid ""
 "Weißt du eigentlich, wie gut das Trinkwasser an deinem Wohnort ist? Hier "
 "kannst du es herausfinden - für den Stadt- und Landkreis Heilbronn"
 msgstr ""
-"Ken jij de kwaliteit van het water dat thuis uit de kraan komt? Laat je "
-"informeren door deze website"
 
 #: src/index.html:3 src/index.html:60
 msgid "Region Heilbronn"
-msgstr "Nederland"
+msgstr ""
 
 #: src/index.html:5
 msgid "Ort"
-msgstr "Woonplaats"
+msgstr ""
 
 #: src/index.html:6
 msgid "Bitte auswählen"
-msgstr "Maak een keuze"
+msgstr ""
 
 #: src/index.html:7
 msgid "Ortsteil"
-msgstr "Wijk of buurt"
+msgstr ""
 
 #: src/index.html:8
 msgid "Straße"
-msgstr "Straat"
+msgstr ""
 
 #: src/index.html:9
 msgid "Weiter"
-msgstr "Verder"
+msgstr ""
 
 #: src/index.html:10
 msgid "Derzeit sind Daten aus dem Stadt- und Landkreis Heilbronn auswählbar."
 msgstr ""
-"Momenteel kunnen alleen gegevens uit Stadt- und Landkreis Heilbron worden "
-"gekozen."
 
 #: src/index.html:11
 msgid "Natrium"
-msgstr "Natrium"
+msgstr ""
 
 #: src/index.html:12
 msgid "Kalium"
-msgstr "Kalium"
+msgstr ""
 
 #: src/index.html:13
 msgid "Calcium"
-msgstr "Calcium"
+msgstr ""
 
 #: src/index.html:14
 msgid "Magnesium"
-msgstr "Magnesium"
+msgstr ""
 
 #: src/index.html:15
 msgid "Chlorid"
-msgstr "Chloor"
+msgstr ""
 
 #: src/index.html:16
 msgid "Nitrat"
-msgstr "Nitraat"
+msgstr ""
 
 #: src/index.html:17
 msgid "Sulfat"
-msgstr "Sulfaat"
+msgstr ""
 
 #: src/index.html:18
 msgid "Härte"
-msgstr "Hardheid"
+msgstr ""
 
 #: src/index.html:19
 msgid "Fragen und Antworten"
-msgstr "Vragen en antwoorden"
+msgstr ""
 
 #: src/index.html:20
 msgid "Es liegen leider keine Werte für diesen Inhaltsstoff vor."
-msgstr "Er zijn geen waarden voor deze component."
+msgstr ""
 
 #: src/index.html:21 src/index.html:72
 msgid "Natrium reguliert den Wasserhaushalt."
-msgstr "Natrium reguleert de waterbalans."
+msgstr ""
 
 #: src/index.html:22
 msgid ""
@@ -202,7 +196,7 @@ msgstr ""
 
 #: src/index.html:37
 msgid "Zum Vergleich: Bodensee-Wasser enthält nur 4 mg Nitrat pro Liter."
-msgstr "Ter vergelijking, Bodensee-water bevat 4mg Nitraat per liter."
+msgstr ""
 
 #: src/index.html:38 src/index.html:83
 msgid ""
@@ -233,35 +227,35 @@ msgstr ""
 
 #: src/index.html:42 src/index.html:62
 msgid "Vergleich mit Mineralwasser"
-msgstr "Vergelijk met mineraalwater"
+msgstr ""
 
 #: src/index.html:43 src/index.html:45
 msgid "mg/l"
-msgstr "mg/l"
+msgstr ""
 
 #: src/index.html:44
 msgid "Wert:"
-msgstr "Waarde:"
+msgstr ""
 
 #: src/index.html:46
 msgid "Grenzwert:"
-msgstr "Limiet:"
+msgstr ""
 
 #: src/index.html:47
 msgid "Durchschnitt:"
-msgstr "Gemiddelde:"
+msgstr ""
 
 #: src/index.html:48
 msgid "(Region Heilbronn, rote Linie)"
-msgstr "(De rode lijn is het landelijk gemiddelde)"
+msgstr ""
 
 #: src/index.html:49
 msgid "Tagesbedarf:"
-msgstr "Aanbevolen dagelijkse hoeveelheid:"
+msgstr ""
 
 #: src/index.html:50 src/index.html:71
 msgid "~"
-msgstr "~"
+msgstr ""
 
 #: src/index.html:51
 msgid ""
@@ -283,51 +277,51 @@ msgstr ""
 
 #: src/index.html:54
 msgid "Wert"
-msgstr "Waarde"
+msgstr ""
 
 #: src/index.html:55 src/index.html:57 src/index.html:61
 msgid "°dH"
-msgstr "°dH"
+msgstr ""
 
 #: src/index.html:56
 msgid "Restalkalität"
-msgstr "Restkwaliteit"
+msgstr ""
 
 #: src/index.html:58
 msgid "Bereich"
-msgstr "Bereik"
+msgstr ""
 
 #: src/index.html:59
 msgid "Durchschnitt"
-msgstr "Gemiddelde"
+msgstr ""
 
 #: src/index.html:63
 msgid "Volvic"
-msgstr "Volvic"
+msgstr ""
 
 #: src/index.html:64
 msgid "Wüteria Heiligenquelle"
-msgstr "Wüteria Heiligenquelle"
+msgstr ""
 
 #: src/index.html:65
 msgid "Teusser Naturell"
-msgstr "Teusser Naturel"
+msgstr ""
 
 #: src/index.html:66
 msgid "Vittel"
-msgstr "Vittel"
+msgstr ""
 
 #: src/index.html:67 src/index.html:68
 msgid "mein Leitungswasser"
-msgstr "Leidingwater"
+msgstr ""
 
 #: src/index.html:69
 msgid "(rote Linie)"
-msgstr "(rode lijn)"
+msgstr ""
 
 #: src/index.html:70
 msgid "Tagesbedarf"
-msgstr "Aanbevolen dagelijkse hoeveelheid"
+msgstr ""
 
 #: src/index.html:73
 msgid ""
@@ -337,7 +331,7 @@ msgstr ""
 
 #: src/index.html:74
 msgid "(weniger als 20 mg/l)"
-msgstr "(minder dan 20 mg/l)"
+msgstr ""
 
 #: src/index.html:76
 msgid "Calcium wird zur Bildung der Knochen und Zähne gebraucht."
@@ -367,7 +361,7 @@ msgstr ""
 
 #: src/index.html:84
 msgid "Zurück"
-msgstr "Terug"
+msgstr ""
 
 #: src/index.html:85
 msgid ""
@@ -389,15 +383,15 @@ msgstr ""
 
 #: src/index.html:88
 msgid "Information zu"
-msgstr "Informatie over"
+msgstr ""
 
 #: src/index.html:89
 msgid "Die Daten stammen aus dem Jahr"
-msgstr "Op basis van gegevens uit het jaar"
+msgstr ""
 
 #: src/index.html:90
 msgid "Woher kommt unser Trinkwasser?"
-msgstr "Waar komt ons water vandaan?"
+msgstr ""
 
 #: src/index.html:91
 msgid ""
@@ -480,7 +474,7 @@ msgstr ""
 
 #: src/index.html:104
 msgid "Was bedeutet die Wasserhärte für mich?"
-msgstr "Wat betekent de hardheid van water voor mij?"
+msgstr ""
 
 #: src/index.html:105
 msgid ""
@@ -499,7 +493,7 @@ msgstr ""
 
 #: src/index.html:107
 msgid "Warum gibt es bei uns kein weiches Trinkwasser?"
-msgstr "Waarom is het water bij ons niet zacht?"
+msgstr ""
 
 #: src/index.html:108
 msgid ""
@@ -517,7 +511,7 @@ msgstr ""
 
 #: src/index.html:110
 msgid "Wie entstehen die verschiedenen Härtegrade?"
-msgstr "Hoe ontstaan de verschillen in hardheid?"
+msgstr ""
 
 #: src/index.html:112
 msgid ""
@@ -525,46 +519,42 @@ msgid ""
 "Magnesium - je nachdem ob es sich um Oberflächen-, Grund oder Quellwasser "
 "handelt."
 msgstr ""
-"Water bevat verschillende samenstellingen van de mineralen calcium en "
-"magnesium - afhankelijk of het oppervlaktewater, grondwater of bronwater is."
 
 #: src/index.html:113
 msgid "Je mehr Calcium und Magnesium im Wasser sind, desto härter ist es."
-msgstr "Hoe meer Calcium en Magnesium water bevat, hoe harder het water."
+msgstr ""
 
 #: src/index.html:114
 msgid "Einheit °dH - Grad deutscher Härte?"
-msgstr "Einheid °dH - graden Duitse hardheid?"
+msgstr ""
 
 #: src/index.html:115
 msgid ""
 "Die Einheit °dH (Grad deutscher Härte) ist veraltet, aber in der Praxis nach"
 " wie vor gebräuchlich. Neben °dH wird Millimol pro Liter (mmol/l) verwendet."
 msgstr ""
-"De eenheid °dH (graden Duitse hardheid) ist verouder, maar in de praktijk "
-"nog steeds gebruikt. Naast °dH word Millimol per liter (mmol/l) toegepast."
 
 #: src/index.html:116
 msgid "Bereiche:"
-msgstr "Bereik:"
+msgstr ""
 
 #: src/index.html:117
 msgid ""
 "weich: weniger als 1,5 Millimol Calciumcarbonat je Liter (entspricht weniger"
 " als 8,4 Grad deutscher Härte)"
-msgstr "zacht: minder dan 1,5 Millimol Calciumcarbonaat per Liter"
+msgstr ""
 
 #: src/index.html:118
 msgid ""
 "mittel: 1,5 bis 2,5 Millimol Calciumcarbonat je Liter (entspricht 8,4 bis 14"
 " Grad deutscher Härte)"
-msgstr "normaal: 1,5 tot 2,5 Millimol Calciumcarbonaat per liter"
+msgstr ""
 
 #: src/index.html:119
 msgid ""
 "hart: mehr als 2,5 Millimol Calciumcarbonat je Liter (entspricht mehr als 14"
 " Grad deutscher Härte)"
-msgstr "hard: meer dan 2,5 Millimol Calciumcarbonaat per liter"
+msgstr ""
 
 #: src/index.html:120
 msgid "Weiterführende Links"
@@ -584,7 +574,7 @@ msgstr ""
 
 #: src/index.html:124
 msgid "Trinkwasserverordnung"
-msgstr "Drinkwaterverordening"
+msgstr ""
 
 #: src/index.html:125
 msgid ""
@@ -615,7 +605,7 @@ msgstr ""
 
 #: src/index.html:131
 msgid "Quellen"
-msgstr "Bronnen"
+msgstr ""
 
 #: src/index.html:132
 msgid "Heilbronner Versorgungs Gmbh"
@@ -635,15 +625,15 @@ msgstr ""
 
 #: src/index.html:136 src/index.html:173
 msgid "Kontakt"
-msgstr "Contact"
+msgstr ""
 
 #: src/index.html:137
 msgid "Über das Projekt"
-msgstr "Over het project"
+msgstr ""
 
 #: src/index.html:138 src/index.html:152
 msgid "Mitwirkende"
-msgstr "Met hulp van:"
+msgstr ""
 
 #: src/index.html:139 src/index.html:161
 msgid "Impressum"
@@ -736,11 +726,11 @@ msgstr ""
 
 #: src/index.html:149 src/index.html:158
 msgid "http://codefor.de"
-msgstr "http://codefor.eu"
+msgstr ""
 
 #: src/index.html:150 src/index.html:159
 msgid "Code for Germany"
-msgstr "Code For Europe"
+msgstr ""
 
 #: src/index.html:151 src/index.html:160
 msgid ""
@@ -758,7 +748,7 @@ msgstr ""
 
 #: src/index.html:155
 msgid "Programmierung"
-msgstr "Ontwikkeling"
+msgstr ""
 
 #: src/index.html:156
 msgid "Mitarbeit"
@@ -790,15 +780,15 @@ msgstr ""
 
 #: src/index.html:167 src/index.html:175
 msgid "E-Mail:"
-msgstr "Email:"
+msgstr ""
 
 #: src/index.html:168
 msgid "info"
-msgstr "info"
+msgstr ""
 
 #: src/index.html:169
 msgid "if-core.de"
-msgstr "codefor.eu"
+msgstr ""
 
 #: src/index.html:170
 msgid "HRB 108620 (Amtsgericht Stuttgart)"
@@ -814,27 +804,24 @@ msgstr ""
 
 #: src/index.html:174
 msgid "Wir freuen uns über Feedback:"
-msgstr "Vraag of opmerking:"
+msgstr ""
 
 #: src/index.html:176
 msgid "wasser"
-msgstr "water"
+msgstr ""
 
 #: src/index.html:177
 msgid "opendatalab.de"
-msgstr "codefor.eu"
+msgstr ""
 
 #: src/index.html:178
 msgid ""
 "Aufgrund der zahlreichen Daten kann es vereinzelt zu fehlerhaften Angaben "
 "kommen. Haben Sie einen Fehler entdeckt? Schreiben Sie uns!"
 msgstr ""
-"Deze website kan fouten bevatten. Fout gevonden? Stuur on dan een email!"
 
 #: src/index.html:179
 msgid ""
 "Oder sind Sie Mitarbeiter einer Kommune und möchten Ihre Daten eintragen? "
 "Schicken Sie uns einfach Ihre Daten per E-Mail."
 msgstr ""
-"Ben je een werknemer van een overheid of waterbedrijf en heb je gegevens "
-"voor ons? Stuur ons dan een email."

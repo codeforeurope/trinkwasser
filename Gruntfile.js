@@ -103,7 +103,7 @@ module.exports = function(grunt) {
       default: { // Target name.
         options: {
           template: 'lang/templates/LC_MESSAGES/messages.pot', // (default: 'locale/templates/LC_MESSAGES/messages.pot')
-          languages: ['en', 'fr', 'es', 'nl', 'de'],
+          languages: ['en', 'fr', 'es', 'nl', 'de', 'ga', 'uk', 'pl', 'ro', 'uk'],
           localeDir: 'lang/locale'
         }
       }
