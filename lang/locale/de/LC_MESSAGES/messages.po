@@ -1913,14 +1913,10 @@ msgstr ""
 msgid "Unit"
 msgstr ""
 
-#: src/index.html:6
-msgid "Get informed about your drinking water"
-msgstr ""
-
 #: src/index.html:6 src/index.html:7 src/js/main.hb:2 src/templates/main.hb:2
 #: src/templates/test.html:2 src/templates/main.html:2
-msgid "Informieren Sie sich über Ihr Trinkwasser"
-msgstr ""
+msgid "main_subtitle"
+msgstr "Informieren Sie sich über Ihr Trinkwasser"
 
 #: src/index.html:9 src/index.html:10 src/index.html:16 src/index.html:17
 #: src/index.html:14 src/index.html:7 src/index.html:4 src/index.html:5

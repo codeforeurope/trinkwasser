@@ -2,8 +2,23 @@
   "name": "trinkwasser",
   "version": "1.0.0",
   "description": "This is a the API for Trinkwasser/Drinking water.  Information about the project can be found on [Github](https://github.com/codeforeurope/trinkwasser) ",
+  "license": "GPL-3.0+",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/codeforeurope/trinkwasser.git"
+  },
+  "author": {
+    "name": "Milo van der Linden",
+    "email": "milo@edogodigi.net"
+  },
+  "contributors": [
+    {
+      "name": "Duncan Healy",
+      "email": "duncan.healy@gmail.com"
+    }
+  ],
   "dependencies": {
-    "grunt": "1.0.1",
+    "grunt": "^1.0.3",
     "grunt-contrib-clean": "1.1.0",
     "grunt-contrib-concat": "1.0.1",
     "grunt-contrib-copy": "1.0.0",
@@ -12,7 +27,7 @@
     "grunt-contrib-imagemin": "2.0.1",
     "grunt-contrib-jshint": "1.1.0",
     "grunt-contrib-uglify": "3.3.0",
-    "grunt-contrib-watch": "1.0.0",
+    "grunt-contrib-watch": "^1.1.0",
     "grunt-devserver": "0.6.0",
     "grunt-gh-pages": "2.0.0",
     "grunt-i18n-abide": "0.0.20",

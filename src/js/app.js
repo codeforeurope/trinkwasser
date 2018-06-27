@@ -2,6 +2,10 @@
 var tw = tw || { data: {}};
 (function(tw, $) {
   tw.app = $.sammy('#transparentwater', function() {
+    var langCode = navigator.language || navigator.systemLanguage;
+    var lang = langCode.toLowerCase();
+    lang = lang.substr(0, 2);
+    console.log(lang);
     // Main page route
     function setNavigation(){
       $('#api-docs').attr('href', tw.config.api_doc);

@@ -100,7 +100,7 @@ var tw = tw || { data: {}};
    * Get the value for a limit from tw.data.limits
    */
   var evaluateLimit = function(observation) {
-    var table = $('<table class="table"><thead><tr><th>Standard</th><th>' + tw.i18n.min  + '</th><th>' + tw.i18n.max + '</th><th>' + tw.i18n.score + '</th></tr></thead></table>');
+    var table = $('<table class="table"><thead><tr><th>' + tw.i18n.standard + '</th><th>' + tw.i18n.min  + '</th><th>' + tw.i18n.max + '</th><th>' + tw.i18n.score + '</th></tr></thead></table>');
     var tbody = $('<tbody></tbody>');
     for (var i = 0; i < tw.data.limits.length; i++) {
       //Each limit
