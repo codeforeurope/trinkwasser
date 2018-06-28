@@ -2,7 +2,7 @@
 host = https://www.transifex.com
 
 [trinkwasser.messagespot]
-source_file = lang/templates/LC_MESSAGES/messages.pot
+source_file = lang/messages.pot
 source_lang = de
 type = PO
 trans.de = lang/locale/de/LC_MESSAGES/messages.po
