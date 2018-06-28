@@ -5,7 +5,6 @@ var tw = tw || { data: {}};
     var langCode = navigator.language || navigator.systemLanguage;
     var lang = langCode.toLowerCase();
     lang = lang.substr(0, 2);
-    console.log(lang);
     // Main page route
     function setNavigation(){
       $('#api-docs').attr('href', tw.config.api_doc);
@@ -38,10 +37,8 @@ var tw = tw || { data: {}};
       $('.top-menu').hide();
       $('#hero-section').show();
       context.render('templates/main.html').replace('#hero-section').then(function(){
-        console.log('renderedMain');
         $('#info-section').show();
         context.render('templates/info.html').replace('#info-section').then(function(){
-          console.log('renderedInfo');
           $('#results-section').hide();
           tw.geocoder();
         });

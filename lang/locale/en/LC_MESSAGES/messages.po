@@ -4,14 +4,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 07:59+0000\n"
+"POT-Creation-Date: 2018-06-28 08:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Milo van der Linden <milo@dogodigi.net>, 2017\n"
-"Language-Team: English (https://www.transifex.com/codeforeurope/teams/72739/en/)\n"
+"Language-Team: English (https://www.transifex.com/codeforeurope/teams/72739/"
+"en/)\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/index.html:1 src/index.html:4 src/index.html:2 src/index.html:3
@@ -48,11 +49,6 @@ msgstr "Address"
 msgid "Bitte auswählen"
 msgstr "Enter an address"
 
-#: src/index.html:6 src/index.html:7 src/js/main.hb:2 src/templates/main.hb:2
-#: src/templates/test.html:2 src/templates/main.html:2
-msgid "main_subtitle"
-msgstr "Knowing what you drink keeps you safe"
-
 #: src/index.html:7
 msgid "Ortsteil"
 msgstr "District"
@@ -68,7 +64,8 @@ msgstr "Next"
 #: src/index.html:10
 msgid "Derzeit sind Daten aus dem Stadt- und Landkreis Heilbronn auswählbar."
 msgstr ""
-"At the moment we are working on our datasets. Not all cities or districts are available."
+"At the moment we are working on our datasets. Not all cities or districts "
+"are available."
 
 #: src/index.html:11
 msgid "Natrium"
@@ -1559,6 +1556,11 @@ msgstr ""
 msgid "Unit"
 msgstr ""
 
+#: src/index.html:6 src/index.html:7 src/js/main.hb:2 src/templates/main.hb:2
+#: src/templates/test.html:2 src/templates/main.html:2
+msgid "main_subtitle"
+msgstr "Knowing what you drink keeps you safe"
+
 #: src/index.html:9 src/index.html:10 src/index.html:16 src/index.html:17
 #: src/index.html:14 src/index.html:7 src/index.html:4 src/index.html:5
 msgid "Rapport"
@@ -1609,22 +1611,77 @@ msgstr "No information available"
 #: src/index.html:19 src/index.html:20 src/index.html:26 src/index.html:27
 #: src/index.html:28 src/index.html:36 src/index.html:32 src/index.html:43
 #: src/index.html:50 src/index.html:41 src/index.html:44 src/index.html:34
-#: src/index.html:31 src/index.html:14 src/index.html:15
+#: src/index.html:31 src/index.html:14 src/index.html:15 src/index.html:16
 msgid "Min"
 msgstr ""
 
 #: src/index.html:20 src/index.html:21 src/index.html:27 src/index.html:28
 #: src/index.html:29 src/index.html:37 src/index.html:33 src/index.html:44
 #: src/index.html:51 src/index.html:42 src/index.html:45 src/index.html:35
-#: src/index.html:32 src/index.html:15 src/index.html:16
+#: src/index.html:32 src/index.html:15 src/index.html:16 src/index.html:17
 msgid "Max"
 msgstr ""
 
 #: src/index.html:21 src/index.html:22 src/index.html:28 src/index.html:29
 #: src/index.html:30 src/index.html:38 src/index.html:34 src/index.html:45
 #: src/index.html:52 src/index.html:43 src/index.html:46 src/index.html:36
-#: src/index.html:33 src/index.html:16 src/index.html:17
+#: src/index.html:33 src/index.html:16 src/index.html:17 src/index.html:18
 msgid "Score"
+msgstr ""
+
+#: src/index.html:8
+msgid ""
+"Toegang tot veilig drinkwater en adequaat sanitair is een van de "
+"beleidsdoelen van de verenigde naties. Maar wat is veilig drinkwater? Waar "
+"moet je op letten? En is water dat je koopt in de winkel gezond? Wij "
+"proberen antwoord te geven op deze vragen"
+msgstr ""
+
+#: src/index.html:9
+msgid ""
+"Geef in de zoekbalk een adres op en ontdek welke waterkwaliteit je kunt "
+"verwachten. Voor alle stoffen en organismen die in het water voorkomen "
+"proberen wij aan te geven welk effect deze op jou hebben en of de gemeten "
+"waterkwaliteit goed of slecht voor je is."
+msgstr ""
+
+#: src/index.html:10 src/index.html:11
+msgid "Veilig drinkwater en adequaat sanitair"
+msgstr ""
+
+#: src/index.html:11 src/index.html:12
+msgid ""
+"Toegang tot veilig drinkwater en adequaat sanitair is een van de "
+"beleidsdoelen van de verenigde naties. Maar wat is veilig drinkwater? Waar "
+"moet je op letten? En is water dat je koopt in de winkel gezond? Wij "
+"proberen antwoord te geven op deze vragen."
+msgstr ""
+
+#: src/index.html:12 src/index.html:13
+msgid ""
+"Door informatie met betrekking tot waterkwaliteit te verzamelen, eenduidig "
+"te maken en te vergelijken, proberen we een beter inzicht te krijgen"
+msgstr ""
+
+#: src/index.html:13 src/index.html:14
+msgid "Wil je meehelpen aan het verbeteren van informatie over waterkwaliteit?"
+msgstr ""
+
+#: src/index.html:14 src/index.html:15
+msgid ""
+"Deze website is slechts een onderdeel van ons project. Wij kunnen altijd "
+"hulp gebruiken bij het verzamelen van gegevens en hebben een open-hardware "
+"project gestart waarmee je zelf straks je eigen waterkwaliteit kunt meten. "
+"Het is belangrijk om veel gegevens te verzamelen. Daarmee kunnen wij helpen "
+"de kennis over water bij iedereen vergroten."
+msgstr ""
+
+#: src/index.html:9 src/index.html:10
+msgid ""
+"Voer een adres in en ontdek welke waterkwaliteit je kunt verwachten. Voor "
+"alle stoffen en organismen die in het water voorkomen proberen wij aan te "
+"geven welk effect deze op jou hebben en of de gemeten waterkwaliteit goed of "
+"slecht voor je is."
 msgstr ""
 
 #: src/index.html:4 src/templates/navigation.html:2
@@ -1732,5 +1789,6 @@ msgstr "Team"
 msgid "zwischen"
 msgstr "between"
 
+#: src/index.html:15
 msgid "Standard"
 msgstr "Standard"

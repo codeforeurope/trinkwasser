@@ -42,22 +42,6 @@ module.exports = function(grunt) {
         laxbreak: true
       }
     },
-    rev: {
-      options: {
-        encoding: 'utf8',
-        algorithm: 'md5',
-        length: 8
-      },
-      assets: {
-        files: [{
-          src: ['build/{css,js}/*.{js,css}']
-        }]
-      }
-    },
-    watch: {
-      files: ['<%= jshint.files %>'],
-      tasks: ['jshint']
-    },
     copy: {
       dist: {
         files: [{
@@ -85,7 +69,13 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           dot: true,
-          src: ['build/{css,js,img}']
+          src: ['build/{css,js,img}', 'build/templates/']
+        }]
+      },
+      build: {
+        files: [{
+          dot: true,
+          src: ['build/templates/']
         }]
       }
     },
@@ -102,7 +92,7 @@ module.exports = function(grunt) {
     abideCreate: {
       default: { // Target name.
         options: {
-          template: 'lang/templates/LC_MESSAGES/messages.pot', // (default: 'locale/templates/LC_MESSAGES/messages.pot')
+          template: 'lang/messages.pot', // (default: 'locale/templates/LC_MESSAGES/messages.pot')
           languages: ['en', 'fr', 'es', 'nl', 'de', 'ga', 'uk', 'pl', 'ro', 'uk'],
           localeDir: 'lang/locale'
         }
@@ -111,7 +101,7 @@ module.exports = function(grunt) {
     abideMerge: {
       default: { // Target name.
         options: {
-          template: 'lang/templates/LC_MESSAGES/messages.pot',
+          template: 'lang/messages.pot',
           localeDir: 'lang/locale'
         }
       }
@@ -119,14 +109,14 @@ module.exports = function(grunt) {
     abideExtract: {
       js: {
         src: 'src/js/**/*.js',
-        dest: 'lang/templates/LC_MESSAGES/messages.pot',
+        dest: 'lang/messages.pot',
         options: {
           language: 'JavaScript'
         }
       },
       templates: {
         src: 'src/templates/**/*.html',
-        dest: 'lang/templates/LC_MESSAGES/messages.pot',
+        dest: 'lang/messages.pot',
         options: {
           keyword: '_',
           language: 'swig'
@@ -134,7 +124,7 @@ module.exports = function(grunt) {
       },
       html: {
         src: 'src/index.html',
-        dest: 'lang/templates/LC_MESSAGES/messages.pot',
+        dest: 'lang/messages.pot',
         options: {
           keyword: '_',
           language: 'swig'
@@ -160,18 +150,15 @@ module.exports = function(grunt) {
       }
     }
   });
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-rev');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-i18n-abide');
   grunt.loadNpmTasks('hernanex3-grunt-static-i18n');
-  grunt.registerTask('build', ['clean:dist', 'i18n', 'cssmin', 'imagemin', 'uglify', 'copy:dist', 'copy:redirect']);
+  grunt.registerTask('build', ['clean:dist', 'i18n', 'cssmin', 'imagemin', 'uglify', 'copy:dist', 'copy:redirect', 'clean:build']);
   grunt.registerTask('default', ['build']);
   grunt.registerTask('i18n', ['abideCreate', 'abideExtract', 'statici18n']);
 };

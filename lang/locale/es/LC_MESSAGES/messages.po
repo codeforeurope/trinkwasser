@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 07:59+0000\n"
+"POT-Creation-Date: 2018-06-28 08:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: Spanish (https://www.transifex.com/codeforeurope/teams/72739/"
 "es/)\n"
@@ -1576,21 +1576,21 @@ msgstr ""
 #: src/index.html:19 src/index.html:20 src/index.html:26 src/index.html:27
 #: src/index.html:28 src/index.html:36 src/index.html:32 src/index.html:43
 #: src/index.html:50 src/index.html:41 src/index.html:44 src/index.html:34
-#: src/index.html:31 src/index.html:14 src/index.html:15
+#: src/index.html:31 src/index.html:14 src/index.html:15 src/index.html:16
 msgid "Min"
 msgstr ""
 
 #: src/index.html:20 src/index.html:21 src/index.html:27 src/index.html:28
 #: src/index.html:29 src/index.html:37 src/index.html:33 src/index.html:44
 #: src/index.html:51 src/index.html:42 src/index.html:45 src/index.html:35
-#: src/index.html:32 src/index.html:15 src/index.html:16
+#: src/index.html:32 src/index.html:15 src/index.html:16 src/index.html:17
 msgid "Max"
 msgstr ""
 
 #: src/index.html:21 src/index.html:22 src/index.html:28 src/index.html:29
 #: src/index.html:30 src/index.html:38 src/index.html:34 src/index.html:45
 #: src/index.html:52 src/index.html:43 src/index.html:46 src/index.html:36
-#: src/index.html:33 src/index.html:16 src/index.html:17
+#: src/index.html:33 src/index.html:16 src/index.html:17 src/index.html:18
 msgid "Score"
 msgstr ""
 
@@ -1734,4 +1734,8 @@ msgstr ""
 
 #: src/index.html:12
 msgid "zwischen"
+msgstr ""
+
+#: src/index.html:15
+msgid "Standard"
 msgstr ""

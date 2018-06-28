@@ -78,7 +78,10 @@
         $('#current-location').text(suggestion.data.constructed_output);
         var lat = suggestion.data.lat;
         var lon = suggestion.data.lon;
-        tw.app.setLocation('#/quality/' + lat + ',' + lon);
+        var langCode = navigator.language || navigator.systemLanguage;
+        var lang = langCode.toLowerCase();
+        lang = lang.substr(0, 2);
+        tw.app.setLocation('/' + lang + '/#/quality/' + lat + ',' + lon);
       }
     });
   };
