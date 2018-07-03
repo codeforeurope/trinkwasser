@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2018-06-28 10:23+0000\n"
+"POT-Creation-Date: 2018-06-30 11:13+0000\n"
 
 #: src/templates/about.html:1
 msgid "Wie das Trinkwasser-Tool entstanden ist"
@@ -17,25 +17,29 @@ msgstr "Wie das Trinkwasser-Tool entstanden ist"
 #: src/templates/about.html:2
 msgid ""
 "Trinkwasser gilt als das am besten kontrollierte Lebensmittel in "
-"Deutschland. Und trotzdem wissen wir sehr wenig über das Wasser, das bei uns"
-" aus dem Hahn kommt. Viele Kommunen veröffentlichen die "
-"Untersuchungsergebnisse auf ihren Webseiten. Für den Bürger sind diese Daten"
-" abrufbar - aber nicht greifbar. Was bedeutet ein Härtegrad von 9? Sind 200 "
-"Milligramm Calcium pro Liter viel oder wenig? Wie mineralreich unser "
-"Leitungswasser ist, zeigt sich erst, wenn wir es mit Wasser aus dem Handel "
-"vergleichen."
+"Deutschland. Und trotzdem wissen wir sehr wenig über das Wasser, das bei "
+"uns aus dem Hahn kommt. Viele Kommunen veröffentlichen die "
+"Untersuchungsergebnisse auf ihren Webseiten. Für den Bürger sind diese "
+"Daten abrufbar - aber nicht greifbar. Was bedeutet ein Härtegrad von 9? "
+"Sind 200 Milligramm Calcium pro Liter viel oder wenig? Wie mineralreich "
+"unser Leitungswasser ist, zeigt sich erst, wenn wir es mit Wasser aus dem "
+"Handel vergleichen."
 msgstr ""
 "Trinkwasser gilt als das am besten kontrollierte Lebensmittel in "
-"Deutschland. Und trotzdem wissen wir sehr wenig über das Wasser, das bei uns"
-" aus dem Hahn kommt. Viele Kommunen veröffentlichen die "
-"Untersuchungsergebnisse auf ihren Webseiten. Für den Bürger sind diese Daten"
-" abrufbar - aber nicht greifbar. Was bedeutet ein Härtegrad von 9? Sind 200 "
-"Milligramm Calcium pro Liter viel oder wenig? Wie mineralreich unser "
-"Leitungswasser ist, zeigt sich erst, wenn wir es mit Wasser aus dem Handel "
-"vergleichen."
+"Deutschland. Und trotzdem wissen wir sehr wenig über das Wasser, das bei "
+"uns aus dem Hahn kommt. Viele Kommunen veröffentlichen die "
+"Untersuchungsergebnisse auf ihren Webseiten. Für den Bürger sind diese "
+"Daten abrufbar - aber nicht greifbar. Was bedeutet ein Härtegrad von 9? "
+"Sind 200 Milligramm Calcium pro Liter viel oder wenig? Wie mineralreich "
+"unser Leitungswasser ist, zeigt sich erst, wenn wir es mit Wasser aus dem "
+"Handel vergleichen."
 
 #: src/templates/contact.html:1 src/templates/navigation.html:5
 #: src/templates/navigation.html:14 src/templates/navigation.html:15
+#: src/templates/contact.html:1
+#: src/templates/navigation.html:5
+#: src/templates/navigation.html:14
+#: src/templates/navigation.html:15
 msgid "Kontakt"
 msgstr "Kontakt"
 
@@ -73,6 +77,11 @@ msgstr ""
 
 #: src/templates/info.html:1 src/templates/main.html:1
 #: src/templates/navigation.html:1 src/index.html:2
+#: src/templates/info.html:1
+#: src/templates/main.html:1
+#: src/templates/navigation.html:1
+#: src/index.html:2
+#: src/index-new.html:2
 msgid "Was steckt in meinem Leitungswasser?"
 msgstr "Was steckt in meinem Leitungswasser?"
 
@@ -120,15 +129,15 @@ msgstr "Wollen Sie helfen Wasserqualität Informationen zu verbessern?"
 msgid ""
 "Diese Website ist nur ein Teil unseres Projektes. Wir können immer Hilfe "
 "verwenden, um Daten zu sammeln und haben eine offene Hardware-Projekt "
-"gestartet, das bald Sie Ihr eigenes Wasser messen kann. Es ist wichtig, eine"
-" Menge Daten zu sammeln. Dies würde dazu beitragen, das Wissen über Wasser "
-"zu erhöhen überhaupt ."
+"gestartet, das bald Sie Ihr eigenes Wasser messen kann. Es ist wichtig, "
+"eine Menge Daten zu sammeln. Dies würde dazu beitragen, das Wissen über "
+"Wasser zu erhöhen überhaupt ."
 msgstr ""
 "Diese Website ist nur ein Teil unseres Projektes. Wir können immer Hilfe "
 "verwenden, um Daten zu sammeln und haben eine offene Hardware-Projekt "
-"gestartet, das bald Sie Ihr eigenes Wasser messen kann. Es ist wichtig, eine"
-" Menge Daten zu sammeln. Dies würde dazu beitragen, das Wissen über Wasser "
-"zu erhöhen überhaupt ."
+"gestartet, das bald Sie Ihr eigenes Wasser messen kann. Es ist wichtig, "
+"eine Menge Daten zu sammeln. Dies würde dazu beitragen, das Wissen über "
+"Wasser zu erhöhen überhaupt ."
 
 #: src/templates/main.html:2
 msgid "main_subtitle"
@@ -136,31 +145,46 @@ msgstr "Wasser ist fur allen"
 
 #: src/templates/main.html:3 src/templates/navigation.html:2
 #: src/templates/navigation.html:9
+#: src/templates/main.html:3
+#: src/templates/navigation.html:2
 msgid "Bitte auswählen"
 msgstr "Bitte auswählen"
 
 #: src/templates/navigation.html:3 src/templates/navigation.html:10
 #: src/templates/navigation.html:11
+#: src/templates/navigation.html:3
+#: src/templates/navigation.html:10
 msgid "Home"
 msgstr "Home"
 
 #: src/templates/navigation.html:4 src/templates/navigation.html:12
 #: src/templates/navigation.html:13
+#: src/templates/navigation.html:4
+#: src/templates/navigation.html:12
+#: src/templates/navigation.html:5
 msgid "Über das Projekt"
 msgstr "Über das Projekt"
 
 #: src/templates/navigation.html:6 src/templates/navigation.html:16
 #: src/templates/navigation.html:17 src/templates/team.html:1
+#: src/templates/navigation.html:6
+#: src/templates/navigation.html:16
+#: src/templates/navigation.html:17
+#: src/templates/team.html:1
 msgid "Mitwirkende"
 msgstr "Mitwirkende"
 
 #: src/templates/navigation.html:7 src/templates/navigation.html:18
 #: src/templates/navigation.html:19
+#: src/templates/navigation.html:7
+#: src/templates/navigation.html:18
 msgid "Github"
 msgstr "Github"
 
 #: src/templates/navigation.html:8 src/templates/navigation.html:20
 #: src/templates/navigation.html:21
+#: src/templates/navigation.html:8
+#: src/templates/navigation.html:20
 msgid "API"
 msgstr "API"
 
@@ -181,6 +205,7 @@ msgid "Mitarbeit"
 msgstr "Mitarbeit"
 
 #: src/index.html:1
+#: src/index-new.html:1
 msgid ""
 "Weißt du eigentlich, wie gut das Trinkwasser an deinem Wohnort ist? Hier "
 "kannst du es herausfinden - für den Stadt- und Landkreis Heilbronn"

@@ -1,6 +1,9 @@
 // Initialize our namespace
 var tw = tw || { data: {}};
 (function(tw, $) {
+  String.prototype.toProperCase = function () {
+    return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+  };
   tw.app = $.sammy('#transparentwater', function() {
     var langCode = navigator.language || navigator.systemLanguage;
     var lang = langCode.toLowerCase();
@@ -94,6 +97,10 @@ var tw = tw || { data: {}};
         $('#zone-id').html('');
         if (Object.keys(data).length > 0) {
           if(data.zone && data.zone.geometry){
+            console.log("Current location text: '" + $('#current-location').text() + "'");
+            if ($('#current-location').text().length === 0){
+              $('#current-location').text(data.zone.properties.name.toProperCase().replace("_", " "));
+            }
             //Add the geometry as layer and zoom the map to the layer extend.
             tw.map.setZone(data.zone);
             if(data.plants && data.plants.length > 0){

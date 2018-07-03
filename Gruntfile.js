@@ -8,9 +8,23 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
       },
       target:{
-        files: {
-          'build/js/transparentwater.min.js': ['src/js/**/*.js']
-        }
+        options: {
+          beautify: true
+        },
+        files: [
+          {
+            'build/js/transparentwater.min.js': ['src/js/**/*.js']
+          },
+          {
+            'build/app.build.js': [
+              'src/app/config.js',
+              'src/app/modules/*.js',
+              'src/app/models/*.js',
+              'src/app/components/*.js',
+              'src/app/index.js'
+            ]
+          }
+        ]
       }
     },
     cssmin: {
@@ -24,22 +38,9 @@ module.exports = function(grunt) {
             'build/css/print.min.css': ['src/css/print.css','src/css/leaflet.css']
           },
           {
-            'build/css/transparentwater.min.css': ['src/css/**/*.css']
+            'build/css/transparentwater.min.css': ['src/css/**/*.css', '!src/css/print.css']
           }
         ]
-      }
-    },
-    jshint: {
-      files: ['gruntfile.js', 'src/js/*.js'],
-      options: {
-        globals: {
-          jQuery: true,
-          console: true,
-          window: true,
-          dw: true,
-          L: true
-        },
-        laxbreak: true
       }
     },
     copy: {
@@ -76,6 +77,12 @@ module.exports = function(grunt) {
         files: [{
           dot: true,
           src: ['build/templates/']
+        },{
+          dot: true,
+          src: ['build/app.build.js']
+        },{
+          dot: true,
+          src: ['build/index-new.html']
         }]
       }
     },
@@ -129,6 +136,14 @@ module.exports = function(grunt) {
           keyword: '_',
           language: 'swig'
         }
+      },
+      htmlnew: {
+        src: 'src/index-new.html',
+        dest: 'lang/messages.pot',
+        options: {
+          keyword: '_',
+          language: 'swig'
+        }
       }
     },
     statici18n: {
@@ -137,6 +152,18 @@ module.exports = function(grunt) {
       },
       build: {
         files: [{
+          expand: true,
+          cwd: 'build',
+          src: 'app.build.js',
+          dest: 'build'
+        },
+        {
+          expand: true,
+          cwd: 'src',
+          src: 'index-new.html',
+          dest: 'build'
+        },
+        {
           expand: true,
           cwd: 'src',
           src: 'index.html',
@@ -154,11 +181,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-i18n-abide');
   grunt.loadNpmTasks('hernanex3-grunt-static-i18n');
-  grunt.registerTask('build', ['clean:dist', 'i18n', 'cssmin', 'imagemin', 'uglify', 'copy:dist', 'copy:redirect', 'clean:build']);
+  grunt.registerTask('build', ['clean:dist', 'uglify', 'i18n', 'cssmin', 'imagemin', 'copy:dist', 'copy:redirect', 'clean:build']);
   grunt.registerTask('default', ['build']);
-  grunt.registerTask('i18n', ['abideCreate', 'abideExtract', 'statici18n']);
+  grunt.registerTask('i18n', ['statici18n']);
 };
