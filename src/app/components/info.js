@@ -1,5 +1,9 @@
 var tw = tw || { components: {}};
+/**
+ * Render the "info" block for the main page
+ */
 (function(tw, m) {
+
     'use strict';
     if(!tw.components) { tw.components =  {}};
     tw.components.info = {

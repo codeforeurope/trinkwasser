@@ -1,4 +1,8 @@
 var tw = tw || { components: {}};
+/**
+ * Render the navbar. Should not be visible on the main page, but needs to be shown
+ * on all other pages
+ */
 (function(tw, m) {
     'use strict';
     if(!tw.components) { tw.components =  {}};

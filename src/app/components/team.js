@@ -1,4 +1,7 @@
 var tw = tw || { components: {}};
+/**
+ * Render the "team" route. Show information about people involved in this project
+ */
 (function(tw, m) {
     'use strict';
     if(!tw.components) { tw.components =  {}};

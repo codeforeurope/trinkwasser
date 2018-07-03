@@ -1,4 +1,7 @@
 var tw = tw || { models: {}};
+/**
+ * Simple model for the people involved in the project
+ */
 (function(tw, m) {
     'use strict';
     if(!tw.models) { tw.models =  {}};

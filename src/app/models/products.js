@@ -1,11 +1,10 @@
 var tw = tw || { models: {}};
+/**
+ * Simple model for products (bottled water)
+ */
 (function(tw, m) {
     'use strict';
     if(!tw.models) { tw.models =  {}};
-
-    /**
-     * Get the List of products (bottled water)
-     */
     tw.models.products = {
         selected: {},
         list: [],

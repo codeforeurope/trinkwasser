@@ -1,4 +1,7 @@
 var tw = tw || { components: {}};
+/**
+ * Render the "about" route. Show general information about the project 
+ */
 (function(tw, m) {
     'use strict';
     if(!tw.components) { tw.components =  {}};

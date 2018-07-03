@@ -1,4 +1,7 @@
 var tw = tw || { components: {}};
+/**
+ * Render the "contact" route. Show information about how to contact us
+ */
 (function(tw, m) {
     'use strict';
     if(!tw.components) { tw.components =  {}};

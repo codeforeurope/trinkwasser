@@ -1,4 +1,7 @@
 var tw = tw || { components: {}};
+/**
+ * Render the hero/jumbotron for the main page
+ */
 (function(tw, m) {
     'use strict';
     if(!tw.components) { tw.components =  {}};
