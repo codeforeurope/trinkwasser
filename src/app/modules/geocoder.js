@@ -80,7 +80,6 @@
                     //if (x) x[currentFocus].click();
                 }
             }
-            console.log(tw.geocoder.currentfocus);
         },
         view: function(){
             var input = [

@@ -97,7 +97,6 @@ var tw = tw || { data: {}};
         $('#zone-id').html('');
         if (Object.keys(data).length > 0) {
           if(data.zone && data.zone.geometry){
-            console.log("Current location text: '" + $('#current-location').text() + "'");
             if ($('#current-location').text().length === 0){
               $('#current-location').text(data.zone.properties.name.toProperCase().replace("_", " "));
             }

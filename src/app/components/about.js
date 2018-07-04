@@ -4,7 +4,7 @@ var tw = tw || { components: {}};
  */
 (function(tw, m) {
     'use strict';
-    if(!tw.components) { tw.components =  {}};
+    if(!tw.components) { tw.components =  {}}
     tw.components.about = {
         view: function() {
             return m("div", {class: "container"}, 
@@ -14,5 +14,5 @@ var tw = tw || { components: {}};
                 ])
             );
         }
-    }
+    };
 })(tw, m);

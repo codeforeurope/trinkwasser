@@ -6,8 +6,9 @@ var tw = tw || { models: {}};
     'use strict';
     if(!tw.models) { tw.models =  {}};
 
-  
+
     tw.models.reports = {
+        selected: {},
         fetchOne: function(geocoderResult) {
             m.request({
                 method: "GET",
@@ -20,10 +21,9 @@ var tw = tw || { models: {}};
                 }
             })
             .then(function(response) {
-                tw.models.product.item = response;
+                tw.models.reports.selected = response;
             })
         }
     }
 
 })(tw,m);
-

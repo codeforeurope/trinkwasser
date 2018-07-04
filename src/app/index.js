@@ -25,21 +25,13 @@
                 }
                 return true;
             }
-            //tw.models.products.fetchAll();
-            console.log(vnode.attrs);
-            console.log(tw.geocoder.selected);
-            var coords = vnode.attrs.location.split(',');
-            tw.models.reports.fetchOne(isEmpty(tw.geocoder.selected) ? {lat: coords[0], lon: coords[1] }: tw.geocoder.selected );
+            tw.models.map.setCenter(vnode.attrs.location);
+            tw.models.reports.fetchOne(isEmpty(tw.geocoder.selected) ? tw.models.map.center : tw.geocoder.selected );
         },
-        view: function(vnode){
-            if(vnode.attrs.location){
-                console.log(vnode.attrs.location);
-            }
+        view: function(){
             return [ 
                 m("nav",{id: "navigation-section", class: "navbar navbar-expand-lg navbar-dark is-primary", role: "navigation", "aria-label": "main navigation"}, m(tw.components.navigation)),
-                m("section",{id: "report-section", class: "section"}, tw.models.products.list.map(function(product) {
-                    return m(".user-list-item", product.name)
-                }))
+                m("section",{id: "report-section", class: "section"}, m(tw.components.report))
             ]
         }
     }

@@ -26,7 +26,8 @@
     "grunt-contrib-jshint": "1.1.0",
     "grunt-contrib-uglify": "3.3.0",
     "grunt-i18n-abide": "0.0.20",
-    "hernanex3-grunt-static-i18n": "^0.3.3"
+    "hernanex3-grunt-static-i18n": "^0.3.3",
+    "http-server": "^0.11.1"
   },
   "scripts": {
     "start": "grunt && http-server build"

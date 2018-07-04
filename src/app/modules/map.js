@@ -6,8 +6,8 @@
     /**
      *
      */
-    var init = function () {
-        map = L.map('result-map');
+    var init = function (vnode) {
+        map = L.map(vnode.dom).setView([tw.models.map.center.lat, tw.models.map.center.lon],10);
         map.invalidateSize();
         L.tileLayer(tw.config.map.url, {
             attribution: tw.config.map.attribution
@@ -60,9 +60,13 @@
      * Initialize the map module
      */
     tw.map = {
-        'clear': clear,
-        'update': update,
-        'setZone': setZone,
-        'setPlants': setPlants
+        init: init,
+        clear: clear,
+        update: update,
+        setZone: setZone,
+        setPlants: setPlants,
+        view: function (vnode) {
+            return m("div", { id: "result-map", class: "map", onupdate: tw.map.init });
+        }
     };
 })(tw, L);
