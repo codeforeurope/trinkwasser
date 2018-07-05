@@ -27,6 +27,8 @@ var tw = tw || {
                 .then(function (response) {
                     tw.models.reports.selected = response;
                     tw.map.update();
+                    tw.map.setZone(response.zone);
+                    tw.map.setPlants(response.plants);
                 })
         }
     }
