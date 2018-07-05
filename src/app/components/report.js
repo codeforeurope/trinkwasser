@@ -96,34 +96,46 @@ var tw = tw || {
         }
     }
 
+    var observationComponent = {
+        collapsed: true,
+        view: function(vnode){
+            var item = vnode.attrs.item;
+            return m("div", {
+                class: ".card"
+            }, [
+                m("header", {
+                    class: "card-header",
+                    onclick: function(){
+                        console.log(item);
+                        vnode.state.collapsed = !vnode.state.collapsed;
+                    }
+                }, [
+                    m("p", {
+                        class: "card-header-title"
+                    }, item.code + " " + item.value + " " + item.uom.label),
+                    m("a", {
+                        class: "card-header-icon",
+                    }, m("span", {
+                        class: "icon"
+                    }, m("i", {
+                        class: vnode.state.collapsed ? "fa caret fa-angle-left": "fa caret fa-angle-down"
+                    }, "")))
+                ]),
+                m("div", {class: "card-content", style: vnode.state.collapsed ? "display:none": ""}, 
+                    m("p", item.description ? item.description: "_('Keine Information verfügbar')")
+                )
+            ])
+        }
+    };
     var table = {
         view: function () {
-
             if (tw.models.reports.selected.observations) {
-                console.log(tw.models.reports.selected.observations)
                 return m("div", {
                         id: "table-observations"
                     },
                     tw.models.reports.selected.observations.map(function (observation) {
                         console.log(observation);
-                        return m("div", {
-                                class: ".card"
-                            },
-                            m("header", {
-                                class: "card-header"
-                            }, [
-                                m("p", {
-                                    class: "card-header-title"
-                                }, observation.code + " " + observation.value + " " + observation.uom.label),
-                                m("a", {
-                                    class: "card-header-icon"
-                                }, m("span", {
-                                    class: "icon"
-                                }, m("i", {
-                                    class: "fa caret fa-angle-down"
-                                }, "")))
-                            ])
-                        )
+                        return m(observationComponent, {item: observation});
                     })
                 )
             }
