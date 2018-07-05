@@ -9,57 +9,71 @@
     tw.geocoder = {
         form: false,
         size: "is-large",
+        term: "",
+        suggestions: "",
         selected: {},
-        list: [],
         currentfocus: -1,
-        setForm: function(value){
+        setForm: function (value) {
+            console.debug("geocoder setForm(" + value + ")");
             tw.geocoder.form = value;
         },
-        setSize: function(value){
+        setSize: function (value) {
+            console.debug("geocoder setSize(" + value + ")");
             tw.geocoder.size = value;
         },
-        search: function(value) {
-            if(value.length > 4){
+        search: function (value) {
+            if (value.length > 4) {
+                console.debug("geocoder search");
                 m.request({
-                    method: "GET",
-                    url: tw.config.geocoder.search,
-                    data: {
-                        key: tw.config.geocoder.key,
-                        format:"json",
-                        addressdetails:"1",
-                        limit: 3,
-                        q: value
-                    }
-                })
-                .then(function(response) {
-                    tw.geocoder.list = response;
-                })
+                        method: "GET",
+                        url: tw.config.geocoder.search,
+                        data: {
+                            key: tw.config.geocoder.key,
+                            format: "json",
+                            addressdetails: "1",
+                            limit: 3,
+                            q: value
+                        }
+                    })
+                    .then(function (response) {
+                        tw.geocoder.render(response);
+                    })
             }
         },
-        render: function(){
-            if(tw.geocoder.list.length > 0) {
-                return m("div", {class: "autocomplete-suggestions"},
-                    Object.keys(tw.geocoder.list).map(function(key){
-                        if(tw.geocoder.list[key].display_name) {
-                            return m("div",{
+        render: function (list) {
+            console.debug("geocoder render");
+            if (list.length > 0) {
+                tw.geocoder.suggestions = m("div", {
+                        class: "autocomplete-suggestions"
+                    },
+                    Object.keys(list).map(function (key) {
+                        if (list[key].display_name) {
+                            return m("div", {
                                 class: "autocomplete-suggestion",
-                                onclick: m.withAttr("class", function(){
+                                onclick: m.withAttr("class", function () {
+                                    tw.geocoder.suggestions = "",
                                     tw.geocoder.selected = this;
-                                    tw.geocoder.list = [];
+                                    tw.models.map.center = {
+                                        lat: this.lat,
+                                        lon: this.lon
+                                    }
                                     m.route.set(
-                                        '/report/' + 
-                                            this.lat + 
-                                            ',' + 
-                                            this.lon
-                                        );
-                                }, tw.geocoder.list[key])
-                            }, tw.geocoder.list[key].display_name);
+                                        '/report/' +
+                                        this.lat +
+                                        ',' +
+                                        this.lon
+                                    );
+                                    
+                                    tw.models.reports.fetchOne()
+                                }, list[key])
+                            }, list[key].display_name);
                         }
                     })
                 )
             }
         },
-        keydown: function(e){
+        keydown: function (e) {
+            e.redraw = false;
             if (e.keyCode == 40) {
                 /*If the arrow DOWN key is pressed,
                 increase the currentFocus variable:*/
@@ -81,41 +95,62 @@
                 }
             }
         },
-        view: function(){
+        clear: function(){
+            tw.geocoder.suggestions = "";
+            tw.geocoder.selected = {};
+        },
+        view: function () {
             var input = [
-                m("input", { type: "hidden", id: "current-location-lat"}),
-                m("input", { type: "hidden", id: "current-location-lon"}),
-                m("div", { class: "field is-fullwidth"},
-                    m("p", { class: "control is-expanded has-icons-right" },
-                        [
-                            m("input",{ 
-                                id: "city",
-                                type: "text",
-                                class: "input " + tw.geocoder.size + " search-input",
-                                placeholder: "_('Bitte auswählen')",
-                                onkeyup: m.withAttr("value", function(value){
-                                    tw.geocoder.selected = {};
+                m("input", {
+                    type: "hidden",
+                    id: "current-location-lat"
+                }),
+                m("input", {
+                    type: "hidden",
+                    id: "current-location-lon"
+                }),
+                m("div", {
+                        class: "field is-fullwidth"
+                    },
+                    m("p", {
+                        id: "search-control",
+                        class: "control is-expanded has-icons-right"
+                    }, [
+                        m("input", {
+                            id: "city",
+                            type: "text",
+                            class: "input " + tw.geocoder.size + " search-input",
+                            placeholder: "_('Bitte auswählen')",
+                            onkeyup: m.withAttr("value", function (value) {
+                                if(tw.geocoder.term !== value){
+                                    tw.geocoder.clear();
+                                    tw.geocoder.term = value;
                                     tw.geocoder.search(value)
-                                }),
-                                onkeydown: function(e) {
-                                    tw.geocoder.keydown(e)
-                                },
-                                value: tw.geocoder.selected.display_name
+                                }
+                                
                             }),
-                            m("span", { class: "icon is-normal is-right search-icon" }, m("i", { class: "fa fa-search" })),
-                            tw.geocoder.render()
-                        ]
-                    )
+                            onkeydown: function (e) {
+                                tw.geocoder.keydown(e)
+                            },
+                            value: tw.geocoder.selected.display_name
+                        }),
+                        m("span", {
+                            class: "icon is-normal is-right search-icon"
+                        }, m("i", {
+                            class: "fa fa-search"
+                        })),
+                        tw.geocoder.suggestions
+                    ])
                 )
             ];
-            if(tw.geocoder.form){
-                return m("form", { 
+            if (tw.geocoder.form) {
+                return m("form", {
                     role: "form"
-                },input)
+                }, input)
             } else {
                 return input;
             }
-            
+
         }
     }
 })(tw, m);

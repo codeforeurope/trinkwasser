@@ -7,9 +7,9 @@
         var pathArray = window.location.pathname.split('/');
         //get the two letter code from the array
         for (var i = 0; i < pathArray.length; i++) {
-        if(pathArray[i].length === 2){
-            return pathArray[i];
-        }
+            if (pathArray[i].length === 2) {
+                return pathArray[i];
+            }
         }
         return 'en'; //Default language
     };
