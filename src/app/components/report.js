@@ -16,11 +16,11 @@ var tw = tw || {
                 class: "container"
             }, [
                 m(".columns", [
-                    m(".column", m(heading)),
+                    m(".column", m(".content", m(heading))),
                     m(".column", m(tw.map))
                 ]),
                 m(".columns", [
-                    m(".column", m(table))
+                    m(".column", m(".content", m(table)))
                 ])
             ]);
         }
@@ -58,7 +58,9 @@ var tw = tw || {
                             "_('Autorität'): ",
                             m("span", {
                                 id: "report-authority"
-                            }, tw.models.reports.selected.authority ? m("a", {href: tw.models.reports.selected.authority.url}, tw.models.reports.selected.authority.name) : " ")
+                            }, tw.models.reports.selected.authority ? m("a", {
+                                href: tw.models.reports.selected.authority.url
+                            }, tw.models.reports.selected.authority.name) : " ")
                         ]),
                         m("p", {
                             class: "report-operator"
@@ -66,7 +68,9 @@ var tw = tw || {
                             "_('Betreiber'): ",
                             m("span", {
                                 id: "report-operator"
-                            }, tw.models.reports.selected.operator ? m("a", {href: tw.models.reports.selected.operator.url}, tw.models.reports.selected.operator.name) : " ")
+                            }, tw.models.reports.selected.operator ? m("a", {
+                                href: tw.models.reports.selected.operator.url
+                            }, tw.models.reports.selected.operator.name) : " ")
                         ]),
                         m("p", {
                             class: "report-plant"
@@ -97,7 +101,9 @@ var tw = tw || {
 
             if (tw.models.reports.selected.observations) {
                 console.log(tw.models.reports.selected.observations)
-                return m("div",
+                return m("div", {
+                        id: "table-observations"
+                    },
                     tw.models.reports.selected.observations.map(function (observation) {
                         console.log(observation);
                         return m("div", {
@@ -118,29 +124,6 @@ var tw = tw || {
                                 }, "")))
                             ])
                         )
-                        // [
-                        //     m("div", {
-                        //         class: "card-header"
-                        //     }, [
-                        //         m("p", {
-                        //             class: "card-header-title"
-                        //         }, observation.code + " " + observation.value + " " + observation.uom.label),
-                        //         m("a", {
-                        //             class: "card-header-icon"
-                        //         }, m("span", {
-                        //             class: "icon"
-                        //         }, m("i", {
-                        //             class: "fa caret fa-angle-down"
-                        //         })))
-                        //     ]),
-                        //     m("div", {
-                        //         class: ".card-content",
-                        //         style: "display:none;"
-                        //     }.m("div", {
-                        //         class: "content"
-                        //     }, "Content here"))
-                        // ])
-
                     })
                 )
             }
