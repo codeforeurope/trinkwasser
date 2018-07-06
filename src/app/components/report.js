@@ -20,7 +20,7 @@ var tw = tw || {
                     m(".column", m(tw.map))
                 ]),
                 m(".columns", [
-                    m(".column", m(".content", m(table)))
+                    m(".column", m(table))
                 ])
             ]);
         }
@@ -98,14 +98,14 @@ var tw = tw || {
 
     var observationComponent = {
         collapsed: true,
-        view: function(vnode){
+        view: function (vnode) {
             var item = vnode.attrs.item;
             return m("div", {
                 class: ".card"
             }, [
                 m("header", {
                     class: "card-header",
-                    onclick: function(){
+                    onclick: function () {
                         vnode.state.collapsed = !vnode.state.collapsed;
                     }
                 }, [
@@ -117,15 +117,72 @@ var tw = tw || {
                     }, m("span", {
                         class: "icon"
                     }, m("i", {
-                        class: vnode.state.collapsed ? "fa caret fa-angle-left": "fa caret fa-angle-down"
+                        class: vnode.state.collapsed ? "fa caret fa-angle-left" : "fa caret fa-angle-down"
                     }, "")))
                 ]),
-                m("div", {class: "card-content", style: vnode.state.collapsed ? "display:none": ""}, 
-                    m("p", item.description ? item.description: "_('Keine Information verfügbar')")
-                )
+                m("div", {
+                    class: "card-content",
+                    style: vnode.state.collapsed ? "display:none" : ""
+                }, m("div", {
+                    class: "content"
+                }, [
+                    m(normtable, {
+                        item: item
+                    }),
+                    m("p", item.description ? item.description : "_('Keine Information verfügbar')")
+                ]))
             ])
         }
     };
+    var normtable = {
+        view: function (vnode) {
+            return m("table", {
+                class: "table"
+            }, [
+                m("thead", m("tr", [
+                    m("th", "_('Standard')"),
+                    m("th", "_('Min')"),
+                    m("th", "_('Max')") //,
+                    //m("th", "_('Score')")
+                ])),
+                m(normrows, {
+                    item: vnode.attrs.item
+                })
+            ]);
+        }
+    }
+
+    var normrows = {
+        view: function (vnode) {
+            
+            return m("tbody", tw.models.norms.list.map(function (norm) {
+                var itemnorms = norm.observations.filter(function (obsv) {
+                    return obsv.code == vnode.attrs.item.code;
+                });
+                if (itemnorms.length > 0) {
+                    return m("tr", [
+                        norm.sources ?
+                        m("td", norm.name, norm.sources.map(function (s_item, s_index) {
+                            if(s_index !== norm.sources.length - 1){
+                                return m("a", {
+                                    href: s_item,
+                                    target: "blank_"
+                                }, m("sup", m("i", s_index + 1), ", "))
+                            } else {
+                                return m("a", {
+                                    href: s_item,
+                                    target: "blank_"
+                                }, m("sup", m("i", s_index + 1)))
+                            }
+                        })) : m("td", norm.name),
+                        m("td", typeof(itemnorms[0].min) === "number" ? itemnorms[0].min + " " + itemnorms[0].uom.label : "-"),
+                        m("td", typeof(itemnorms[0].max) === "number" ? itemnorms[0].max + " " + itemnorms[0].uom.label : "-") //,
+                        //m("td", "_('Score')")
+                    ])
+                }
+            }))
+        }
+    }
     var table = {
         view: function () {
             if (tw.models.reports.selected.observations) {
@@ -133,7 +190,9 @@ var tw = tw || {
                         id: "table-observations"
                     },
                     tw.models.reports.selected.observations.map(function (observation) {
-                        return m(observationComponent, {item: observation});
+                        return m(observationComponent, {
+                            item: observation
+                        });
                     })
                 )
             }

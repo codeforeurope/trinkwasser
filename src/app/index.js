@@ -86,7 +86,8 @@
             ]
         }
     }
-
+    tw.models.norms.fetchAll();
+    tw.models.average.fetchAll();
     m.route(document.body, "/home", {
         "/home": tw.Main,
         "/view": tw.View,
