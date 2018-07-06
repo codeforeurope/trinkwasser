@@ -106,7 +106,6 @@ var tw = tw || {
                 m("header", {
                     class: "card-header",
                     onclick: function(){
-                        console.log(item);
                         vnode.state.collapsed = !vnode.state.collapsed;
                     }
                 }, [
@@ -134,7 +133,6 @@ var tw = tw || {
                         id: "table-observations"
                     },
                     tw.models.reports.selected.observations.map(function (observation) {
-                        console.log(observation);
                         return m(observationComponent, {item: observation});
                     })
                 )
