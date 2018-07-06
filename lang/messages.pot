@@ -81,7 +81,6 @@ msgstr ""
 #: src/templates/main.html:1
 #: src/templates/navigation.html:1
 #: src/index.html:2
-#: src/index-new.html:2
 msgid "Was steckt in meinem Leitungswasser?"
 msgstr "Was steckt in meinem Leitungswasser?"
 
@@ -205,7 +204,6 @@ msgid "Mitarbeit"
 msgstr "Mitarbeit"
 
 #: src/index.html:1
-#: src/index-new.html:1
 msgid ""
 "Weißt du eigentlich, wie gut das Trinkwasser an deinem Wohnort ist? Hier "
 "kannst du es herausfinden - für den Stadt- und Landkreis Heilbronn"

@@ -24,7 +24,6 @@
          * Remove all layers from the map
          */
         clear: function () {
-            console.debug("map clear");
             if (map) {
                 if (plantlayer) {
                     map.removeLayer(plantlayer);
@@ -38,7 +37,6 @@
          * Update or create the map
          */
         update: function () {
-            console.debug("map update");
             if (!map) {
                 var el = document.getElementById("result-map");
                 if (el) {
@@ -57,7 +55,6 @@
          * Add a zone polygon to the map
          */
         setZone: function (zone) {
-            console.debug("map setZone(" + zone + ")");
             if (!map) {
                 create();
             }
@@ -75,7 +72,6 @@
          * Add plant markers to the map
          */
         setPlants: function (plants) {
-            console.debug("map setPlants(" + plants + ")");
             if (!map) {
                 create();
             }

@@ -13,7 +13,6 @@ var tw = tw || {
     tw.models.reports = {
         selected: {},
         fetchOne: function () {
-            console.log("report fetchOne");
             return m.request({
                     method: "GET",
                     url: tw.config.api_endpoint + "/report",

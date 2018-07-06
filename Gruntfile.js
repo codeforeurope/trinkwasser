@@ -8,15 +8,12 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
       },
       target:{
-        options: {
-          beautify: true
-        },
         files: [
           {
             'build/js/transparentwater.min.js': ['src/js/**/*.js']
           },
           {
-            'build/app.build.js': [
+            'build/tw.min.js': [
               'src/app/config.js',
               'src/app/modules/*.js',
               'src/app/models/*.js',
@@ -79,10 +76,7 @@ module.exports = function(grunt) {
           src: ['build/templates/']
         },{
           dot: true,
-          src: ['build/app.build.js']
-        },{
-          dot: true,
-          src: ['build/index-new.html']
+          src: ['build/tw.min.js']
         }]
       }
     },
@@ -136,14 +130,6 @@ module.exports = function(grunt) {
           keyword: '_',
           language: 'swig'
         }
-      },
-      htmlnew: {
-        src: 'src/index-new.html',
-        dest: 'lang/messages.pot',
-        options: {
-          keyword: '_',
-          language: 'swig'
-        }
       }
     },
     statici18n: {
@@ -154,13 +140,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'build',
-          src: 'app.build.js',
-          dest: 'build'
-        },
-        {
-          expand: true,
-          cwd: 'src',
-          src: 'index-new.html',
+          src: 'tw.min.js',
           dest: 'build'
         },
         {

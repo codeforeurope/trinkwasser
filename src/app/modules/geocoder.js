@@ -14,16 +14,13 @@
         selected: {},
         currentfocus: -1,
         setForm: function (value) {
-            console.debug("geocoder setForm(" + value + ")");
             tw.geocoder.form = value;
         },
         setSize: function (value) {
-            console.debug("geocoder setSize(" + value + ")");
             tw.geocoder.size = value;
         },
         search: function (value) {
             if (value.length > 4) {
-                console.debug("geocoder search");
                 m.request({
                         method: "GET",
                         url: tw.config.geocoder.search,
@@ -41,7 +38,6 @@
             }
         },
         render: function (list) {
-            console.debug("geocoder render");
             if (list.length > 0) {
                 tw.geocoder.suggestions = m("div", {
                         class: "autocomplete-suggestions"
