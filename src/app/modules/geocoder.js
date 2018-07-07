@@ -148,10 +148,11 @@
 
 
     var constructSuggestion = {
+        selected: false,
         view: function (vnode) {
             console.log(vnode.attrs);
             return m("div", {
-                    class: "autocomplete-suggestion",
+                    class: vnode.state.selected ? "autocomplete-suggestion selected": "autocomplete-suggestion",
                     onclick: m.withAttr("class", function () {
                         tw.geocoder.suggestions = "",
                         tw.geocoder.selected = this;
