@@ -5,9 +5,14 @@ module.exports = function(grunt) {
     uglify: {
       options: {
         mangle: false,
+        beaytify: true,
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
       },
       target:{
+        options: {
+          sourceMap: false,
+          beautify: true
+        },
         files: [
           {
             'build/tw.min.js': [

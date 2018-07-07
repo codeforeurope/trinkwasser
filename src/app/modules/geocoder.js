@@ -33,37 +33,20 @@
                         }
                     })
                     .then(function (response) {
-                        tw.geocoder.render(response);
+                        tw.geocoder.render(response, value);
                     })
             }
         },
-        render: function (list) {
+        render: function (list, value) {
             if (list.length > 0) {
                 tw.geocoder.suggestions = m("div", {
                         class: "autocomplete-suggestions"
                     },
                     Object.keys(list).map(function (key, index) {
-                        if (list[key].display_name) {
-                            return m("div", {
-                                class: tw.geocoder.currentfocus === index ? "autocomplete-suggestion selected" :"autocomplete-suggestion",
-                                onclick: m.withAttr("class", function () {
-                                    tw.geocoder.suggestions = "",
-                                    tw.geocoder.selected = this;
-                                    tw.models.map.center = {
-                                        lat: this.lat,
-                                        lon: this.lon
-                                    }
-                                    m.route.set(
-                                        '/report/' +
-                                        this.lat +
-                                        ',' +
-                                        this.lon
-                                    );
-                                    
-                                    tw.models.reports.fetchOne()
-                                }, list[key])
-                            }, list[key].display_name);
-                        }
+                        return m(constructSuggestion, {
+                            suggestion: list[key],
+                            search: value
+                        });
                     })
                 )
             }
@@ -92,7 +75,7 @@
             }
             console.log(tw.geocoder.currentfocus);
         },
-        clear: function(){
+        clear: function () {
             tw.geocoder.suggestions = "";
             tw.geocoder.selected = {};
         },
@@ -119,12 +102,12 @@
                             class: "input " + tw.geocoder.size + " search-input",
                             placeholder: "_('Bitte auswählen')",
                             onkeyup: m.withAttr("value", function (value) {
-                                if(tw.geocoder.term !== value){
+                                if (tw.geocoder.term !== value) {
                                     tw.geocoder.clear();
                                     tw.geocoder.term = value;
                                     tw.geocoder.search(value)
                                 }
-                                
+
                             }),
                             onkeydown: function (e) {
                                 tw.geocoder.keydown(e)
@@ -150,4 +133,67 @@
 
         }
     }
+
+    function highlightWords(line, word) {
+        //split word!
+        var wordlist = word.split(" ");
+        for (var i = 0; i < wordlist.length; i++) {
+            if (wordlist[i].length > 0) {
+                var regex = new RegExp('(' + wordlist[i] + ')', 'gi');
+                line = line.replace(regex, "<b>$1</b>");
+            }
+        }
+        return line;
+    }
+
+
+    var constructSuggestion = {
+        view: function (vnode) {
+            console.log(vnode.attrs);
+            return m("div", {
+                    class: "autocomplete-suggestion",
+                    onclick: m.withAttr("class", function () {
+                        tw.geocoder.suggestions = "",
+                        tw.geocoder.selected = this;
+                        tw.models.map.center = {
+                            lat: this.lat,
+                            lon: this.lon
+                        }
+                        m.route.set(
+                            '/report/' +
+                            this.lat +
+                            ',' +
+                            this.lon
+                        );
+    
+                        tw.models.reports.fetchOne()
+                    }, vnode.attrs.suggestion)
+                },
+                m.trust(highlightWords(vnode.attrs.suggestion.display_name, vnode.attrs.search)));
+        }
+
+    }
+    // = function(item){
+    //     if (item.display_name) {
+    //         return m("div", {
+    //             class: "autocomplete-suggestion",
+    //             onclick: m.withAttr("class", function () {
+    //                 tw.geocoder.suggestions = "",
+    //                 tw.geocoder.selected = this;
+    //                 tw.models.map.center = {
+    //                     lat: this.lat,
+    //                     lon: this.lon
+    //                 }
+    //                 m.route.set(
+    //                     '/report/' +
+    //                     this.lat +
+    //                     ',' +
+    //                     this.lon
+    //                 );
+
+    //                 tw.models.reports.fetchOne()
+    //             }, item)
+    //         }, item.display_name);
+    //     }
+    // }
 })(tw, m);
