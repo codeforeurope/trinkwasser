@@ -10,8 +10,7 @@
         form: false,
         size: "is-large",
         term: "",
-        suggestions: "",
-        selected: {},
+        list: [],
         currentfocus: -1,
         setForm: function (value) {
             tw.geocoder.form = value;
@@ -33,22 +32,9 @@
                         }
                     })
                     .then(function (response) {
-                        tw.geocoder.render(response, value);
+                        tw.geocoder.list = response;
+                        //tw.geocoder.render(response, value);
                     })
-            }
-        },
-        render: function (list, value) {
-            if (list.length > 0) {
-                tw.geocoder.suggestions = m("div", {
-                        class: "autocomplete-suggestions"
-                    },
-                    Object.keys(list).map(function (key, index) {
-                        return m(constructSuggestion, {
-                            suggestion: list[key],
-                            search: value
-                        });
-                    })
-                )
             }
         },
         keydown: function (e) {
@@ -56,30 +42,38 @@
             if (e.keyCode == 40) {
                 /*If the arrow DOWN key is pressed,
                 increase the currentFocus variable:*/
-                tw.geocoder.currentfocus++;
-                /*and and make the current item more visible:*/
-                //addActive(x);
+                if (tw.geocoder.currentfocus !== tw.geocoder.list.length - 1) {
+                    tw.geocoder.currentfocus++;
+                }
             } else if (e.keyCode == 38) { //up
                 /*If the arrow UP key is pressed,
                 decrease the currentFocus variable:*/
-                tw.geocoder.currentfocus--;
-                /*and and make the current item more visible:*/
-                //addActive(x);
+                if (tw.geocoder.currentfocus !== -1) {
+                    tw.geocoder.currentfocus--;
+                }
             } else if (e.keyCode == 13) {
                 /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                //console.log(vnode);
+                console.log(tw.geocoder);
                 e.preventDefault();
                 if (tw.geocoder.currentfocus > -1) {
-                    /*and simulate a click on the "active" item:*/
-                    //if (x) x[currentFocus].click();
+                    tw.models.map.center = {
+                        lat: tw.geocoder.list[tw.geocoder.currentfocus].lat,
+                        lon: tw.geocoder.list[tw.geocoder.currentfocus].lon
+                    }
+                    m.route.set(
+                        '/report/' +
+                        tw.models.map.center.lat +
+                        ',' +
+                        tw.models.map.center.lon
+                    );
+                    tw.geocoder.list = [];
+                    tw.geocoder.currentfocus = -1;
+                    tw.models.reports.fetchOne()
                 }
             }
-            console.log(tw.geocoder.currentfocus);
         },
-        clear: function () {
-            tw.geocoder.suggestions = "";
-            tw.geocoder.selected = {};
-        },
-        view: function () {
+        view: function (vnode) {
             var input = [
                 m("input", {
                     type: "hidden",
@@ -103,7 +97,8 @@
                             placeholder: "_('Bitte auswählen')",
                             onkeyup: m.withAttr("value", function (value) {
                                 if (tw.geocoder.term !== value) {
-                                    tw.geocoder.clear();
+                                    tw.geocoder.list = [];
+                                    tw.geocoder.currentfocus = -1;
                                     tw.geocoder.term = value;
                                     tw.geocoder.search(value)
                                 }
@@ -111,15 +106,38 @@
                             }),
                             onkeydown: function (e) {
                                 tw.geocoder.keydown(e)
-                            },
-                            value: tw.geocoder.selected.display_name
+                            }
                         }),
                         m("span", {
                             class: "icon is-normal is-right search-icon"
                         }, m("i", {
                             class: "fa fa-search"
                         })),
-                        tw.geocoder.suggestions
+                        m("div", {
+                                class: "autocomplete-suggestions"
+                            },
+                            vnode.state.list.map(function (entry, idx) {
+                                return m("div", {
+                                        class: vnode.state.currentfocus === idx ? "autocomplete-suggestion autocomplete-selected" : "autocomplete-suggestion",
+                                        onclick: m.withAttr("class", function () {
+                                            tw.geocoder.list = [];
+                                            tw.geocoder.currentfocus = -1;
+                                            tw.models.map.center = {
+                                                lat: this.lat,
+                                                lon: this.lon
+                                            }
+                                            m.route.set(
+                                                '/report/' +
+                                                this.lat +
+                                                ',' +
+                                                this.lon
+                                            );
+                                            tw.models.reports.fetchOne()
+                                        }, entry)
+                                    },
+                                    m.trust(highlightWords(entry.display_name, vnode.state.term)));
+                            })
+                        )
                     ])
                 )
             ];
@@ -147,54 +165,4 @@
     }
 
 
-    var constructSuggestion = {
-        selected: false,
-        view: function (vnode) {
-            console.log(vnode.attrs);
-            return m("div", {
-                    class: vnode.state.selected ? "autocomplete-suggestion selected": "autocomplete-suggestion",
-                    onclick: m.withAttr("class", function () {
-                        tw.geocoder.suggestions = "",
-                        tw.geocoder.selected = this;
-                        tw.models.map.center = {
-                            lat: this.lat,
-                            lon: this.lon
-                        }
-                        m.route.set(
-                            '/report/' +
-                            this.lat +
-                            ',' +
-                            this.lon
-                        );
-    
-                        tw.models.reports.fetchOne()
-                    }, vnode.attrs.suggestion)
-                },
-                m.trust(highlightWords(vnode.attrs.suggestion.display_name, vnode.attrs.search)));
-        }
-
-    }
-    // = function(item){
-    //     if (item.display_name) {
-    //         return m("div", {
-    //             class: "autocomplete-suggestion",
-    //             onclick: m.withAttr("class", function () {
-    //                 tw.geocoder.suggestions = "",
-    //                 tw.geocoder.selected = this;
-    //                 tw.models.map.center = {
-    //                     lat: this.lat,
-    //                     lon: this.lon
-    //                 }
-    //                 m.route.set(
-    //                     '/report/' +
-    //                     this.lat +
-    //                     ',' +
-    //                     this.lon
-    //                 );
-
-    //                 tw.models.reports.fetchOne()
-    //             }, item)
-    //         }, item.display_name);
-    //     }
-    // }
 })(tw, m);
