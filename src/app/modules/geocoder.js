@@ -42,10 +42,10 @@
                 tw.geocoder.suggestions = m("div", {
                         class: "autocomplete-suggestions"
                     },
-                    Object.keys(list).map(function (key) {
+                    Object.keys(list).map(function (key, index) {
                         if (list[key].display_name) {
                             return m("div", {
-                                class: "autocomplete-suggestion",
+                                class: tw.geocoder.currentfocus === index ? "autocomplete-suggestion selected" :"autocomplete-suggestion",
                                 onclick: m.withAttr("class", function () {
                                     tw.geocoder.suggestions = "",
                                     tw.geocoder.selected = this;
@@ -90,6 +90,7 @@
                     //if (x) x[currentFocus].click();
                 }
             }
+            console.log(tw.geocoder.currentfocus);
         },
         clear: function(){
             tw.geocoder.suggestions = "";

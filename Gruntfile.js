@@ -10,9 +10,6 @@ module.exports = function(grunt) {
       target:{
         files: [
           {
-            'build/js/transparentwater.min.js': ['src/js/**/*.js']
-          },
-          {
             'build/tw.min.js': [
               'src/app/config.js',
               'src/app/modules/*.js',
@@ -67,14 +64,11 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           dot: true,
-          src: ['build/{css,js,img}', 'build/templates/']
+          src: ['build/{css,js,img}']
         }]
       },
       build: {
         files: [{
-          dot: true,
-          src: ['build/templates/']
-        },{
           dot: true,
           src: ['build/tw.min.js']
         }]
@@ -109,7 +103,7 @@ module.exports = function(grunt) {
     },
     abideExtract: {
       js: {
-        src: 'src/js/**/*.js',
+        src: 'src/app/**/*.js',
         dest: 'lang/messages.pot',
         options: {
           language: 'JavaScript'
@@ -147,11 +141,6 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'src',
           src: 'index.html',
-          dest: 'build'
-        },{
-          expand: true,
-          cwd: 'src',
-          src: 'templates/**/*.html',
           dest: 'build'
         }]
       }
