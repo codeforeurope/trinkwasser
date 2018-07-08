@@ -30,7 +30,7 @@ var tw = tw || {
                         },
                         m("img", {
                             src: "../img/white-logo.png",
-                            alt: "_('Code For Europe Logo')"
+                            alt: "_('Logo')"
                         })
                     ),
                     m("span", {

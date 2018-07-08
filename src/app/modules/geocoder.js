@@ -83,12 +83,10 @@
                     type: "hidden",
                     id: "current-location-lon"
                 }),
-                m("div", {
-                        class: "field is-fullwidth"
-                    },
+                m("div",
                     m("p", {
                         id: "search-control",
-                        class: "control is-expanded has-icons-right"
+                        class: "control has-icons-right"
                     }, [
                         m("input", {
                             id: "city",
@@ -114,7 +112,7 @@
                             class: "fa fa-search"
                         })),
                         m("div", {
-                                class: "autocomplete-suggestions"
+                                class: vnode.state.list.length > 0 ? "autocomplete-suggestions" : "is-invisible"
                             },
                             vnode.state.list.map(function (entry, idx) {
                                 return m("div", {
