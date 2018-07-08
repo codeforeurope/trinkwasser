@@ -66,5 +66,14 @@
 .red {
   color: #ff0000;
 }
+.leaflet-pane {
+  z-index: auto !important;
+}
+.leaflet-control {
+  z-index: auto !important;
+}
 
+.leaflet-top {
+  z-index: auto !important;
+}
 .capitalize {text-transform:capitalize;}
