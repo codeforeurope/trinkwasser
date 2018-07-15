@@ -13,36 +13,40 @@ This project uses transifex for translation. Translations can be found or create
 Please install the transifex client to pull languages.
 Install your login credentials to ~/.transifexrc
 
-```
+```bash
 [https://www.transifex.com]
 hostname = https://www.transifex.com
 password = pwd
 token =
 username = username
-
 ```
-## To pull down locale
-```shell
+
+# To pull down locale
+
+```bash
 tx pull -a
 ```
-## After editing localisation changes in lang/locale/{in}
-### If you not in the language team for it won't let you write
-### Delete the other languages before saving the .po file you edited and executing..
-```shell
+
+# After editing localisation changes in lang/locale/{lang}
+
+If you not in the language team you will not be able to push to transifex. If you do have transifex set up correctly; delete the other languages before saving the .po file you edited and executing.
+
+```bash
 tx push -t
 ```
 
 # Run
 
 ```bash
-npm install -g grunt
-npm install -g http-server
-npm install
+npm install .
 npm start
 ```
 
-# Git before pushing your changes please do a pull request
-```shell
+# Git 
+
+before pushing your changes please do a pull request
+
+```bash
 git pull https://github.com/codeforeurope/trinkwasser.git master
 ```
 
