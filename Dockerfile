@@ -1,4 +1,4 @@
-FROM node:6
+FROM node:carbon-alpine
 
 # Create app directory
 RUN mkdir -p /app
@@ -14,7 +14,6 @@ ENV MAP_URL http://{s}.tile.osm.org/{z}/{x}/{y}.png
 # Install
 COPY . /app
 COPY config-docker.js /app/src/js/config.js
-RUN npm install -g grunt http-server
 RUN npm install .
 
 #Image configuration
